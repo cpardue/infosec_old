@@ -1,0 +1,3 @@
+nmap -sP -T4 -p- <target>
+nikto -host <target:port>
+arachni <targeturl:port>
