@@ -1,0 +1,3 @@
+services openvpn status
+openvpn icpgangkillrclownz.openvpn
+ping that server
