@@ -1,4 +1,4 @@
-services openvpn status
+service openvpn status
 cd <icpgangkillrclownz.openvpn dir>
-openvpn icpgangkillrclownz.openvpn
+openvpn icpgangkillrclownz.ovpn
 ping that server
