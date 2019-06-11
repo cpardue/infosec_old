@@ -2,3 +2,7 @@ service openvpn status
 cd <icpgangkillrclownz.openvpn dir>
 openvpn icpgangkillrclownz.ovpn
 ping that server
+
+hydra syntax failing at "/public..." with [ERROR]: uknown service
+hydra -l admin -P /usr/share/wordlists/***.txt 0.0.0.0 "/public/checklogin.htm:login=&username=^USER^&password=^PASS^"login%20has%20failed" -V
+figure it out.  hydra needs to know what to verify failure with i think
