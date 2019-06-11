@@ -1,5 +1,6 @@
-try du -h
+try df -h
 *to see what's hogging space*
 then du -h --max-depth=1
 *drill down for each dirA > dirB*
-tip, it'll be syslog and kern.log under /
+*tip, it'll be syslog and kern.log under /*
+echo "fuck you" giantfile.log; head -3 giantfile.log
