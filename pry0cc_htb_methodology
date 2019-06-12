@@ -1,0 +1,193 @@
+from https://0x00sec.org/t/my-hackthebox-ctf-methodology-from-fresh-box-to-root/13980
+
+Hey 0x00ers!
+
+I’m so sorry that it’s been such a long time since I’ve dropped an article here! I’ve been writing for my current company navisec.io 
+120 @ delta.navisec.io 52 and I’ve not had the chance to drop a good article for 0x00sec for a little while.
+
+Today that is changing! Whoop!
+
+In this article I’m going to discuss CTF methodology, really, this links in so closely to real life penetration methodology (if you 
+were scoped down to an internal or to a single machine).
+
+Specifically, we’re going to be discussing boot2root CTF’s, things such as HackTheBox.eu, and how I generally go about pwning a box.
+
+The Basics - what is our objective?
+Usually, the objective of these CTF’s is to obtain a shell, usually unprivileged, and then escalate your privileges to gain access to 
+root. Occasionally this doesn’t necessarily mean you have to obtain a root shell, but be people to read/write files as root, (which with more time could be used to gain a root shell).
+
+As per hackthebox, you usually have these two files known as flags stored on the machine. On Linux machines the “user.txt” flag denotes 
+a user own, and is stored in /home/someusername/user.txt, and on Linux, the “root.txt” flag file is stored in /root/root.txt.
+
+On windows boxes, these files are usually stored in C:\Users\Username\Desktop\user.txt, and C:\Users\Administrator\Desktop\root.txt 
+respectively.
+
+When you gain access to these files, you just need to view the contents (cat/type) and copy the code into the HackTheBox page for that 
+box.
+
+How do we even start?
+Ok, so now you know what you’re trying to achieve, you need to know where to start.
+
+I recommend now if you’re reading so far, and you are not familiar with basic networking, Linux or Windows basic usage, and scripting 
+languages such as python/ruby, then you’re not ready for CTF’s. For networking watch this (https://www.youtube.com/watch?v=n2D1o-aM-2s)
+230 and for Linux watch this (https://www.youtube.com/watch?v=x73WTEltyHU)150. Obviously, this is nowhere near enough to get started 
+but it should provide some structure for absolute newbies!
+
+The first stage of hacking is enumeration.
+
+Enumeration
+Enumeration is the stage where we attempt to collect as much information as we can from the host before even trying to exploit 
+anything. I will easily spend 1-2 hours of enumeration on a medium box. Take your time with this step, never rush this. Go very slow, 
+read everything, save anything and everything in your notes that might be relevant later.
+
+For a quick reference containing everything here, read this.
+
+Port scanning
+Typically in a CTF, I will begin with a portscan.
+
+This is the real nmap scan I use for SwagShop this weekend.
+
+sudo nmap -v -sS -A -Pn -T5 -p- -oN swagshop.txt 10.10.10.140
+Just to make sure you’re not missing anything a quick UDP scan, since this is so slow I generally won’t wait for it and will just go 
+ahead while it’s running.
+
+sudo nmap -v -sU -T5 -oN swagshop-udp.txt 10.10.10.140
+You rarely will find UDP ports open & relevant in CTF’s, but they can catch you out (for example Access).
+
+This command will return your nmap results, very often if it’s a Linux box, you’ll end up with a webserver on port 80, maybe 443, and 
+port 22 open. Bruteforcing SSH is rarely fruitful and something I will only ever do if i’m scrabbling for access (I’ve never 
+bruteforced successfully on a HTB before).
+
+Now that you’ve done a network map, you need to enumerate each service. So in our case:
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b6:55:2b:d2:4e:8f:a3:81:72:61:37:9a:12:f6:24:ec (RSA)
+|   256 2e:30:00:7a:92:f0:89:30:59:c1:77:56:ad:51:c0:ba (ECDSA)
+|_  256 4c:50:d5:f2:70:c5:fd:c4:b2:f0:bc:42:20:32:64:34 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-favicon: Unknown favicon MD5: 88733EE53676A47FC354A61C32516E82
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Home page
+Service Enumeration
+Now I will write down things such as the OpenSSH version, the distribution discovered via this fingerprint. I will also do the same 
+for HTTP. Generally, to ensure I’m not missing anything dumb, I will search https://www.exploit-db.com/ 56 for these version numbers.
+
+(Tip, if you get a version like OpenSSH 7.2p2, search SSH 7.2, or OpenSSH 7 and look over the results. You might find that the 
+description on the exploit is like “< 7.3”. )
+
+Quite often, I will not find a full on RCE here, if I do spot an RCE, I’ll fire up metasploit and search the software as well. 
+Sometimes there are exploits in here (and vice versa). You’re probably noticing the trend here is “just check in case”. As @cry0lit3 
+always says, leave no stone unturned.
+
+If you’re on a Windows box, you might find that port 21 is open, port 139, 445 are open. If this is the case, try and connect to FTP 
+(I use ncftp thanks to @guly), note down the version numbers, try and connect with the “Anonymous” user. For 139 and 445, try and 
+enumerate SMB.
+
+smbclient -L 10.10.10.140
+This will return shares listed in SMB. Once you’ve got a few, use smbclient to try and connect to each one.
+
+smbclient //10.10.10.140/TheShare
+This will prompt you for a password, you can also specify a username with the -U flag. If your credentials are successful, you will be 
+dropped into an interactive prompt similar to that of FTP and you’ll be able to navigate files and download files.
+
+You can also use the SMB script that comes with nmap,
+
+nmap -p445 -sV --script smb-enum-services 10.10.10.140
+This script works ok, but it’s best to try both.
+
+HTTP Enumeration
+A crucial part of lots of hacktheboxes and CTF’s is HTTP enumeration. I love using Burpsuite for this, setup burpsuite and proxy all 
+your requests, if you have pro, do an active spider. Click through the entire website and click everything, every link, the file 
+structure will be populated in the left-hand side of the Burpsuite window. I strongly recommend flipping through each request and 
+nothing things such as the request cookies, the response headers, and scanning through the web source. You might get lucky and find 
+some comments containing a hint!
+
+Now that you’ve completed some level of passive reconnaissance, go in hard with the active. I will generally begin this step before I 
+do passive enum just for the sake of efficiency.
+
+There are many different tools you can use here, but I really like gobuster.
+
+gobuster -w SecLists/Discovery/Web_Content/big.txt -u http://10.10.10.140/
+You can also chuck in the -x flag and supply some different extensions if the app has a lot of aspx pages I will chuck on -x aspx. 
+Focus this bit depending on what you’re dealing with, is it a NodeJS app? Try -x js,json. It’s unlikely you’ll find a .php page on a 
+NodeJS app.
+
+For good measure, once I’ve run this and begin investigating further, I will chuck this at it:
+
+gobuster -w SecLists/Discovery/Web_Content/raft-large-files.txt -u http://10.10.10.140/
+Once I’ve gotten a list of different directories that have been discovered, I will visit them, curl them, and investigate further. 
+Usually, on an easy box, you’ll find something you might be able to exploit here, or maybe just more hints!
+
+What you find might happen is that the developer has been crafty and enabled wildcard directories. This is a common thing on harder 
+boxes and you will often notice that this the developer’s way of telling you “its not by dirbusting!”. Sometimes, though, they might 
+hide something inside this, maybe a comment or a page with a 404 not found status code, but with something inside the source, you can 
+use burp intruder and examine the response lengths if you feel this might be the case.
+
+Again - examine all of your traffic through Burp, its so invaluable to be able to read the source. Doing this would of gotten me a 
+foothold on OneTwoSeven so much quicker!
+
+Finding subdomains with SSL certs
+If you find that port 443 is open, or an SSL port is open, you might be able to leverage this to get yourself some subdomains! You can 
+either click on the cert and navigate and read all the information until you find some other valid certnames.
+
+Or you can use this one-liner, (I recommend doing both though).
+
+echo | openssl s_client -connect 0x00sec.org:443  | openssl x509 -noout -text | grep DNS | sed 's/,/\n/g'
+Once you’ve got these, put them in your hosts file or try and request with curl:
+
+curl -vv 'Host: yournewdomain.com' 10.10.10.40
+You might get lucky! If you want to bruteforce these, you can use the auxiliary/scanner/http/vhost_scanner module in Metasploit.
+
+Exploitation
+Now that you’ve enumerated a bunch, and hopefully organized this into a nice set of notes (I usually just use a text file), I recommend 
+(taking your time), and going over the data you’ve collected. Focus on trying to use your current gathered information to gain and 
+gather more information. Perhaps you read some text on the website that suggested the username or potential name of the fictional user 
+of the system.
+
+If you’ve obtained creds, try them everywhere! And note down that you’ve tried them. Noting down what you’ve tried and being methodical 
+is so useful.
+
+Now after you’ve reviewed your notes, you will likely find that something pops into your head; an “OH OF COURSE” moment. If you’ve done 
+your enumeration well enough, you should see the path that has been laid out for you pretty clearly. Whether that is a vulnerable 
+webapp, a wordpress instance located in a sub path, a status page giving you more information, an LDAP instance that is leaking hashes 
+(that you can crack!), an LFI that you can get ssh private keys from!
+
+Try and think through what the app does, what the system is, and how it works. Where is it communicating? How did the developer design 
+this? How might this be vulnerable?
+
+Once you’ve found this path, try and exploit it. Depending on the difficulty of the box, you might need to spend a little while on 
+this. Google is your best friend! If you’re really struggling, you can look over some hints from the HackTheBox forums, but remember, 
+if you’re planning on doing the OSCP, you won’t get the luxury of these hints. Usually, this involves getting a shell, for a quick 
+shell reference this (https://delta.navisec.io/reverse-shell-reference/)122 can be very helpful.
+
+Getting the Root!
+Now really, since this is not intended to be an exhaustive article on enumeration, but more of a quick overview of CTF methodology. I 
+won’t go too deep into rooting and privesc. The metholodgy is exactly the same for me. Collect as much information as possible, 
+organize your collected data and then the path should reveal itself.
+
+If you want a privesc reference, check this (https://delta.navisec.io/privilege-escalation/%5D)229 out!
+
+Conclusion
+In conclusion, the methodology of gaining access to a CTF box contains a few steps:
+
+Information gathering
+More information gathering
+Review your collected information
+Exploit the path that you’ve been shown by the hacker gods
+Repeat
+It’s dead easy when you think about it like this, and really taking your time is invaluable. If you don’t see a path, just keep 
+enumerating. You’ll find something, it just might take a LOT of enumeration. In many ways, knowing the path to exploitation but just 
+struggling on the actual exploitation execution is a really rewarding feeling, because finding that flaw to exploit is literally half 
+the battle.
+
+I hope this was helpful, and not too scrappy, this was thrown together in a mad blaze of creativity before my workday. If you spot any 
+typo’s let me know and I’ll fix it.
+
+What does your CTF methodology look like? Do you have a different approach or tips for others on this topic? Please let me know!
+
+Thanks, 0x00ers!
+
+Stay snappy :wink:
