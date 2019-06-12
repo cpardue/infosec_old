@@ -1,0 +1,6 @@
+#for i in {x..y}; do echo $i; done
+
+#while read -r line; do echo $line; done < "$file" // file=/etc/passwd
+
+#while read p; do echo "python firefox_decrypt.py --no-interactive --choice 1" | bash; echo "$p"; done <1000000-password-seclists.txt
+
