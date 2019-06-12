@@ -1,0 +1,44 @@
+1. Filter traffic on specific IP address
+ ip.addr==192.168.1.2
+2. Filter by source address
+ ip.src==192.168.1.2
+3. Filter by destination address
+ ip.dst==192.168.1.2
+4. Filter by IP subnet
+ip.addr==192.168.1.0/24
+If you want to filter on a IP source subnet use ip.src==subnet
+If you want to filter on IP destination subnet use ip.dst==subnet
+5.  Filter traffic based on protocol
+To filter for a specific protocol just type in the name of the protocol.
+Some common protocols you could filter on: arp, http, ftp, smtp, ssh, telnet, bootp, icmp.
+6. Exclude IP address
+ !ip.addr==192.168.1.2
+7. Show traffic between two workstations or subnet
+ ip.addr==192.168.1.0/24 and ip.addr==192.168.2.0/24
+ip.addr==192.168.1.2 and ip.addr==192.168.2.3
+8. Filter by MAC address
+ eth.addr == 00:60:e0:53:13:d5
+9. Filter on TCP port
+tcp.port==80
+ tcp.srcport==80
+ tcp.dstport==80
+10. Find user agents
+http.user_agent contains Firefox
+!http.user_agent contains Firefox || !http.user_agent contains Chrome
+11. Filter background network noise
+!(arp or icmp or dns)
+12. Filter on port and IP Address
+tcp.port 80 && ip.addr == 192.168.1.2
+13. Filter for all http get requests
+http.request
+14. Filter for http get and responses
+http.request or http.response
+15. Filter on three way handshake
+tcp.flags.syn==1 or (tcp.seq==1 and tcp.ack==1 and tcp.len==0 and tcp.analysis.initial_rtt)
+16. Find executable or other file types
+frame contains "(attachment|tar|exe|zip|pdf)"
+17. Search traffic based on a keyword
+tcp contains facebook
+frame contains facebook
+18. Detecting SYN Floods (Possible DDoS attacks)
+tcp.flags.syn == 1 and tcp.flags.ack == 0
