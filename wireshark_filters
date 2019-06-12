@@ -42,3 +42,13 @@ tcp contains facebook
 frame contains facebook
 18. Detecting SYN Floods (Possible DDoS attacks)
 tcp.flags.syn == 1 and tcp.flags.ack == 0
+19. Detecting Xmas scan
+tcp.flags==0x029
+20. Detect syn/fin dos
+tcp.flags==0x003
+21. Detecting UDP scan attempt
+icmp.type==3 and icmp.code==3
+22. Detect ftp failed logins
+ftp.response.code==530 (230 is successful login)
+23. Dupicate addresses
+arp.duplicate-address-detected
