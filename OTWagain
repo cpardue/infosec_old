@@ -1,0 +1,16 @@
+0->1$cat readme
+1->2$cat ./-
+2->3$cat spaces\ in\ this\ filename
+3->4$cat inhere/.hidden
+4->5$for i in {0..9}; do file ~/inhere/-file0$i; done // $cat <ASCII>
+5->6$find inhere/ -size 1033c // $cat <result>
+6->7$find / -size 33c -user bandit7 -group bandit6 2>/dev/null // $cat <result>
+7->8$cat data.txt | grep millionth
+8->9$sort data.txt | uniq -u
+9->10$strings data.txt
+10->11$base64 -d data.txt
+11->12$cat data.txt | tr '[A-Za-z]' '{N-ZA-Mn-za-m]'
+12->13$cd .. && mkdir /tmp/TEMP && cd /tmp/TEMP && echo "in temp" && cp ~/data.txt ./&& echo "unpacking hex" && xxd -r data.txt > a.gz && echo "unzipping" && gunzip a.gz && bzip2 -d a && echo "renaming" && mv ./a.out ./a.gz && echo "unzipping" && gunzip a.gz && echo "tarballs" && tar -xvf a && tar -xvf data5.bin && bzip2 -d data6.bin && tar -xvf data6.bin.out && echo "renaming again" && mv ./data8.bin ./c.gz && echo "final decompress" && gunzip c.gz && echo "printing value below" && cat c
+13->14$ssh bandit14@localhost -i ./sshkey.private
+14->15$cat /etc/bandit_pass/bandit14 // <copy flag> // $telnet 30000 // <paste flag>
+15->16$ok so you left off at $man openssl // /-passin
