@@ -21,176 +21,269 @@ Module 18: Cryptography
 Post Module: Extra Resources
 
 
-
+############################################################[1]########################################################################
 Module 1: Introduction to Ethical Hacking
 TOC
 
 Information Security Overview
 
 Terminology 
-Hack Value: Notion among hackers that something is worth doing or interesting
-Vulnerability: Existence of a weakness, design, or implementation error that can lead to an expected event compromising the security of the system
-Exploit: A breach of IT system security through vulnerabilities
-Payload: Part of an exploit code that perform the intended malicious action 
-Zero-Day Attack: An attack that exploits computer app vulnerabilities before the software developer releases a patch for the vulnerability
-Daisy Chaining: Gaining access to one network and/or computer and then using the same info to gain access to multiple networks and computer that contains desirable info
-Doxing: Publishing personally identifiable information
-Bot: software app that can be controlled remotely to execute or automate pre-defined tasks
+ A scotoma is a blind spot in your vision. The spot may be in the center, or it may be around the edges of your vision. Rather than a 
+ dark spot in your vision, you may have a spot of flickering light near the center of your vision that may drift around the eye, or 
+ create arcs of light.
+ Hack Value: Notion among hackers that something is worth doing or is interesting.
+ Vulnerability: Existence of a weakness, design, or implementation error that can lead to an expected event compromising the security 
+ of the system.
+ Exploit: A breach of IT system security through vulnerabilities.
+ Payload: Part of an exploit code that performs the intended malicious action, such as destroyinf, creating backdoors, and hijacking 
+ computers.
+ Zero-Day Attack: An attack that exploits computer application vulnerabilities before the software developer releases a patch for the 
+ vulnerability.
+ Daisy Chaining: It involves gaining access to one network and/or computer and then using the same info to gain access to multiple 
+ networks and computers that contains desirable info.
+ Doxing: Publishing personally identifiable information about an individual collected from publicly available databases and social 
+ media.  
+ Bot: software app that can be controlled remotely to execute or automate pre-defined tasks
 
 Elements of Information Security  
-Non-Repudiation: Sender of a message cannot later deny having sent the message
-Confidentiality: Only authorized users able to view content
-Integrity: Trustworthiness of data or resource in prevention of unauthorized changes
-Availability: assurance systems are accessible
-Authenticity: The quality of being genuine 
+ Confidentiality==Encryption: Assurance that the information is accessible only to those authorized to have access. 
+  crypto (symmetric): requires a key which unlocks the information within
+  crypto (assymetric): requires pairs of keys which together unlocks the data within. (public/private keys)
+ Integrity==Hash: Trustworthiness of data or resource in terms of preventing improper and unauthorized changes.  
+  hash: a one-way non-reversible function which keeps the integrity of a file.  
+ Availability==Clustering/LoadBalancing/RAID: Assurance that systems responsible for delivering, storing, and processing information 
+ are accessible when required by 
+ the authorized users.  
+  Clustering: Bunching multiples of machines together for redundancy
+  LoadBalancing: 
+  RAID:
+ Authenticity==Signature: Authenticity refers to the characteristics of a communication, document, or any data that ensures the quality 
+ of being genuine.
+ Non-Repudiation: Sender of a message cannot later deny having sent the message
+  Identification: individual holds a valid identity (individual username)
+  Authentication: indentity of an individual (password, pin, etc)
+  Authorization: controlling the access (read/write/execute)
+  Accounting: keep track of user actions on the network (who/what/when/where)
+   Data Leakage: unauthorized disclosure of sensitive or confidential data
+   Data Backups: Mirror, Incremental (chunks), Differential (cumulative)
+   Data Recovery: Deleted? Currupted? Recoverable.  
+   
 
 Information Security Threats and Attack Vectors
+ Cloud computing: is an on-demand delivery of IT capabilities, and stores data. Must be secure
+ Advanced Persistent Threats: APT focus on stealing info from victim machine w/o user aware
+ Viruses and Worms: Capable of infecting a network within seconds
+ Mobile Threats: Many attackers see mobile phone as a way to gain access
+ Botnet: huge network of compromised systems 
+ Insider Attack: an attack performed on a corporate network by an entrusted person w/ access
 
-Cloud computing: is an on-demand delivery of IT capabilities, and stores data. Must be secure
-Advanced Persistent Threats: APT focus on stealing info from victim machine w/o user aware
-Viruses and Worms: Capable of infecting a network within seconds
-Mobile Threats: Many attackers see mobile phone as a way to gain access
-Botnet: huge network of compromised systems 
-Insider Attack: an attack performed on a corporate network by an entrusted person w/ access
+Hacker Types
+ Black hats==Offense: individuals with EXTRAORDINARY COMPUTING SKILLS, resorting to malicious or destructive activities, aslo known as 
+  CRACKERS
+ White hats==Defense: Individuals professing hacker skills and using them for defensive purposes
+ Gray hats: Individuals who work both offense and defense at various times
+ Suicide Hackers: Individuals who aim to bring down critical infrastructure for a cause and are not worried about jail terms
+ Script Kiddies: Unskilled hackers who compromise systems by running scripts, tools, and software developed by REAL HACKERS
+ MISSED 3
 
 Threat categories: Network Threats, Host Threats, App Threats
 Types of Attacks: OS Attacks, Mis-Config attacks, App Level Attacks, Shrink Wrap Code Attacks
 
 Hacking Concepts, Types, and Phases
-
 Hacking: Exploiting system vulnerabilities and compromising security 
-Five Phases of Hacking: Reconnaissance, Scanning, Gaining Access, Maintaining Access, Clearing Tracks
-
-Reconnaissance: Preparation phase when an attacker seeks to gather information. Does not directly interact with the system, and relies on social engineering and public info
- 
-Scanning: Identify specific vulnerabilities (in-depth probing). Using Port scanners to detect listening ports (companies should shut down ports that are not required) 
-
-Gaining Access: Using vulnerabilities identified during reconnaissance [DoS, Logic/Time Exploit, reconfiguring/crashing system] 
-
-Maintaining Access: Keeping a low profile, keeping system as a launch pad, etc.
-
-Clearing Tracks: Hiding malicious acts while continuing to have access, avoiding suspicion
+ Five Phases of Hacking: Reconnaissance, Scanning, Gaining Access, Maintaining Access, Clearing Tracks
+  1. Reconnaissance: Preparation phase when an attacker seeks to gather information. Does not directly interact with the system, and 
+   relies on social engineering and public info
+  2. Scanning: Identify specific vulnerabilities (in-depth probing). Using Port scanners to detect listening ports (companies should shut 
+   down ports that are not required) 
+  3. Gaining Access: Using vulnerabilities identified during reconnaissance [DoS, Logic/Time Exploit, reconfiguring/crashing system] 
+  4. Maintaining Access: Keeping a low profile, keeping system as a launch pad, etc.
+  5. Clearing Tracks: Hiding malicious acts while continuing to have access, avoiding suspicion
+  
 
 Ethical Hacking Concepts and Scope
-
-Ethical Hacking: Using tools and techniques to identify vulnerabilities w/ permission
-
+ Ethical Hacking: Using tools and techniques to identify vulnerabilities w/ permission
+ Scope==ShowScotoma: Ethical hacking is a cruicial component of risk assessment, auditing, counter fraud, and best practices.  It is used 
+ to identify risks and highlight the remedial actions.  
+ Limitations: Can be useful unless used to better understand their security system, but is up to the organization to place the right 
+ guards on the network.  Unless the business first knows what it is that they are looking for and why they are hiring an outside 
+ vendor to hack systems in the first place, chances are there is not much to be gained from the experience.  
 
 Information Security Controls
+ Information Assurance: Assurance for integrity, availability,confidentiality, and authenticity of info
+ Threat Modeling: Risk Assessment approach for analyzing security. 1) Identify Security Objectives 2) Application overview 3) 
+  Decompose Application 4) Identify Threats 5) Identify Vulnerabilities 
+ Network Security Zoning (High to Low): Internet Zone - Internet DMZ - Production Network Zone - Intranet Zone - Management Network Zone
+  Security Policies are the foundation of security infrastructure
+ Info security policy defines basic requirements and rules to be implemented in order to protect and secure organizations information 
+  systems
+ Acceptable-Use Policy: defines acceptable use of company resources
+ Remote-Access Policy: Defines who can have remote access, defines access medium and remote access security controls
+ Defense-in-Depth: Security strategy in which several protection layers are placed throughout an information system.  It helps to 
+  prevent direct attacks against an information system because a break in one layer only leads the attacker to the next layer.  
+ 
+Risk
+ Risk is the degree of uncertainty or expectation that an adverse event may cause damage to the system
+ Risks are categorized into different levels according to their estimated impact on the system
+ A risk matrix is used to scale risk by considerint the probability, likelihood, and consequnce/impact of the risk
+  High: immediate measures should be taken/controls imposed to reduce risk to reasonably low levels
+  Medium: immediate action not required but should implement quickly
+  Low: take preventative steps to mitigate effects of the risk
+   Incident Management: a set of defined processes to ientify, analyze, prioritize, resolve security incidents
+    vulnerability handling, artifact handling, announcements, alerts
+   Incident Handling: triage, report and detection, incident response, analysis
+    User Behavioral Analysis(UBA) 
 
-Information Assurance: Assurance for integrity, availability,confidentiality, and authenticity of info
-Threat Modeling: Risk Assessment approach for analyzing security. 1) Identify Security Objectives 2) Application overview 3) Decompose Application 4) Identify Threats 5) Identify Vulnerabilities 
-
-Network Security Zoning (High to Low): Internet Zone - Internet DMZ - Production Network Zone - Intranet Zone - Management Network Zone
-
-Security Policies are the foundation of security infrastructure
-
-Info security policy defines basic requirements and rules to be implemented in order to protect and secure organizations information systems
+Access Control
+ Subject: a particular user or process which wants access to the resource
+ Object: the specific resource that the subject wants to access on any hardware device
+ Reference Monitor: checks the access control rule for specific restrictions
+ Operation: represents the action taken by the subject on the object
+  Discretionary Access Control: to protect the information/level of sharing/restricted to users & groups
+  Mandatory Access Control: to decide who can access the information/does not permit passof privileges
+  Role-Based Access Control: access to systems, files, fields on a one-by-one basis/can simplify assignment of privileges
 
 4 types of security policies
-Promiscuous Policy 
-Permissive Policy
-Prudent Policy 
-Paranoid Policy 
+ Promiscuous Policy 
+ Permissive Policy
+ Prudent Policy 
+ Paranoid Policy 
+ Acceptable-Use Policy
+ Remote-Access Policy
+ 
+Physical Security Controls
+ Preventative
+ Detective Controls
+ Deterrent Controls
+ Recvery Controls
+ Compensating Controls
 
-Incident Management: set of defined processes to identify, analyze, prioritize, and resolve security incidents 
 
 Types of Vulnerability Assessments: 
-Active Assessments
-Passive Assessments
-Host-Based assessment 
-Internal Assessment
-External Assessment 
-Application Assessments
-Network Assessments
-Wireless Network Assessments
+ Active Assessments: touches source
+ Passive Assessments: does not touch
+ Host-Based assessment: assesses a host system 
+ Internal Assessment: assesses internal resources
+ External Assessment: assesses external side network
+ Application Assessments
+ Network Assessments
+ Wireless Network Assessments
 
-Methodology of Assessment: - Acquisition - Identification - Analyzing - Evaluation - Reports
+Methodology of Assessment:
+ Acquisition
+ Identification
+ Analyzing
+ Evaluation
+ Reports
+
+Security Audit: just checks whether the org is following a set of standard security policies and procedures
+Vulnerability Assessment: focuses on discovering the vulnerabilities in the information system
+Penetration Testing: encompasses the security audit and vulnerability assessment and demonstrates if the vulnerabilities in the system 
+can be exploited by attackers
 
 Penetration Testing: Simulating an attack to find out vulnerabilities
-Blue Team: Detect and Mitigate    
+ Blue Team: Detect and Mitigate
  Red Team: Attack w/ limited access w/ or w/o warning
-
+ White Team: Management
 
 Types of Pen Test: 
-black-box (no prior knowledge)
-white-box (complete knowledge)
-grey-box(limited knowledge)
+ black-box (no prior knowledge)
+ white-box (complete knowledge)
+ grey-box (limited knowledge)
+ 
 
 Lots of open source security testing methodologies (OWASP, NIST , etc)
+ owasp: assist the org to purchase, develop, maintain software tools
+ osstmm: peer evaluated method of high quality security tests
+ issaf: research, develop, publish, promote complete generally accepted info systems security assessment framework (lesser form osstmm)
+ ec-council LPT methodology: industry accepted comprehensive info syst sec auditing framework
 
 Information Security Laws & Standards
+ Payment card Industry Data Security Standard (PCI-DSS) - Payment Systems
+ Sarbanes Oxley Act (SOX) - Protect investors and public by increasing reliability of corporate disclosures (provide accurate info)
+ HIPAA: Health Insurance Portability and Accountability Act (ET&CSS must use the SAME health care transactions, code sets, identifiers)
+ DMCA: Digital millennium copyright act
+ FISMA: federal information security management act
 
-Payment card Industry Data Security Standard (PCI-DSS) - Payment Systems
-Sarbanes Oxley Act (SOX) - Protect investors and public by increasing reliability of corporate disclosures
-.
 
-
+############################################################[2]########################################################################
 Module 2: Footprinting and Reconnaissance
 TOC
 
 Sections
-Footprinting Concepts
-Footprinting Methodology
-Footprinting Tools
-Footprinting Countermeasures
-Footprinting Penetration Testing
+ Footprinting Concepts
+ Footprinting Methodology
+ Footprinting Tools
+ Footprinting Countermeasures
+ Footprinting Penetration Testing
 
 Footprinting Concepts
-
-Footprinting is process of collecting as much information as possible about a target network
-Footprinting Threats: social engineering, system and network attacks, information leakage, privacy loss, corporate espionage, business loss
+ Interaction(Passive||Active)
+ Footprinting is process of collecting as much information as possible about a target network
+ Footprinting Threats: social engineering, system and network attacks, information leakage, privacy loss, corporate espionage, 
+  business loss
+  
+Footprinting Objectives
+ know security posture
+ reduce focus area
+ identify vulnerabilities
+ draw network map
 
 
 Footprinting Methodology
-
-Footprinting through search engines
-Google, Netcraft (restricted URL’s, Determine OS), SHODAN Search Engine,GMAPS, Google Finance, etc
-Footprinting using advanced Google Hacking Techniques
-Using technique to locate specific strings of text within search results using an advanced operator in the search engine (finding vulnerable targets), Google Operators to locate specific strings of text, GHDB
-Footprinting through social networking sites
-Fake identifies of co-workers, finding personal info, tracking their groups, etc, Facebook, Twitter, LinkedIn etc
-Website Footprinting 
-Looking at system information from websites, personal information, examining HTML source comments, Web Spiders, archive.org, mirroring sites etc
-Email Footprinting 
-Can get recipient's IP address, Geolocation, Email Received and Read, Read Duration, Proxy Detection, Links, OS and Browser info, Forward Email
-Competitive Intelligence 
-Competitive Intelligence gathering is the process of identifying, gathering, analyzing, and verifying, and using the information about your competitors from sources such as the internet. Monitoring web traffic etc.
-Non-interfering and subtle in nature
-This method is legal
-WHOIS Footprinting
-WHOIS databases are maintained by regional internet registries and contain PI of domain owners
-DNS Footprinting
-Attacker can gather DNS information to determine key hosts in the network
-Network Footprinting 
-Network range information assists attackers to create a map of the target network
-Find the range of IP addresses using ARIN whois database search
-Traceroute programs work on the concept of ICMP protocol and use the TTL field in the header of ICMP packets to discover on the path to a target host
-Footprinting through Social Engineering
-Art in exploiting human behaviour to extract confidential information
-Social engineers depend on the fact that people are unaware
+ Footprinting through search engines
+  Google, Netcraft (restricted URL’s, Determine OS), SHODAN Search Engine,GMAPS, Google Finance, etc
+   site:domain.name @target.emaildomain
+   "internal use only" site:mil filetype:doc
+ Footprinting using advanced Google Hacking Techniques
+  Using technique to locate specific strings of text within search results using an advanced operator in the search engine (finding 
+  vulnerable targets), Google Operators to locate specific strings of text, GHDB
+ Footprinting through social networking sites
+  Fake identifies of co-workers, finding personal info, tracking their groups, etc, Facebook, Twitter, LinkedIn etc
+ Website Footprinting 
+  Looking at system information from websites, personal information, examining HTML source comments, Web Spiders, archive.org, 
+  mirroring sites etc
+ Email Footprinting 
+  Can get recipient's IP address, Geolocation, Email Received and Read, Read Duration, Proxy Detection, Links, OS and Browser info, 
+  Forward Email
+ Competitive Intelligence 
+  Competitive Intelligence gathering is the process of identifying, gathering, analyzing, and verifying, and using the information 
+  about your competitors from sources such as the internet. Monitoring web traffic etc.
+  Non-interfering and subtle in nature
+  This method is legal
+ WHOIS Footprinting
+  WHOIS databases are maintained by regional internet registries and contain PI of domain owners
+ DNS Footprinting
+  Attacker can gather DNS information to determine key hosts in the network
+ Network Footprinting 
+  Network range information assists attackers to create a map of the target network
+  Find the range of IP addresses using ARIN whois database search
+  Traceroute programs work on the concept of ICMP protocol and use the TTL field in the header of ICMP packets to discover on the path 
+  to a target host
+ Footprinting through Social Engineering
+  Art in exploiting human behaviour to extract confidential information
+  Social engineers depend on the fact that people are unaware, don't read, and are willfully ignorant
 
 Footprinting Tools
-Maltego, Recon-NG (Web Reconnaissance Framework)
+ Maltego, Recon-NG (Web Reconnaissance Framework)
 
 Footprinting Countermeasures
-
-Restrict the employees to access social networking sites
-Configure web servers to avoid information leakage
-Educate employees to use pseudonyms
-Limit the amount of information that you are publishing
-Use footprinting techniques to discover and remove sensitive information
-Use anonymous registration services
-Enforce security policies
+ Restrict the employees to access social networking sites
+ Configure web servers to avoid information leakage
+ Educate employees to use pseudonyms
+ Limit the amount of information that you are publishing
+ Use footprinting techniques to discover and remove sensitive information
+ Use anonymous registration services
+ Enforce security policies
 
 
 Footprinting penetration testing 
-Footprinting pen testing is used to determine organization’s public available information
-Tester attempts to gather as much information as possible from the internet and other publicly accessible sources
-Define scope and then use footprint search engines
-Report Templates
+ Footprinting pen testing is used to determine organization’s public available information
+ Tester attempts to gather as much information as possible from the internet and other publicly accessible sources
+ Define scope and then use footprint search engines
+ Report Templates
 
-
+############################################################[3]########################################################################
 Module 3: Scanning Networks
 TOC
 
@@ -314,7 +407,7 @@ Draw Network Diagrams that help you understand the logical connection
 Prepare Proxies: Hides yourself from detection
 Document all findings
 
-
+############################################################[4]########################################################################
 Module 4: Enumeration
 TOC
 
@@ -426,6 +519,7 @@ Document all findings
 
 Remember OneSixtyOne application, used for scanning SNMP port 161
 
+############################################################[5]########################################################################
 Module 5: System Hacking 
 TOC
 
@@ -579,7 +673,7 @@ Execute Applications
 Hiding Files
 Covering Tracks
 
-
+############################################################[6]########################################################################
 Module 6: Malware Threats
 TOC
 
@@ -748,7 +842,7 @@ Anti-Malware Software
 Norton, Mcafee, Nessus etc.
 
 
-
+############################################################[7]########################################################################
 Module 7: Sniffing
 TOC
 
@@ -862,7 +956,7 @@ Sniffing pen test is used to check if the data transmission from an org is secur
 
 
 
-
+############################################################[8]########################################################################
 Module 8: Social Engineering
 TOC
 
@@ -902,6 +996,8 @@ Social Engineering countermeasures
 
 Periodic password change, good policies, etc.
 
+
+############################################################[9]########################################################################
 Module 9: Denial of Service
 TOC
 
@@ -964,7 +1060,7 @@ Post-Attack Forensics
 Analyze traffic patterns for new filtering techniques, analyze router, firewall, and IDS logs , can update load-balancing and throttling countermeasures 
 
 
-
+############################################################[10]#######################################################################
 Module 10: Session Hijacking
 TOC
 
@@ -1059,7 +1155,7 @@ Deployed widely to implement virtual private networks (VPNs) and for remote user
 Transport Mode: Authenticates two connected computers. Option to encrypt data    transfer. Compatible with NAT
 Tunnel Mode: Encapsulates packets being transferred. Option to encrypt data. Not compatible with NAT.
 
-
+############################################################[11]#######################################################################
 Module 11: Hacking Webservers
 TOC
 
@@ -1150,6 +1246,8 @@ Webserver Pen Testing
 
 Used to identify, analyze, and report vulnerabilities 
 
+
+############################################################[12]#######################################################################
 Module 12: Hacking Web Applications
 TOC
 
@@ -1258,7 +1356,7 @@ AJAX Testing
 Use Kali Linux tools
 Metasploit
 
-
+############################################################[13]#######################################################################
 Module 13: SQL Injection
 TOC
 
@@ -1307,6 +1405,8 @@ Use Firewalls on SQL server
 Make no assumptions about size, type, or content of the data that is received by the application
 Avoid constructing dynamic SQL with concatenated input values 
 
+
+############################################################[14]#######################################################################
 Module 14: Hacking Wireless Networks
 TOC
 
@@ -1424,7 +1524,7 @@ Wireless Security Tools
 Wireless Intrusion Prevention Systems 
 
 
-
+############################################################[15]#######################################################################
 Module 15: Hacking Mobile Platforms
 TOC
 
@@ -1551,7 +1651,7 @@ Ensure bluetooth is off by default
 Do not share location within GPS enabled apps
 Never connect two separate networks such as Wi-Fi and Bluetooth simultaneously
 
-
+############################################################[16]#######################################################################
 Module 16: Evading IDS, Firewalls, and Honeypots
 TOC
 
@@ -1646,6 +1746,8 @@ Countermeasures
 Shut down switch ports associated with the known attack hosts
 Reset (RST) malicious TCP sessions
 
+
+############################################################[17]#######################################################################
 Module 17: Cloud Computing
 TOC
 
@@ -1673,7 +1775,7 @@ Data Breach/Loss, Abuse of Cloud Services,  Insecure Interfaces and APIs, Insuff
 
 
 
-
+############################################################[18]#######################################################################
 Module 18: Cryptography
 TOC
 
@@ -1765,7 +1867,7 @@ Side Channel Attack: Physical attack performed on a cryptographic device/cryptos
 
 
 
-
+#######################################################[appendix]#######################################################################
 Extra Resources:
 TOC
 MW AIO Chap 3: https://quizlet.com/_3ldo8z
