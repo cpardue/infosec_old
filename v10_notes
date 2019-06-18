@@ -233,11 +233,17 @@ Footprinting Objectives
 Footprinting Methodology
  Footprinting through search engines
   Google, Netcraft (restricted URL’s, Determine OS), SHODAN Search Engine,GMAPS, Google Finance, etc
-   site:domain.name @target.emaildomain
-   "internal use only" site:mil filetype:doc
+      netcraft to check OS
+      shodan for iot
+      censys to check hosts
  Footprinting using advanced Google Hacking Techniques
   Using technique to locate specific strings of text within search results using an advanced operator in the search engine (finding 
   vulnerable targets), Google Operators to locate specific strings of text, GHDB
+     site:domain.name @target.emaildomain
+   "internal use only" site:mil filetype:doc
+   intitle: site: filetype: inurl: 
+   inurl:users.json: "password"
+    got a 403 forbidden?  paste the whole url path into "site:"
  Footprinting through social networking sites
   Fake identifies of co-workers, finding personal info, tracking their groups, etc, Facebook, Twitter, LinkedIn etc
  Website Footprinting 
