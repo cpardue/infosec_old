@@ -11,3 +11,7 @@ netmon
 instead of trying to burpsuite netmon
 try https://www.criticalstart.com/2018/10/prtg-network-monitor-privilege-escalation/
 via ftp
+
+wget <domain/dir> 
+mkdir ./emptydir; cd emptydir; dpkg-deb -v -x <pathto.deb> ./emptydir
+
