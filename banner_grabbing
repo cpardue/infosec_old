@@ -1,0 +1,12 @@
+nmap -sV --script=banner 192.168.1.106
+
+curl -s -I 192.168.1.106 | grep -e "Server: "
+
+telnet 192.168.1.106 80
+>HEAD / HTTP/1.1
+>
+>
+
+nc -v 192.168.1.106 22
+
+dmitry -b 192.168.1.106
