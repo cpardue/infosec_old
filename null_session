@@ -1,1 +1,9 @@
-net use \\<ip>\ipc$ "" /u:""
+net use \\<ip>\IPC$ "" /u:""
+
+then open Somarsoft DumpSec (formerly DumpAcl) & run report to dump & enumerate users/sessions
+
+sid 500 is default admin
+sid 501 guest
+
+in cain&able
+enter ip, & double click it
