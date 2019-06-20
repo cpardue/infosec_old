@@ -1,0 +1,7 @@
+from https://hackertarget.com/openvas-tutorial-tips/
+
+openvas install on kali
+apt-get update
+apt-get dist-upgrade
+apt-get install openvas
+openvas-setup
