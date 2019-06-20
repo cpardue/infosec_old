@@ -2,5 +2,12 @@ try df -h
 *to see what's hogging space*
 then du -h --max-depth=1
 *drill down for each dirA > dirB*
+it'll be in the log files under /var/log, likely syslog, kern.log, and messages
 *tip, it'll be syslog and kern.log under /*
 echo "fuck you" giantfile.log; head -3 giantfile.log
+
+edit /etc/default/grub
+change pci=xyz to pci=noaer
+save exit
+
+update-grub
