@@ -15,3 +15,6 @@ via ftp
 wget <domain/dir> 
 mkdir ./emptydir; cd emptydir; dpkg-deb -v -x <pathto.deb> ./emptydir
 
+think about creating a script to use telnet to scan ports in a machine in lieu of nmap
+for i in 1..65535; do telnet x.x.x.x:$i; echo "."
+integrate another loop to print "OPEN AT $i" for non error return
