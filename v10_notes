@@ -4,21 +4,21 @@ Module 1: Introduction to Ethical Hacking
 Module 2: Footprinting and Reconnaissance
 Module 3: Scanning Networks
 Module 4: Enumeration
-module x: vulnerability assessment
-Module 5: System Hacking 
-Module 6: Malware Threats 
-Module 7: Sniffing
-Module 8: Social Engineering
-Module 9: Denial of Service
-Module 10: Session Hijacking
-Module 11: Hacking Web Servers
-Module 12: Hacking Web Applications
-Module 13: SQL Injection
-Module 14: Hacking Wireless Networks
-Module 15: Hacking Mobile Platforms
-Module 16: Evading IDS, Firewalls, and Honeypots
-Module 17: Cloud Computing
-Module 18: Cryptography
+module 5: vulnerability assessment
+Module 6: System Hacking 
+Module 7: Malware Threats 
+Module 8: Sniffing
+Module 9: Social Engineering
+Module 10: Denial of Service
+Module 11: Session Hijacking
+Module 12: Hacking Web Servers
+Module 13: Hacking Web Applications
+Module 14: SQL Injection
+Module 15: Hacking Wireless Networks
+Module 16: Hacking Mobile Platforms
+Module 17: Evading IDS, Firewalls, and Honeypots
+Module 18: Cloud Computing
+Module 19: Cryptography
 Post Module: Extra Resources
 
 
@@ -654,7 +654,7 @@ Enumeration Pen Testing
 
 Remember OneSixtyOne application, used for scanning SNMP port 161
 
-############################################################[x]########################################################################
+############################################################[5]########################################################################
 
 Vulnerability analysis
  CVSS score, high is bad (high vuln) low is good (low vuln), Common Vuln Scoring System
@@ -704,7 +704,7 @@ types of assessment tools
  Go search for found services at packetstormsecurity.com
   and exploit-db of course
 
-############################################################[5]########################################################################
+############################################################[6]########################################################################
 Module 5: System Hacking 
 TOC
 
@@ -905,7 +905,7 @@ Penetration Testing
  Hiding Files
  Covering Tracks
 
-############################################################[6]########################################################################
+############################################################[7]########################################################################
 Module 6: Malware Threats
 TOC
 
@@ -1088,7 +1088,7 @@ Anti-Malware Software
  Norton, Mcafee, Nessus etc.
 
 
-############################################################[7]########################################################################
+############################################################[8]########################################################################
 Module 7: Sniffing
 TOC
 
@@ -1214,7 +1214,7 @@ Sniffing Pen Testing
 
 
 
-############################################################[8]########################################################################
+############################################################[9]########################################################################
 Module 8: Social Engineering
 TOC
 
@@ -1261,7 +1261,7 @@ Social Engineering countermeasures
 Periodic password change, good policies, etc.
 
 
-############################################################[9]########################################################################
+############################################################[10]########################################################################
 Module 9: Denial of Service
 TOC
 
@@ -1356,7 +1356,7 @@ Analyze traffic patterns for new filtering techniques, analyze router, firewall,
 throttling countermeasures 
 
 
-############################################################[10]#######################################################################
+############################################################[11]#######################################################################
 Module 10: Session Hijacking
 TOC
 
@@ -1451,7 +1451,7 @@ Deployed widely to implement virtual private networks (VPNs) and for remote user
 Transport Mode: Authenticates two connected computers. Option to encrypt data    transfer. Compatible with NAT
 Tunnel Mode: Encapsulates packets being transferred. Option to encrypt data. Not compatible with NAT.
 
-############################################################[11]#######################################################################
+############################################################[12]#######################################################################
 Module 11: Hacking Webservers
 TOC
 
@@ -1543,7 +1543,7 @@ Webserver Pen Testing
 Used to identify, analyze, and report vulnerabilities 
 
 
-############################################################[12]#######################################################################
+############################################################[13]#######################################################################
 Module 12: Hacking Web Applications
 TOC
 
@@ -1652,7 +1652,7 @@ AJAX Testing
 Use Kali Linux tools
 Metasploit
 
-############################################################[13]#######################################################################
+############################################################[14]#######################################################################
 Module 13: SQL Injection
 TOC
 
@@ -1702,7 +1702,7 @@ Make no assumptions about size, type, or content of the data that is received by
 Avoid constructing dynamic SQL with concatenated input values 
 
 
-############################################################[14]#######################################################################
+############################################################[15]#######################################################################
 Module 14: Hacking Wireless Networks
 TOC
 
@@ -1820,7 +1820,7 @@ Wireless Security Tools
 Wireless Intrusion Prevention Systems 
 
 
-############################################################[15]#######################################################################
+############################################################[16]#######################################################################
 Module 15: Hacking Mobile Platforms
 TOC
 
@@ -1947,7 +1947,7 @@ Ensure bluetooth is off by default
 Do not share location within GPS enabled apps
 Never connect two separate networks such as Wi-Fi and Bluetooth simultaneously
 
-############################################################[16]#######################################################################
+############################################################[17]#######################################################################
 Module 16: Evading IDS, Firewalls, and Honeypots
 TOC
 
@@ -2043,7 +2043,7 @@ Shut down switch ports associated with the known attack hosts
 Reset (RST) malicious TCP sessions
 
 
-############################################################[17]#######################################################################
+############################################################[18]#######################################################################
 Module 17: Cloud Computing
 TOC
 
@@ -2071,7 +2071,7 @@ Data Breach/Loss, Abuse of Cloud Services,  Insecure Interfaces and APIs, Insuff
 
 
 
-############################################################[18]#######################################################################
+############################################################[19]#######################################################################
 Module 18: Cryptography
 TOC
 
