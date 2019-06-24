@@ -1,0 +1,12 @@
+>ls
+>ls (hd0,x)
+(hd0,x): Filesystem is unknown. [WRONG ONE]
+>ls (hd0,y)
+(hd0,y): Filesystem is ext2. [BINGO]
+>set prefix=(hd0,y)/boot/grub
+>set root=(hd0,y)
+insmod normal
+normal
+[LOG IN]
+#update-grub
+#grub-install /dev/sda
