@@ -23,7 +23,7 @@ wikto tool: import googlehacking-db and run all against a target
 fingerprinting
   cain: can do arp$$$poisoning and a lot of other stuff!  who knew
   
-read through top ten at least once before test
+read through owasp top ten at least once before test
 
 isecom.org osstom for how to do an actual pentest
 
@@ -33,3 +33,6 @@ books
 
 email info gathering
   readnotify.com
+
+webapp testing distro with courses
+https://sourceforge.net/projects/samurai/files/
