@@ -10,7 +10,8 @@ figure it out.  hydra needs to know what to verify failure with i think
 netmon
 instead of trying to burpsuite netmon
 try https://www.criticalstart.com/2018/10/prtg-network-monitor-privilege-escalation/
-via ftp
+try thc-hydra
+run sqlmap
 
 wget <domain/dir> 
 mkdir ./emptydir; cd emptydir; dpkg-deb -v -x <pathto.deb> ./emptydir
@@ -18,3 +19,7 @@ mkdir ./emptydir; cd emptydir; dpkg-deb -v -x <pathto.deb> ./emptydir
 think about creating a script to use telnet to scan ports in a machine in lieu of nmap
 for i in 1..65535; do telnet x.x.x.x:$i; echo "."
 integrate another loop to print "OPEN AT $i" for non error return
+
+[metasploit load custom payload]
+set PAYLOAD custom/generic
+set PAYLOADFILE /path/to/file
