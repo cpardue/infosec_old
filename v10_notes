@@ -2327,23 +2327,23 @@ TOC
 [note]
 SYMMETRIC (32braids)
 =========
-3des*
-2fish
-Blowfish
-Rc*
-Aes*
-Idea
-Des*
-Serpent
+ 3des*
+ 2fish
+ Blowfish
+ Rc*
+ Aes*
+ Idea
+ Des*
+ Serpent
 
 ASYMMETRIC (deerqp)
 ==========
-Diffie helmen
-Ecliptic curve
-Elgamal
-Rsa
-Quantum
-Pki/pgp
+ Diffie helmen
+ Ecliptic curve
+ Elgamal
+ Rsa
+ Quantum
+ Pki/pgp
 
 key escrow: when you give someone a copy of private key for safekeeping
 
@@ -2421,7 +2421,7 @@ Email Encryption
  Transport Layer Security (TLS=successor of SSL): Protocol to establish a secure connection between a client and a sever. Uses RSA algorithm with 1024 
  and 2048 bit strengths 
  
-Windows hacker encryption
+Windows hacker file system encryption
  EFS: r_click>advanced>checkbox_encrypt
 
 Cryptographic Attacks
@@ -2446,10 +2446,15 @@ Code Breaking Methodologies:
  Can be used for forging signatures even on digital signatures
  Side Channel Attack: Physical attack performed on a cryptographic device/cryptosystem to gain sensitive information
 
+#######################################
+IoT
+i did not add the new iot module, sorry
+
 
 #######################################################[appendix]#######################################################################
 Extra Resources:
 TOC
+[note: i already tried, these quizlets are down.  try them anyway, i might be wrong now]
 MW AIO Chap 3: https://quizlet.com/_3ldo8z
 MW AIO Chap 4: https://quizlet.com/_3ldofz
 MW AIO Chap 5: https://quizlet.com/_3ldokt
