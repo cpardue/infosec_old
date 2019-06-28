@@ -535,7 +535,7 @@ Techniques for Enumeration
       514 syslog
       636 ldaps
       989 ftps(1)
-      989 ftps(2)
+      990 ftps(2)
       993 imaps
       995 pop3s
       1433 sql
