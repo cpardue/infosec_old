@@ -1600,11 +1600,11 @@ Patch Management
 
 
 Webserver Security Tools
-Syhunt helps automate web app security testing and guards. 
-N Stalker is a scanner to search vulnerabilities
+ Syhunt helps automate web app security testing and guards. 
+ N Stalker is a scanner to search vulnerabilities
  
 Webserver Pen Testing
-Used to identify, analyze, and report vulnerabilities 
+ Used to identify, analyze, and report vulnerabilities 
 
 
 ############################################################[13]#######################################################################
@@ -1615,8 +1615,8 @@ Module Objectives: Understanding Web Application concepts, understanding web app
 web app hacking tools, understanding web app countermeasures, web app security tools, overview of web app pen testing 
 
 Web App Concepts
-Web apps provide an interface between end users and web servers through a set of pages 
-Web tech such as Web 2.0 support critical business functions such as CRM, SCM
+ Web apps provide an interface between end users and web servers through a set of pages 
+ Web tech such as Web 2.0 support critical business functions such as CRM, SCM
 
 
 Web App Threats
@@ -1953,128 +1953,233 @@ Wireless Intrusion Prevention Systems
 Module 15: Hacking Mobile Platforms
 TOC
 
-Understanding Mobile platform attack vectors, understanding various Android Threats and Attacks, Understanding various iOS threats and attacks, understanding various Windows Phone OS Threats and Attacks, Understanding various blackberry threats as attacks, understanding mobile device management (MDM), Mobile Security Guidelines and Security Tools, Overview of Mobile Pen Testing
+Understanding Mobile platform attack vectors, understanding various Android Threats and Attacks, Understanding various iOS threats 
+and attacks, understanding various Windows Phone OS Threats and Attacks, Understanding various blackberry threats as attacks, understanding mobile device management (MDM), Mobile Security Guidelines and Security Tools, Overview of Mobile Pen Testing
 
 Mobile Platform Attack Vectors
 
 OWASP Mobile Top 10 Risks
-Insecure Data Storage
-Assumption malware won't enter system. Jailbreaking bypasses encryption 
-Unintended Data Leakage
-When a user places sensitive data in a location accessible to other apps 
-Broken Cryptography
-Weak encryption algorithms. Users should use ARS or 3DES algoirhms 
-Security Decision via Untrusted Inputs
-Apps use protection mechanisms dependent on input values (cookies, environmental variables, hidden form fields), but these input values can be altered by an attacker to bypass protection mechanism 
-
-Lack of Binary Protections: Lack of binary protections in a mobile app exposes it and owner to wide variety of technical and business risks if insecure. Must use countermeasures such as 
-Secure coding techniques 
-Jailbreak detection controls
-Checksum controls
-Certificate Pinning Controls
+ Insecure Data Storage
+ Assumption malware won't enter system. Jailbreaking bypasses encryption 
+ Unintended Data Leakage
+ When a user places sensitive data in a location accessible to other apps 
+ Broken Cryptography
+ Weak encryption algorithms. Users should use ARS or 3DES algoirhms 
+ Security Decision via Untrusted Inputs
+ Apps use protection mechanisms dependent on input values (cookies, environmental variables, hidden form fields), but these input 
+ values can be altered by an attacker to bypass protection mechanism 
+ Lack of Binary Protections: Lack of binary protections in a mobile app exposes it and owner to wide variety of technical and business 
+ risks if insecure
+ reverse engineering
+Must use countermeasures such as 
+ Secure coding techniques 
+ Jailbreak detection controls
+ Checksum controls
+ Certificate Pinning Controls
 
 Anatomy of a Mobile Attack	
-The device -> the network > the data center 
-Clicking Jacking: tricking users to click something different than what they think they are clicking. Attackers obtain sensitive info or take control of device
-Framing: a webpage integrated into another webpage using iFrame elements in HTML
-Drive By Downloading: unintended download of software from the internet. Android is affected by this attack
-Man in the Middle: Attacker implants malicious code on victim's mobile device 
-Buffer Overflows: writing data to buffer suites ,
-Data Caching: Caching in mobile devices used to interact with web apps, attackers attempt to exploit the data caches
+ The device -> the network > the data center 
+ Clicking Jacking: tricking users to click something different than what they think they are clicking. Attackers obtain sensitive 
+ info or take control of device
+ Framing: a webpage integrated into another webpage using iFrame elements in HTML
+ Drive By Downloading: unintended download of software from the internet. Android is affected by this attack
+ Man in the Middle: Attacker implants malicious code on victim's mobile device 
+ Buffer Overflows: writing data to buffer suites ,
+ Data Caching: Caching in mobile devices used to interact with web apps, attackers attempt to exploit the data caches
+ 
 Phone/SMS-Based attacks
-Baseband attacks: exploiting vulnerabilities in phone’s GSM/3GPP baseband processor, which sends/receives signals to towers
-SMiShing - Type of phishing where attacker uses SMS text message to link to malicious site
-RF (radio frequency) attacks: exploit vulnerabilities found on different peripheral communication channels normally used in nearby device-device communications
+ Baseband attacks: exploiting vulnerabilities in phone’s GSM/3GPP baseband processor, which sends/receives signals to towers
+ SMiShing - Type of phishing where attacker uses SMS text message to link to malicious site
+ RF (radio frequency) attacks: exploit vulnerabilities found on different peripheral communication channels normally used in nearby 
+ device-device communications
+
 Application-based attacks
-Sensitive Data Storage: Some apps employ weak security in their database architecture, which make them targets for attacker to hack and steal sensitive user information stored on them 
-No encryption/weak encryption: apps transmit data unencrypted or weakly encrypted are susceptible to attack such as session hijacking 
-Improper SSL validation: Security Loopholes in apps SSL validation process may allow attackers to circumvent the data security
-Config Manipulation: Apps may use external files and libraries, modifying those entities or affecting apps’ capability of using those results in a config manipulation attack  
-Dynamic Runtime Injection: attackers manipulate and abuse the runtime of an app to circumvent security locks, logic checks, access privileges parts of an app, and steal data
-Unintended Permissions: Misconfigured apps can at times open doors to attackers by providing unintended permissions
-Escalated privileges: Attackers engage in privilege escalation attacks , which take advantage of design flaws, programming errors, bugs, or config oversights to gain access to resources 
+ Sensitive Data Storage: Some apps employ weak security in their database architecture, which make them targets for attacker to hack 
+ and steal sensitive user information stored on them 
+ No encryption/weak encryption: apps transmit data unencrypted or weakly encrypted are susceptible to attack such as session hijacking 
+ Improper SSL validation: Security Loopholes in apps SSL validation process may allow attackers to circumvent the data security
+ Config Manipulation: Apps may use external files and libraries, modifying those entities or affecting apps’ capability of using those 
+ results in a config manipulation attack  
+ Dynamic Runtime Injection: attackers manipulate and abuse the runtime of an app to circumvent security locks, logic checks, access 
+ privileges parts of an app, and steal data
+ Unintended Permissions: Misconfigured apps can at times open doors to attackers by providing unintended permissions
+ Escalated privileges: Attackers engage in privilege escalation attacks , which take advantage of design flaws, programming errors, 
+ bugs, or config oversights to gain access to resources 
+
 OS Based Attacks
-iOS Jailbreaking: removing security mechanisms set by apple to prevent malicious code 
-Android Rooting: allows users to attain privileged control (root access) within android's subsystem. 
-Passwords and data accessible 
-Carrier-loaded software: pre installed software or apps on devices may contain vulnerabilities that an attacker can exploit to perform malicious activities such as delete, modify, or steal data on the device, eavesdrop on calls
-Zero-day exploits: launch an attack by exploiting a previously unknown vulnerability in a mobile OS or app.
-The Network based point of attacks
-WiFi (weak encryption or no encryption)
-Rogue Access Points: attackers install illicit wireless access point by physical means, which allows them to access a protected network by hijacking the connections of network users 
-Man in the Middle (MITM): attackers eaves on existing network connections between two systems 
-SSLStrip: Type of MITM attack which exploits vulnerabilities in the SSL/TLS implementation
-Session Hijacking: Attacker steal valid session ID’s 
-DNS Poisoning: Attackers exploit DNS servers, redirect website users to another website of the attacker’s choice
-Fake SSL certificates: Fake SSL certs represent another kind of MITM attacks. Attacker issues a fake SSL cert to intercept traffic on a supposedly secure HTTPS connection
-The Data Center
-Two main point of entry: web server and a database
-Web server-based attacks
-Platform vulnerabilities: Exploiting vulnerabilities in the OS, Server software, or app modules running on the web server
-Server Misconfiguration 
-XSS
-CSRF
-Weak Input Validation
-Brute-Force Attacks
-Database Attacks
-SQL Injection
-Data Dumping 
-OS command execution 
-Privilege Escalation
-Sandboxing: helps protect systems and users by limiting the resources the app can access in the mobile platform; however, malicious apps may exploit vulnerabilities 
+ iOS Jailbreaking: removing security mechanisms set by apple to prevent malicious code 
+ Android Rooting: allows users to attain privileged control (root access) within android's subsystem. 
+ Passwords and data accessible 
+ Carrier-loaded software: pre installed software or apps on devices may contain vulnerabilities that an attacker can exploit to 
+ perform malicious activities such as delete, modify, or steal data on the device, eavesdrop on calls
+ Zero-day exploits: launch an attack by exploiting a previously unknown vulnerability in a mobile OS or app.
+ The Network based point of attacks
+ WiFi (weak encryption or no encryption)
+ Rogue Access Points: attackers install illicit wireless access point by physical means, which allows them to access a protected 
+ network by hijacking the connections of network users 
+ Man in the Middle (MITM): attackers eaves on existing network connections between two systems 
+ SSLStrip: Type of MITM attack which exploits vulnerabilities in the SSL/TLS implementation
+ Session Hijacking: Attacker steal valid session ID’s 
+ DNS Poisoning: Attackers exploit DNS servers, redirect website users to another website of the attacker’s choice
+ Fake SSL certificates: Fake SSL certs represent another kind of MITM attacks. Attacker issues a fake SSL cert to intercept traffic 
+ on a supposedly secure HTTPS connection
+ The Data Center
+ Two main point of entry: web server and a database
+ Web server-based attacks
+ Platform vulnerabilities: Exploiting vulnerabilities in the OS, Server software, or app modules running on the web server
+ Server Misconfiguration 
+ XSS
+ CSRF
+ Weak Input Validation
+ Brute-Force Attacks
+ Database Attacks
+ SQL Injection
+ Data Dumping 
+ OS command execution 
+ Privilege Escalation
+ Sandboxing: helps protect systems and users by limiting the resources the app can access in the mobile platform; however, malicious 
+ apps may exploit vulnerabilities 
  
 Hacking Android OS 
+ The device administration API provides device administration features at the system level
+ Rooting allows android users to attain privileged control (root access) 
+ Involves exploiting security vulnerabilities in the device firmware 
+ use NetCut to block victim wifi, only works on rooted
 
-The device administration API provides device administration features at the system level
-Rooting allows android users to attain privileged control (root access) 
-Involves exploiting security vulnerabilities in the device firmware 
+hacking WITH an android
+Rooting
+ kingoroot
+ tunesgo - root android
+ one click root
+ unrevoked
+ mtk droid
+ superboot
+ superuser x [root]
+ root uninstaller
+hacking with zanti
+ android app which:
+ spoof mac
+ evil hotspots
+ scan ports
+hacking with network spoofer
+ does other cool stuff
+launching dos with android LIOC
+ just like in space, does flood attacks
+session hijacking with droidsheep
+ sidejacking and sesscap for replay
+hacking with orbot proxy
+ uses tor proxy to bridge your android
+android based sniffers
+ faceniff intercepts sess profiles & hijack all non-EAP wifi nets
+android trojans
+ bankbot
+ spydealer exploits lots of social media apps
+ ghostctrl
+ triada
+ androrat
+ zitmo(zeus in the mobile)
+ 
 Securing Android Devices: 
-Enable screen locks
-Don't root your device
-Download apps only from android market
-Keep device updated with google software
-Do not directly download APK files
-Update OS regularly 
-Use free protector app
-Google Apps device policy: allows domain admin to set security policies for your android device
+ Enable screen locks
+ Don't root your device
+ Download apps only from android market
+ Keep device updated with google software
+ Do not directly download APK files (sideloading)
+ Update OS regularly 
+ Use free protector app
+ Google Apps device policy: allows domain admin to set security policies for your android device
+security tools
+ find my device (seems like best option, lots of practical features)
+ where's my droid
+ tech expert
+ sophos
+ avast
+ avira
+ lookout
+ 
+android vuln scanners
+ x-ray
+ threatscan
+ hackode
 
 Hacking iOS
-
-Layers of the OS
-Cocoa Touch: key framework that help in building iOS app. Defines appearance, basic services such as touch
-Media: contains graphics, audio, and video technology experienced in apps
-Core Services: contains fundamental system services for apps
-Core OS: low level feature on which most on which most other technologies are built 
-Tethered (kernel will be patched upon restart) and untethered
+ Layers of the OS
+ Cocoa Touch: key framework that help in building iOS app. Defines appearance, basic services such as touch
+ Media: contains graphics, audio, and video technology experienced in apps
+ Core Services: contains fundamental system services for apps
+ Core OS: low level feature on which most on which most other technologies are built 
+ Tethered (kernel will be patched upon restart) and untethered
+ try master password.  it's Alpine
+jailbreaking ios
+ userland exploit allows user-level access
+ iboot exploit allows user-level and iboot-level access
+ bootrom exploit allows both as well
+jailbreaking techniques
+ untethered, kernel will be patched, jailbreaks after every reboot
+ semi-tethered, have to jailbreak it on your own at each startup
+ tethered, have to re-jailbreak it with a pc every time you boot it
+ 
 
 Hacking Windows Phone
+ it's not worth hacking these nerds
 
 Hacking Blackberry
-
-Malicious Code Signing: Blackberry apps must be signed by RIM. Attacker can obtain code-signing keys for a malicious app and post it in the store
-JAD file exploits: A jad file allows a user to go through app details and decide whether to download the app. However, attackers created spoofed .jad files to trick user
-PIM Data Attacks: PIM (personal information manager) includes address , books, calendars, tasks
-Malicious apps can delete or modify this data
-TCP/IP Connections Vulnerabilities: If the device firewall is off, signed apps can open TCP connections without the user being prompted. 
-Malicious apps create a reverse connection with the attacker enabling him to use the infected device as a TCP proxy and gain access to organization’s internal resources
+ Malicious Code Signing: Blackberry apps must be signed by RIM. Attacker can obtain code-signing keys for a malicious app and post it 
+ in the store
+ JAD file exploits: A jad file allows a user to go through app details and decide whether to download the app. However, attackers 
+ created spoofed .jad files to trick user
+ PIM Data Attacks: PIM (personal information manager) includes address , books, calendars, tasks
+ Malicious apps can delete or modify this data
+ TCP/IP Connections Vulnerabilities: If the device firewall is off, signed apps can open TCP connections without user being prompted
+ Malicious apps create a reverse connection with the attacker enabling him to use the infected device as a TCP proxy and gain access 
+ to organization’s internal resources
 
 Mobile Device Management (MDM)
-
-MDM provides platforms for over the air or wired distribution of application, data and configuration settings for all types of mobile devices, smartphones, tablets, etc.
-Helps implementing enterprise-wide policies to reduce support cost s
-Can manage both company-owned and BYOD devices
+ MDM provides platforms for over the air or wired distribution of application, data and configuration settings for all types of mobile 
+ devices, smartphones, tablets, etc.
+ Helps implementing enterprise-wide policies to reduce support costs
+ Can manage both company-owned and BYOD devices
+ xenmobile does this
 
 Mobile Security Guidelines and Tools
 
 General Guidelines
-Do not load too many apps and avoid auto-upload of photos to social networks
-Perform a security assessment of the Application Architecture
-Maintain configuration control and management 
-Install apps from trusted app stores
-Securely wipe or delete the data disposing of the device 
-Ensure bluetooth is off by default
-Do not share location within GPS enabled apps
-Never connect two separate networks such as Wi-Fi and Bluetooth simultaneously
+ Do not load too many apps and avoid auto-upload of photos to social networks
+ Perform a security assessment of the Application Architecture
+ Maintain configuration control and management 
+ Install apps from trusted app stores
+ Securely wipe or delete the data disposing of the device 
+ Ensure bluetooth is off by default
+ Do not share location within GPS enabled apps
+ Never connect two separate networks such as Wi-Fi and Bluetooth simultaneously
+ DO NOT allow jailbroken or rooted devices on your network
+ 
+mobile security guidelines & tools
+ try not to load too many apps, avoid autoupload of photos to social networks
+ perform security assessments on app architecture
+ maintain config management
+ don't share info within gps enabled apps
+ securely wipe or delete data in offboarding
+ never conenct to two disparate networks (wlan0 && bt0 for example)
+ use passcodes
+ perform periodic backups
+ filter email forwarding
+ encrypt storage
+ harden the browser permission rules
+mobile protection tools
+ lockout personal
+ zimperium's zips (intrusion prevention system)
+ avg, avast, bullguard
+ malwarebytes anti spyware
+ 
+mobile pentesting
+ root a device
+ perform a dos attack
+ check for vulns(cross-app-scripting) in android browser
+ check for vulns in sqlite
+ check for vulns in app intents
+ use co-checker and indent-fuzzer
+ install hackode, it does some basic network stuff
 
 ############################################################[17]#######################################################################
 Module 16: Evading IDS, Firewalls, and Honeypots
@@ -2191,24 +2296,27 @@ TOC
 Understanding cloud computing concepts, understanding cloud computing threats, understanding cloud computing attacks, understanding cloud computing security, understanding cloud computing security tools, overview of cloud pen testing 
 
 Introduction to Cloud Computing
-
-Cloud computing is an on-demand delivery of IT capabilities where IT infrastructure applications are provided to subscribers as a metered service
-Types of Cloud Computing Services:
-IaaS: Provides virtual machines and other abstracted hardware and OSs which may be controlled through a service API 
-PaaS: Offers development tools, config management, and deployment platforms on-demand and can be used by subscribers to develop custom applications
-SaaS: Offers software to subscribers on-demand over the internet
-Cloud Deployment Models
-Private Cloud: Cloud Infrastructure operated solely for a single organization
-Community Cloud: Shared Infrastructure between several organizations from a specific communications with common concerns
-Hybrid Cloud: Composition of two or more cloud (private, community or public)
-Public Cloud: Services are rendered over a network that is open for public use
+ Cloud computing is an on-demand delivery of IT capabilities where IT infrastructure applications are provided to subscribers as a 
+ metered service
+ Types of Cloud Computing Services:
+ IaaS: Provides virtual machines and other abstracted hardware and OSs which may be controlled through a service API 
+ PaaS: Offers development tools, config management, and deployment platforms on-demand and can be used by subscribers to develop 
+ custom applications
+ SaaS: Offers software to subscribers on-demand over the internet
+ Cloud Deployment Models
+ Private Cloud: Cloud Infrastructure operated solely for a single organization
+ Community Cloud: Shared Infrastructure between several organizations from a specific communications with common concerns
+ Hybrid Cloud: Composition of two or more cloud (private, community or public)
+ Public Cloud: Services are rendered over a network that is open for public use
 
 
 
 
 Cloud Computing Threats
 
-Data Breach/Loss, Abuse of Cloud Services,  Insecure Interfaces and APIs, Insufficient due diligence, shared technology issues, unknown risk profile, Inadequate infrastructure design and planning, conflicts between client hardening procedures and cloud environment, malicious insiders, illegal access to the cloud, privilege Escalation via error
+Data Breach/Loss, Abuse of Cloud Services,  Insecure Interfaces and APIs, Insufficient due diligence, shared technology issues, 
+unknown risk profile, Inadequate infrastructure design and planning, conflicts between client hardening procedures and cloud 
+environment, malicious insiders, illegal access to the cloud, privilege Escalation via error
 
 
 
@@ -2216,92 +2324,127 @@ Data Breach/Loss, Abuse of Cloud Services,  Insecure Interfaces and APIs, Insuff
 Module 18: Cryptography
 TOC
 
+[note]
+SYMMETRIC (32braids)
+=========
+3des*
+2fish
+Blowfish
+Rc*
+Aes*
+Idea
+Des*
+Serpent
+
+ASYMMETRIC (deerqp)
+==========
+Diffie helmen
+Ecliptic curve
+Elgamal
+Rsa
+Quantum
+Pki/pgp
+
+key escrow: when you give someone a copy of private key for safekeeping
 
 Heartbleed:: Security Flaw in OpenSSL
 PoodleBleed: Security vulnerability in SSL 3.0 
 
-Understanding Cryptography Concepts, Overview of Encryption Algorithms, Cryptography, Cryptography Tools, Understanding Public key Infrastructure, Understanding Email Encryption, Understanding disk encryption, Understanding cryptographic attacks, cryptanalysis
+Understanding Cryptography Concepts, Overview of Encryption Algorithms, Cryptography, Cryptography Tools, Understanding Public key 
+Infrastructure, Understanding Email Encryption, Understanding disk encryption, Understanding cryptographic attacks, cryptanalysis
 
 Cryptography Concepts
+ The conversion of data into a scrambled code that is decrypted and sent over a private or public network
+ Used for email messages, chat sessions, web transactions, personal data, corporate data, e-commerce apps, etc.
+ Types of Cryptography
+ Symmetric Encryption: Uses the same key for encryption as it does for decryption
+ Asymmetric Encryption: Uses different key for  encryption for encryption and decryption
+ Government Access to Keys (GAK)
+ Software companies will give copies of all keys
+ Government promises they will hold on to the keys in a secure will, and will only use them when a court issues a warrant to do so 
+ Gives them ability to wiretap phones
 
-The conversion of data into a scrambled code that is decrypted and sent over a private or public network
-Used for email messages, chat sessions, web transactions, personal data, corporate data, e-commerce apps, etc.
-Types of Cryptography
-Symmetric Encryption: Uses the same key for encryption as it does for decryption
-Asymmetric Encryption: Uses different key for  encryption for encryption and decryption
-Government Access to Keys (GAK)
-Software companies will give copies of all keys
-Government promises they will hold on to the keys in a secure will, and will only use them when a court issues a warrant to do so 
-Gives them ability to wiretap phones
 Encryption Algorithms
+ Cipher is an algorithm for performing encryption and decryption
+ Classical Cipher: Most basic type, operates on the alphabet (A-Z)
+ Modern Ciphers: provide secrecy, integrity, and authentication of sender. Uses a one-way mathematical function capable of factoring 
+ large prime numbers
+ Block Ciphers: Deterministic algorithm operating on block of fixed size with an unvary transofmration specified by a symmetric key. 
+ Stream Ciphers: Symmetric key ciphers are plaintext digits combined with a key stream (random). 
 
-Cipher is an algorithm for performing encryption and decryption
-Classical Cipher: Most basic type, operates on the alphabet (A-Z)
-Modern Ciphers: provide secrecy, integrity, and authentication of sender. Uses a one-way mathematical function capable of factoring large prime numbers
-Block Ciphers: Deterministic algorithm operating on block of fixed size with an unvary transofmration specified by a symmetric key. 
-Stream Ciphers: Symmetric key ciphers are plaintext digits combined with a key stream (random). 
-Data Encryption Standard (DES)
-Uses a secret key for both encryption and decryption (symmetric). 62 bit secret key. 
-Advanced Encryption Standard (AES): Symmetric key algorithm for securing sensitive but unclassified material by U.S. Government agencies (128 bit)
-RC4 variable key size stream cipher
-RC5: parameterized algorithm with variable block size, 128 bits
-RC6: Symmetric key block cipher derived from RC5
-Digital Signature Algorithm(DSA): Specifies algorithm to be used in the generation and verification of digital signatures for sensitive, unclassified application
-Digital Signature: Computed using a set of rules (I.e, the DSA) and a set of parameters
-RSA (Rivest Shamir Adleman)
-RSA is an internet encryption and authentication system
-Widely used and is one of the de facto encryption standard
-Uses modular arithmetic and elementary number theories
-Message Digest (one way Hash)
-Hash functions calculate a unique fixed-size bit string 
-Every output bit has a 50% of changing 
-MD5, SHA 128/256
-Secure Hashing Algorithms 
-SHA-1: Produces 160 digest with maximum length 264-1, resembles MD5
-SHA-2: comprised of SHA-256 and SHA-512(64 bit)
-SHA-3: Uses sponge construction in which message block are XORed
+More on Encryption Algorithms
+ *Data Encryption Standard (DES): Uses a secret key for both encryption and decryption (symmetric). 62 bit secret key. des weak shit 
+ *Advanced Encryption Standard (AES): Symmetric key algorithm for securing sensitive but unclassified material by U.S. Government 
+ agencies (128 bit)
+ *RC4 variable key size stream cipher (which means crypt bit by bit), audio/video
+ RC5: parameterized algorithm with variable block size, 128 bits
+ RC6: Symmetric key block cipher derived from RC5
+ Digital Signature Algorithm(DSA): Specifies algorithm to be used in the generation and verification of digital signatures for 
+ sensitive, unclassified application
+ Digital Signature: Computed using a set of rules (I.e, the DSA) and a set of parameters
+ RSA (Rivest Shamir Adleman)
+ RSA=2bigPrimeNumbers, Factorization Process, is an internet encryption and authentication system 
+ Widely used and is one of the de facto encryption standard
+ Uses modular arithmetic and elementary number theories
+ Diffie-Hellman group 5, uses 1535 bits
+ Message Digest (one way Hash)
+ Hash functions calculate a unique fixed-size bit string 
+ Every output bit has a 50% of changing 
+ A birthday attack is a type of hash collision attack that exploits the mathematics behind the birthday problem in probability theory
+ MD5, SHA 128/256
+ Secure Hashing Algorithms 
+ SHA-1: Produces 160 digest with maximum length 264-1, resembles MD5
+ SHA-2: comprised of SHA-256 and SHA-512(64 bit)
+ SHA-3: Uses sponge construction in which message block are XORed
 
 What is SSH (Secure Shell)
-Replacement for telnet 
-Provides an encrypted channel
-Provides strong host-to-host and user authentication
+ Replacement for telnet dummy
+ Provides an encrypted channel
+ Provides strong host-to-host and user authentication
 
 Public Key Infrastructure 
-
-Public Key infrastructure (PKI): set of hardware, software, people, policies, and procedures required to create, manage, distribute, use , store, and revoke digital certificates
-Signed CA vs Self Signed: Signed is more trustworthy
+ Public Key infrastructure (PKI): 
+ certificate mgmt system: generates, distributes, stores, verifies certs
+ digital certificates: est credentials of a person when doing online transactions
+ (VA)validation authority: stores certs with their public keys
+ (CA)certificate authority: issues, verifies digital certs
+ end user: requests, manages, uses certs
+ (RA)registration authority: acts as verifyer for the cert authority
+ Signed CA vs Self Signed: Signed is more trustworthy
 
 Email Encryption
-
-Digital signature used asymmetric cryptography to simulate the security properties of a signature in digital, rather than written form 
-A digital signature may be further protection, by encrypting the signed email 
-SSL (Secure Sockets Layer): SSL is an app protocol developed for netscape for managing the security of a message transmission on the internet
-It uses RSA asymmetric (public key) encryption
-Transport Layer Security (TLS): Protocol to establish a secure connection between a client and a sever. Uses RSA algorithm with 1024 and 2048 bit strengths 
-
-
+ Digital signature used asymmetric cryptography to simulate the security properties of a signature in digital, rather than written form 
+ A digital signature may be further protection, by encrypting the signed email 
+ SSL (Secure Sockets Layer): SSL is an app protocol developed for netscape for managing the security of a message transmission on the 
+ internet
+ It uses RSA asymmetric (public key) encryption
+ Transport Layer Security (TLS=successor of SSL): Protocol to establish a secure connection between a client and a sever. Uses RSA algorithm with 1024 
+ and 2048 bit strengths 
+ 
+Windows hacker encryption
+ EFS: r_click>advanced>checkbox_encrypt
 
 Cryptographic Attacks
-Ciphertext only attack: goal of this attack to recover encryption key from cipher text
-Adaptive Chosen-plaintext attack: attacker makes a series of interactive queries
-Chosen-plaintext attack: attacker defines his own plaintext, feeds it into the cipher, and analyzes the resulting cipher text 
-Chosen-plaintext Attack: Attacker defines his own plaintext, feeds it into the cipher, and analyzes the resulting ciphertext
-Known-plaintext Attack: Attacker has knowledge of some part of the plain text
+ Ciphertext only attack: goal of this attack to recover encryption key from cipher text, like "oh that's rot13"
+ Adaptive Chosen-plaintext attack: attacker makes a series of interactive queries
+ Chosen-plaintext attack: attacker defines his own plaintext, feeds it into the cipher, and analyzes the resulting cipher text
+ Chosen-plaintext Attack: Attacker defines his own plaintext, feeds it into the cipher, and analyzes the resulting ciphertext
+ Known-plaintext Attack: Attacker has knowledge of some part of the plain text
+ birthday-attack again
+ chosen-ciphertext: obtain plaintexts of arbitrary ciphertexts
+ rubberhose: beat bottoms of feet with rubber hose to extract the cipher
+ chosen-key: cariation of chosen-cipher
+ timing attack: repeatedly measure exact execution times to extract intel on cipher
+ 
 Code Breaking Methodologies:
-Trickery and Deceit: Social Engineering techniques
-Brute Force: trying every possible combination
-One-Time pad: contains many non-repeating groups of letters or number keys which are randomly chosen
-Frequency Analysis: Study the frequency of letters or groups of letters in a ciphertext
-MITM on digital sig schemes
-Attack works by encrypting one end and decrypting from the other end, the meeting in the middle
-Can be used for forging signatures even on digital signatures
-Side Channel Attack: Physical attack performed on a cryptographic device/cryptosystem to gain sensitive information
-
-
-
-
-
-
+ Trickery and Deceit: Social Engineering techniques
+ Brute Force: trying every possible combination
+ One-Time pad: contains many non-repeating groups of letters or number keys which are randomly chosen
+ Frequency Analysis: Study the frequency of letters or groups of letters in a ciphertext
+ MITM on digital sig schemes
+ Attack works by encrypting one end and decrypting from the other end, the meeting in the middle
+ Can be used for forging signatures even on digital signatures
+ Side Channel Attack: Physical attack performed on a cryptographic device/cryptosystem to gain sensitive information
 
 
 #######################################################[appendix]#######################################################################
