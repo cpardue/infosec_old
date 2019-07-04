@@ -25,7 +25,6 @@ use scanner/path/to/service
 
 UDP and TCP Packet Crafting Techniques using HPING3
 hping3 -c 3 <ip> [-c <n times>]
-
 hping3 --scan 1-3000 -S <ip> [--scan <range> -S <syn flag>]
 hping3 <ip> --udp --rand-source --data 500 
 hping3 -S <ip> -p 80 -c 5 [-S <syn flag> -p <port> -c <n times>]
@@ -34,7 +33,7 @@ hping3 <ip> --flood
 Building ARP Frames Using The Colasoft Packet Builder
 select adapter 
 add>arp packet template>delta time 0.1>ok
---------------------------Colasoft Packet Builder allows you to edit the decoding information 
+----------NOTE------------Colasoft Packet Builder allows you to edit the decoding information 
 --------------------------in the two editors: Decode Editor and Hex Editor located in the left 
 --------------------------pane of the window. The Decode Editor section allows you to edit the 
 --------------------------packet decoding information by double clicking the item which you want 
@@ -48,4 +47,13 @@ install megaping (windows)
 ip scanner>specify target net range>start
 r_click an ip result>traceroute
 port scanner>specify target ip>add>start
+
+Dumping and Cracking SAM Hashes to Extract Plaintext Passwords
+[needs: elevated cmd; pwdump7.exe; ophcrack.exe]
+cmd>wmic useraccount get name,sid
+copy/paste pwdump7.exe to windows machine
+cmd>cd C:\path\to\pwdump7.exe
+cmd>PwDump7.exe > c:\hashes.txt
+edit hashes.txt>replace box symbols with userID's from wmic output
+ophcrack.exe>load>PWDUMPfile>select file>tables>select one>install>ok>crack
 
