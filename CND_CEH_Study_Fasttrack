@@ -63,19 +63,39 @@ ASYMMETRIC (deerqp)
  WPA  -> RC4  -> TKIP -> 48 BIT IV's
  WPA2 -> AES  -> CCMP -> 128 BIT
  
-   nmap 192.168.0-50
-  nmap 192.168.0.1-254
-  nmap <ip> -p 1-65535
-  nmap -sS tcp syn
-  nmap -sF tcp fin 
-  nmap -sX xmas scan FUP(FinUrgPsh)
-  nmap -sT tcp connect (most reliable)
-  nmap -sU udp (icmp error comes back if port closed)
-  nmap -T0-5 urgency rating, slow to insane == 0 to 5
-  nmap -F fastscan(100ports)
-  nmap -oX output to xml
-  nmap -O os guess
-  nmap -sV service vers guess
-  nmap -sI idle scan
+nmap 192.168.0-50
+nmap 192.168.0.1-254
+nmap <ip> -p 1-65535
+nmap -sS tcp syn
+nmap -sF tcp fin 
+nmap -sX xmas scan FUP(FinUrgPsh)
+nmap -sT tcp connect (most reliable)
+nmap -sU udp (icmp error comes back if port closed)
+nmap -T0-5 urgency rating, slow to insane == 0 to 5
+nmap -F fastscan(100ports)
+nmap -oX output to xml
+nmap -O os guess
+nmap -sV service vers guess
+nmap -sI idle scan
   
-  
+OS fingerprinting == the various ways OS' implement the stack
+detecting attacker on dif subnet == direct TTL probes technique
+rootkit before virtual machine == hypervisor level rootkit
+steganography in freq domain == transform domain technique
+lawful intercept (law enforcement) == hides from all but most privileged users
+passive sniffing == through a hub
+54Mbps == 802.11a
+WEP Tkip changes for ea. 10,000 packets
+half-open == Syn Stealth
+website defaced through a DNS cache poisoning
+RSA has integer multiplication, 4-bit working registers
+SHA512 == 128-bit
+buffer overflow + evade IDS == replace NOPS with equivalent f()'s
+host public facing servers with Screened Subnet
+evasion+TTL == Insertion Attack
+detected honeypot == all services deny handshake
+virus+modifies directory links == cluster virus
+WEP IV's == 24-bit
+unsolicited transmissions for bluejacking (steal connection)
+UNIX enumeration == #showmount
+IDS+fixed behavior of users == anomaly based
