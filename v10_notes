@@ -365,7 +365,9 @@ Check for live systems
   nmap 192.168.0-50
   nmap 192.168.0.1-254
   nmap <ip> -p 1-65535
+  nmap -sn skip port scan
   nmap -sS tcp syn
+  nmap -sA tcp ack - detect stateful firewall
   nmap -sF tcp fin 
   nmap -sX xmas scan FUP(FinUrgPsh)
   nmap -sT tcp connect (most reliable)
@@ -376,6 +378,10 @@ Check for live systems
   nmap -O os guess
   nmap -sV service vers guess
   nmap -sI idle scan
+  nmap -v verbose 
+  nmap -iL /temp/scan.txt importLIST
+  nmap -A detailed scan, services/versions/OS
+  
 
  Attackers calculate subnet masks using Subnet Mask Calculators
  Attackers then use the Ping Sweep to create an inventory of live systems in the subnet
