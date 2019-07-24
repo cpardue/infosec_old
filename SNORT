@@ -1,0 +1,25 @@
+whitepaper: https://infoscience.epfl.ch/record/141022/files/pdm.pdf
+read 8.4 on oinkmaster
+use A additional data for tweaking use
+
+
+
+general idea
+<curl from ip blacklist to> /var/db/snort/iprep/emerging-compromised-ips.txt
+
+
+
+using reputation preprocessor for blacklists
+https://sublimerobots.com/2015/12/the-snort-reputation-preprocessor/
+
+
+
+OSSIM installation guide
+https://www.alienvault.com/documentation/usm-appliance/initial-setup/ossim-installation.htm
+
+
+
+integrating snort with OSSIM
+https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/113/original/Integrating_Snort_and_OSSIM-rev2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20190724%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190724T000235Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=8fefbd5ec7c178d6be1e9cb1c598dd92306fe53433c2f2bdce8523b450fc6f6e
+
+
