@@ -59,6 +59,11 @@ install logstash
 		http://localhost:5601 (see proxy_pass above)
 finish config via browser gui.
 
+integrate snort into elkstack with synesis_lite_snort
+from https://github.com/robcowart/synesis_lite_snort/blob/master/README.md
+cloned currently, prepared for dist
+	
+
 general idea
 <curl from ip blacklist to> /var/db/snort/iprep/emerging-compromised-ips.txt
 
