@@ -62,6 +62,13 @@ finish config via browser gui.
 integrate snort into elkstack with synesis_lite_snort
 from https://github.com/robcowart/synesis_lite_snort/blob/master/README.md
 cloned currently, prepared for dist
+done. had to individually edit ea .conf and cp syn* files into filebeat dir.  
+dashboard imported per robcowart git readme. 
+error on kibana dashboard buckets, "the aggregation key is missing"
+suspect nginx issue from /etc/nginx/sites-available/kibana openssl import.  
+been watching htop with all this stuff running.  fuck this, apt-get remove && autoclean everything !snort/barnyard2/unified2.  
+u2spewfoo snort.u2.* > ~/Desktop/parseme for first huge tuning session.  
+
 	
 
 general idea
