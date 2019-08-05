@@ -1,29 +1,33 @@
-installed from instructions found at http://sublimerobots.com/2017/01/snort-2-9-9-x-ubuntu-systemd-scripts/
-@ BASE url step, if php7.x is present then in cli run:
-$sudo a2dismod php7.x ; sudo a2enmod php5.6 ; sudo service apache2 restart ; sudo systemctl restart apache2
-where 7.x is the php vers.  this downgrades to php5.6
-then revisit http://ip/base/index.php
+#installed from instructions found at http://sublimerobots.com/2017/01/snort-2-9-9-x-ubuntu-systemd-scripts/
+#remember to edit those *.conf files in /etc/snort/!!
+#remember to add pulledpork to crontab!!
+######## exclude me ###################
+#@ BASE url step, if php7.x is present then in cli run:
+sudo a2dismod php7.x ; sudo a2enmod php5.6 ; sudo service apache2 restart ; sudo systemctl restart apache2
+#where 7.x is the php vers.  this downgrades to php5.6
+#then revisit http://ip/base/index.php
+#######################################
 
-whitepaper: https://infoscience.epfl.ch/record/141022/files/pdm.pdf
-read 8.4 on oinkmaster
-use A additional data for tuning use
-note that most of this is already tuned by fresh install
+#whitepaper: https://infoscience.epfl.ch/record/141022/files/pdm.pdf
+#read 8.4 on oinkmaster
+#use A additional data for tuning use
+#note that most of this is already tuned by fresh install
 
-elkstack install
-from https://linuxconfig.org/install-elk-on-ubuntu-18-04-bionic-beaver-linux
+#elkstack install
+#from https://linuxconfig.org/install-elk-on-ubuntu-18-04-bionic-beaver-linux
 	sudo apt install openjdk-8-jre apt-transport-https wget nginx
 	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-Create a file at /etc/apt/sources.list.d/elastic.list, and paste the following line into it.
+#Create a file at /etc/apt/sources.list.d/elastic.list, and paste the following line into it.
 	deb https://artifacts.elastic.co/packages/6.x/apt stable main
-		Save that file, and exit. Update Apt.
+		#Save that file, and exit. Update Apt.
 		sudo apt update
-install elastisearch and kibana
+#install elastisearch and kibana
 	sudo apt install elasticsearch kibana
 	nano /etc/kibana/kibana.yml
-		uncomment server.host: "localhost"
+		#uncomment server.host: "localhost"
 		sudo systemctl restart kibana
 		sudo systemctl start elasticsearch
-set up nginx
+#set up nginx
 	echo "admin:`openssl passwd -apr1 YourPassword`" | sudo tee -a /etc/nginx/htpasswd.kibana
 	sudo touch /etc/nginx/sites-available/kibana
 	nano /etc/nginx/sites-available/kibana
@@ -48,45 +52,74 @@ set up nginx
 	sudo rm /etc/nginx/sites-enabled/default
 	sudo ln -s /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana
 	sudo systemctl restart nginx
-		if 98 error, then
+		#if 98 error, then
 			sudo fuser -k 80/tcp && sudo fuser -k 443/tcp
 			sudo netstat -tulpn (to check for any :80 process left over)
-				if still a service then of course sudo systemctl stop <service>
+				#if still a service then of course sudo systemctl stop <service>
 					sudo systemctl start nginx
-install logstash
+#install logstash
 	sudo apt install logstash
-		sign into kibana via browser
-		http://localhost:5601 (see proxy_pass above)
-finish config via browser gui.
+		#sign into kibana via browser
+		#http://localhost:5601 (see proxy_pass above)
+#finish config via browser gui.
 
-integrate snort into elkstack with synesis_lite_snort
-from https://github.com/robcowart/synesis_lite_snort/blob/master/README.md
-cloned currently, prepared for dist
-done. had to individually edit ea .conf and cp syn* files into filebeat dir.  
-dashboard imported per robcowart git readme. 
-error on kibana dashboard buckets, "the aggregation key is missing"
-suspect nginx issue from /etc/nginx/sites-available/kibana openssl import.  
-been watching htop with all this stuff running.  fuck this, apt-get remove && autoclean everything !snort/barnyard2/unified2.  
-u2spewfoo snort.u2.* > ~/Desktop/parseme for first huge tuning session.  
+#integrate snort into elkstack with synesis_lite_snort
+#from https://github.com/robcowart/synesis_lite_snort/blob/master/README.md
+#cloned currently, prepared for dist
+#done. had to individually edit ea .conf and cp syn* files into filebeat dir.  
+#dashboard imported per robcowart git readme. 
+#error on kibana dashboard buckets, "the aggregation key is missing"
+#suspect nginx issue from /etc/nginx/sites-available/kibana openssl import.  
+#been watching htop with all this stuff running.  fuck this, apt-get remove && autoclean everything !snort/barnyard2/unified2.  
+#u2spewfoo snort.u2.* > ~/Desktop/parseme for first huge tuning session.  
 
-	
+#after looking around, try snorby.
+#snorby pre-req's: snort && ruby >=1.9.0 <2.0.0 && rails >=3.0.0 
+#tried https://github.com/rvm/ubuntu_rvm
+#result: unsuccessful install multiple times, even after running ~/.rvm and ~/.bashrc scripts found on stackexchange.  
+#tried https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rvm-on-ubuntu-18-04
+#result: worked.  'source /usr/local/rvm/scripts/rvm' rather than what is in guide
+rvm install 1.9.3
+#won't work until you do below
+#add deb http://security.ubuntu.com/ubuntu bionic-security main to /etc/apt/sources.list
+sudo apt update
+sudo apt-get install -y libssl1.0-dev
+#try again
+rvm install 1.9.3
+#rvm use 1.9.3
+#gem install rails -v 3.0.0
+#pre-req's fullfilled, can now install snorby
+git clone git://github.com/Snorby/snorby.git
+cd snorby
+#bundle install #fails to find a few gem dependencies
+#bundle update #fails
+#bundle install --path vendor/cache #fails
+#all above fails due to outdated dependencies, research sows that ruby is maintained by lazy people/moves forward too fast for mass maintenance
+rvm use 2.6.3
+sudo gem install rails
+bundle install
+#error installing do_postgres (0.10.17), do a gem install do_postgres -v 0.10.17 --source 'https://rubygems.org/'
+#and that failed too, failed to build gem native extension
+sudo apt-get install -y ruby-dev
+##jesus christ still missing dependencies on backend.  Tomorrow, consider smoothsec install over the machine.##  
 
+
+
+###################################################################################################
 general idea
 <curl from ip blacklist to> /var/db/snort/iprep/emerging-compromised-ips.txt
-
 
 
 using reputation preprocessor for blacklists
 https://sublimerobots.com/2015/12/the-snort-reputation-preprocessor/
 
 
-
 OSSIM installation guide
 https://www.alienvault.com/documentation/usm-appliance/initial-setup/ossim-installation.htm
 note requires vm therefore requires machine with more than a few gigs of ram
-
+will be too high resource for same machine
 
 integrating snort with OSSIM
 https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/113/original/Integrating_Snort_and_OSSIM-rev2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20190724%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190724T000235Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=8fefbd5ec7c178d6be1e9cb1c598dd92306fe53433c2f2bdce8523b450fc6f6e
-
+too high in resource use for same machine
 
