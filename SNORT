@@ -101,25 +101,45 @@ bundle install
 #error installing do_postgres (0.10.17), do a gem install do_postgres -v 0.10.17 --source 'https://rubygems.org/'
 #and that failed too, failed to build gem native extension
 sudo apt-get install -y ruby-dev
-##jesus christ still missing dependencies on backend.  Tomorrow, consider smoothsec install over the machine.##  
-
-
-
+##########################################################################################################################
+######  jesus christ still missing dependencies on backend.  Tomorrow, consider smoothsec install over the machine  ######  
+### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian 7 wheezy ###
+#####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ####################
+installing from iso... ###################################################################################################
+#setup new root passwd
+#setup new user
+#setup new user passwd
+#setup snorby account info
+#setup snorby account passwd
+#reboot
+npm update pigsty -g && npm update pigsty-mysql -g
+#because debian 7 wheezy is EOL, add the archive to sources.list
+echo 'deb http://archive.debian.org/debian wheezy-updates main' >> /etc/apt/sources.list
+echo 'deb http://archive.debian.org/debian-security wheezy-updates main' >> /etc/apt/sources.list
+#update
+apt-get update
+#just some minor improvements to smoothsec
+apt-get install arpalert openjdk-7-jre fail2ban
+cd /etc/arpalert/
+mv oui.txt oui.txt.old
+wget http://http://standards-oui.ieee.org/oui.txt
+#visit http://<newIp>:443 and configure snorby
+set time zone under settings>
+set everything else under Administration>
+#go into the following and configure according to your use case
+/etc/smoothsec.cfg
+/etc/arpalert.conf
+/etc/pulledpork/snort/
+/etc/pulledpork/suricata/
+/etc/snort/snort.conf
+/etc/suricata/suricata.yaml
+#install other useful stuff
+apt-get install -y htop
+###################################################################################################
+###################################### "it JUST WORKS" ############################################
 ###################################################################################################
 general idea
 <curl from ip blacklist to> /var/db/snort/iprep/emerging-compromised-ips.txt
 
 
-using reputation preprocessor for blacklists
-https://sublimerobots.com/2015/12/the-snort-reputation-preprocessor/
-
-
-OSSIM installation guide
-https://www.alienvault.com/documentation/usm-appliance/initial-setup/ossim-installation.htm
-note requires vm therefore requires machine with more than a few gigs of ram
-will be too high resource for same machine
-
-integrating snort with OSSIM
-https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/113/original/Integrating_Snort_and_OSSIM-rev2.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20190724%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190724T000235Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=8fefbd5ec7c178d6be1e9cb1c598dd92306fe53433c2f2bdce8523b450fc6f6e
-too high in resource use for same machine
 
