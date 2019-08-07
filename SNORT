@@ -1,3 +1,48 @@
+### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian 7 wheezy ###
+#####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ####################
+installing from iso... ###################################################################################################
+#setup new root passwd
+#setup new user
+#setup new user passwd
+#setup snorby account info
+#setup snorby account passwd
+#reboot
+npm update pigsty -g && npm update pigsty-mysql -g
+#because debian 7 wheezy is EOL, add the archive to sources.list
+echo 'deb http://archive.debian.org/debian wheezy-updates main' >> /etc/apt/sources.list
+echo 'deb http://archive.debian.org/debian-security wheezy-updates main' >> /etc/apt/sources.list
+#update
+apt-get update
+#just some minor improvements to smoothsec
+apt-get install arpalert openjdk-7-jre fail2ban
+cd /etc/arpalert/
+mv oui.txt oui.txt.old
+apt-get -y rsyslog
+wget http://http://standards-oui.ieee.org/oui.txt
+#visit http://<newIp>:443 and configure snorby
+set time zone under settings>
+set everything else under Administration>
+#go into the following and configure according to your use case
+/etc/smoothsec.cfg
+/etc/arpalert.conf
+/etc/pulledpork/snort/
+/etc/pulledpork/suricata/
+/etc/snort/snort.conf
+/etc/suricata/suricata.yaml
+#install other useful stuff
+apt-get install -y htop
+apt-get install -y iftop
+
+###Install is complete.  Standby for more as I tune it enough to get useful data.  So far the rule for "alert possible conficker" is false alarming like crazy.  
+
+
+
+
+#######################################
+##### below is what I went through ####
+#### up until I installed the above ###
+#######################################
+
 #installed from instructions found at http://sublimerobots.com/2017/01/snort-2-9-9-x-ubuntu-systemd-scripts/
 #remember to edit those *.conf files in /etc/snort/!!
 #remember to add pulledpork to crontab!!
@@ -122,6 +167,7 @@ apt-get update
 apt-get install arpalert openjdk-7-jre fail2ban
 cd /etc/arpalert/
 mv oui.txt oui.txt.old
+apt-get -y rsyslog
 wget http://http://standards-oui.ieee.org/oui.txt
 #visit http://<newIp>:443 and configure snorby
 set time zone under settings>
@@ -135,6 +181,7 @@ set everything else under Administration>
 /etc/suricata/suricata.yaml
 #install other useful stuff
 apt-get install -y htop
+apt-get install -y iftop
 ###################################################################################################
 ###################################### "it JUST WORKS" ############################################
 ###################################################################################################
