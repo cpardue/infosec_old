@@ -1,0 +1,28 @@
+# ssh setup regardless of OS vers defaults
+# ssh pre-req's:
+#	management IP
+#	hostname
+#	domain name
+#	RSA keys >768
+#	VTY conf ssh, login local, passwd 7
+#	user name & pass
+enable
+show ssh
+configure terminal
+	interface <interface type> <slot/port>
+		ip address <ip> <mask>
+		exit
+	hostname <name>
+	ip domain-name <name>
+	crypto key generate rsa
+		stdin: <modulus bitlength >768 for ssh>
+	username <name> privilege <0-15> password <pass>
+	line vty 0 4
+		login local
+		transport input ssh
+		exit
+	ip ssh time-out <1-120>
+	ip ssh version <1-2>
+	exit
+show ip ssh
+
