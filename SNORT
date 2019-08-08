@@ -1,6 +1,7 @@
+############# I'm on the hunt for a decent, lightweight Snort or Suricata system to build for fun and profit. ############
 ### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian 7 wheezy ###
 #####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ####################
-installing from iso... ###################################################################################################
+## installing from iso... ################################################################################################
 #setup new root passwd
 #setup new user
 #setup new user passwd
