@@ -53,18 +53,19 @@ Top False Positive generators:
 ### Updating to Jessie.  
 # total steps for this section will be
 # 1. upgrade dist to jessie
-# 2. recreate startup scripts with systemd, rip init.d
-# 3. verify with reboot -h
-# 4. upgrade snort to 2.9.9.x
-# 5. go through snort and pulledpork configs to catch new differences
-# 6. verify new snort configs
-# 7. verify suricata configs
+# 2. your snorby worker will stop running.  fix it
+# x. recreate startup scripts with systemd, rip init.d
+# x. verify with reboot -h
+# x. upgrade snort to 2.9.9.x
+# x. go through snort and pulledpork configs to catch new differences
+# x. verify new snort configs
+# x. verify suricata configs
 
 #####################################################
 ######## Updating Smoothsec build to Jessie #########
 #####################################################
 ###
-#1.
+#1. upgrade dist to jessie
 ###
 # first update all archived
 sudo apt-get update
@@ -80,10 +81,33 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y # follow the prompts
 # finally clean up old packages and leftovers
 sudo apt-get autoremove -y && sudo apt-get autoclean -y
-###
-#2.
-###
 
+###
+#2. fix snorby worker not running
+###
+sudo nano /var/www/snorby/config/config/snorby_config.yml
+# reflect these changes
+production:
+  domain: demo.snorby.org
+  wkhtmltopdf: /usr/local/bin/wkhtmltopdf
+  ssl: false
+  mailer_sender: snorby@snorby.org
+  geoip_uri: http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+  authentication_mode: database
+  time_zone: 'America/Chicago'
+development:
+  domain: localhost:3000
+  wkhtmltopdf: /Users/mephux/.rvm/gems/ruby-1.9.2-p0/bin/wkhtmltopdf
+  ssl: false
+  mailer_sender: snorby@snorby.org
+  geoip_uri: http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+  time_zone: 'Africa/Freetown'
+# init.d is still working so restart snorby
+sudo /etc/init.d/snorby restart
+
+###
+#3.
+###
 
 #######################################
 ##### below is what I went through ####
