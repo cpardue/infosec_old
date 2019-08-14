@@ -68,7 +68,7 @@ Top False Positive generators, this list will grow:
 # total steps for this section will be
 # 1. upgrade dist to jessie
 # 2. your snorby worker will stop running.  fix it
-# x. recreate startup scripts with systemd, rip init.d
+# 3. recreate startup scripts with systemd, rip init.d
 # x. verify with reboot -h
 # x. upgrade snort to 2.9.9.x
 # x. go through snort and pulledpork configs to catch new differences
@@ -118,9 +118,10 @@ development:
   time_zone: 'Africa/Freetown'
 # init.d is still working so restart snorby
 sudo /etc/init.d/snorby restart
+# ping test yields alerts, snort and snorby are working.  
 
 ###
-#3.
+#3. Recreate startup scripts
 ###
 
 
