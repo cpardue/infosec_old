@@ -1,14 +1,19 @@
-Zero cost, lightweight IDS appliance for small businesses.  
+Zero cost, lightweight IDS appliance that can triumphantly handle small/medium business networks.  
+Test LAN contains about 100 devices, ~40 connect to WAN, ~20 rely on WAN for productivity.  
+Machine in question is an eMachine E-series with a single core processor and 4GB ram.  
 Machine is a retired discard machine incapable of running Windows 10.  
-To prevent the cost of a secondary PCI (yes PCI not PCIE) a $6 USB to Ethernet dongle was purchased.  
-To prevent restricted netflow, the appliance is installed on a free gateway port and uplink traffic is mirrored to that port.  
-Therefore this appliance is NOT to be installed as an inline device.  It is an IDS only, not an IPS.  
-It should also be an expectation that this appliance will perform only the functions that detect primary threats to small businesses, 
-that is, detect botnet and indicators of compromise traffic.  
+To reduce overhead, an unused usb-to-ethernet dongle provides our monitoring interface.
+To reduce the possibility of network issues, the machine's monitoring interface is accepting a port mirror of our LAN-WAN router port.
+This device's only purpose in life is to provide us IDS function for emerging threats, botnet comms, and indicators of compromise.  
 
+I began with a few other distros and cominations of packages, but quickly fell into smoothsec.  
 ##########################################################################################################################
 ### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian 7 wheezy ###
 #####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ####################
+# download smoothsec install iso from https://sourceforge.net/projects/smoothsec/
+# burn onto a thumb drive
+# boot machine into usb
+# follow the install script
 ## installing from iso... ################################################################################################
 #setup new root passwd
 #setup new user
@@ -16,6 +21,7 @@ that is, detect botnet and indicators of compromise traffic.
 #setup snorby account info
 #setup snorby account passwd
 #reboot
+# we have to update this before we move on, for reasons
 npm update pigsty -g && npm update pigsty-mysql -g
 ###############################################
 #because debian 7 wheezy is EOL, add the archive to sources.list
