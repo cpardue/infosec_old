@@ -241,7 +241,11 @@ sudo apt-get autoremove && sudo apt-get autoclean
 # I ran snort to confirm that it's running
 # geeze I'm not getting another luajit error for not having another version of luajit installed
 # in meantime, suricata is up and running splendidly
-
+#################### postponing snort for now ########################
+############## moving to suricata performance tuning #################
+############################ resources ###############################
+# 1. https://suricata.readthedocs.io/en/suricata-4.1.2/performance/tuning-considerations.html
+# 2. https://suricon.net/wp-content/uploads/2016/11/SuriCon2016_MichalPurzynski_PeterManev.pdf
 
 #######################################
 #### below are the failed installs ####
