@@ -1,20 +1,24 @@
-Zero cost, lightweight IDS appliance that can triumphantly handle small/medium business networks.  
-Test LAN contains about 100 devices, ~40 connect to WAN, ~20 rely on WAN for productivity.  
-Machine in question is an eMachine E-series with a single core processor and 4GB ram.  
-Machine is a retired discard machine incapable of running Windows 10.  
-To reduce overhead, an unused usb-to-ethernet dongle provides our monitoring interface.
-To reduce the possibility of network issues, the machine's monitoring interface is accepting a port mirror of our LAN-WAN router port.
-This device's only purpose in life is to provide us IDS function for emerging threats, botnet comms, and indicators of compromise.  
+Summary: 
+I took on the project of coming up with a quickly deployable NIDS 
+that can be installed on old crap and still work great. 
+I work at a small business and it's important to me 
+to figure out how to still have nice things that 
+actually work as intended.  
+
+Requirements: 
+- Must work flawlessly on a discarded eMachine e-series with single core processor
+- Must take as few days to initially deploy as possible
+- Must detect botnet activity, trojan droppers, and auto-update threats
 
 I began with a few other distros and cominations of packages, but quickly fell into smoothsec.  
-##########################################################################################################################
-### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian 7 wheezy ###
-#####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ####################
+#########################################################################################################################
+### smoothsec is a lightweight snort/surricata IDS with snorby, unified2, pulledpork, pigsty, built on debian wheezy ###
+#####################  more info on smoothsec is available at https://github.com/smoothsec/docs/wiki  ###################
 # download smoothsec install iso from https://sourceforge.net/projects/smoothsec/
 # burn onto a thumb drive
 # boot machine into usb
 # follow the install script
-## installing from iso... ################################################################################################
+## installing from iso... ###############################################################################################
 #setup new root passwd
 #setup new user
 #setup new user passwd
@@ -24,76 +28,16 @@ I began with a few other distros and cominations of packages, but quickly fell i
 # we have to update this before we move on, for reasons
 npm update pigsty -g && npm update pigsty-mysql -g
 ###############################################
-#because debian 7 wheezy is EOL, add the archive to sources.list
-echo 'deb http://archive.debian.org/debian wheezy-updates main' >> /etc/apt/sources.list
-echo 'deb http://archive.debian.org/debian-security wheezy-updates main' >> /etc/apt/sources.list
-#update
-apt-get update
-###############################################
-#just some minor improvements to smoothsec
+# include arpalert and fail2ban for securing the appliance
 apt-get install arpalert openjdk-7-jre fail2ban
-#update the oui list
+# update the arpalert oui list
 cd /etc/arpalert/
 mv oui.txt oui.txt.old
 apt-get -y rsyslog
 wget http://http://standards-oui.ieee.org/oui.txt
-###############################################
-#visit http://<newIp>:443 and configure snorby
-set time zone under settings> 
-set everything else under Administration>
-add asset tags as .csv files, will come in very handy
-###############################################
-#go into the following and configure according to your use case
-/etc/smoothsec.cfg # check all options, ensure paths are correct
-/etc/arpalert.conf # check paths
-/etc/snort/snort.conf # pay attention to paths and disable/enable options
-/etc/suricata/suricata.yaml # pay attention to paths and disable/enable options
-/etc/pulledpork/snort/* # enable rulesets one at a time and test
-/etc/pulledpork/suricata/* # enable rulesets one at a time and test
-###############################################
-#add pulledpork to crontab
-04 05 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
-#install other useful stuff
-apt-get install -y htop
-apt-get install -y iftop
-###############################################
-### Install is complete.  Standby as I tune it enough to get useful data.  
-### Fine tuning the IDS is kind of a pain at first, since there are multiple input/outputs to modify.  
-### Just remember to configure the base conf's, then the pulledpork.conf's, then perform all rule tuning in the rule files
-### Fine tuning the engine itself will take you back to configuring the IDS' conf's
-### there are white papers available for IDS engine tuning that I will provide here later.
-Top False Positive generators, this list will grow: 
-1:200920[5-7] ET TROJAN Possible Downadup/Conficker-C P2P encrypted traffic UDP Ping Packet (bit values 1,4,5)
-	This alert is being generated by all multicasts and broadcasts.  
-1:2027768 ET EXPLOIT Possible VXWORKS Urgent11 RCE Attempt 
-	This alert is being generated by RDP protocol.
-###############################################	
-### at this point, running htop while monitoring via Snorby shows that 
-### snort deployment pulls about 0.8GB ram usage and 4-10% CPU.  
-### suricata deployment pulls about 0.9GB ram usage and 5-12% CPU.  
-### dual deployment pulls just over 2GB ram usage and 10-20% CPU.
-
-###############################################################################################################
-### Update: Failing to update snort.org's registered rules due to the snort version installed with smoothsec.  
-### I took the time to type out my oinkcode so I am set on using it.  
-### Smoothsec is built on Wheezy, which is retired/archived.  
-### Guess it's time to upgrade so that we can keep up with new package dependencies. 
-### Updating to Jessie.  
-# total steps for this section will be
-# 1. upgrade dist to jessie
-# 2. your snorby worker will stop running.  fix it
-# 3. verify startup scripts
-# x. upgrade snort to 2.9.9.x
-# x. go through snort and pulledpork configs to catch new differences
-# x. verify new snort configs
-# x. verify suricata configs
-
-#####################################################
-######## Updating Smoothsec build to Jessie #########
-#####################################################
-###############################################
-#1. upgrade dist to jessie
-###
+############################################################
+# upgrade dist to jessie, since wheezy is EOL && dangerous #
+############################################################
 # first update all archived
 sudo apt-get update
 sudo apt-get upgrade
@@ -109,10 +53,14 @@ sudo apt-get dist-upgrade -y # follow the prompts
 # finally clean up old packages and leftovers
 sudo apt-get autoremove -y && sudo apt-get autoclean -y
 ###############################################
-#2. fix snorby worker not running
-###
+# back to initial configuration
+# 1. visit http://<newIp>:443 and configure snorby
+# 2. set everything else under Administration>
+# 3. create a csv of your assets by ip,name and upload it to Snorby
+# 4. set time zone under settings> 
+# NOTE: you can also configure timezone as shown here (recommended): 
 sudo nano /var/www/snorby/config/config/snorby_config.yml
-# reflect these changes
+# reflect these changes, mind the tabs
 production:
   domain: demo.snorby.org
   wkhtmltopdf: /usr/local/bin/wkhtmltopdf
@@ -128,135 +76,56 @@ development:
   mailer_sender: snorby@snorby.org
   geoip_uri: http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
   time_zone: 'Africa/Freetown'
-# init.d is still working so restart snorby
-sudo /etc/init.d/snorby restart
-# ping test yields alerts, snort and snorby are working.  
 ###############################################
-#3. verify startup scripts
-###
-# reboot the machine
-sudo reboot -h
-ps aux | grep snort  
-ps aux | grep pigsty 
-# if both processes are running then you are good to go
-# if they are not then complete the following: 
-sudo nano /etc/init.d/snortautorun
-	#!/bin/bash
-	### BEGIN INIT INFO
-	# Provides:          scriptname
-	# Required-Start:    $remote_fs $syslog
-	# Required-Stop:     $remote_fs $syslog
-	# Default-Start:     2 3 4 5
-	# Default-Stop:      0 1 6
-	# Short-Description: Start daemon at boot time
-	# Description:       Enable service provided by daemon.
-	### END INIT INFO
-
-
-	case "$1" in
-	  start)
-	    if ps -C snort> /dev/null; then
-	    echo "SNORT is already running"
-
-	    else
-
-	    sudo snort -D -u snort -g snort -c /etc/snort/snort.conf -i <monitor interface>
-
-	    echo "SNORT is ON"
-	    fi
-	    ;;
-	  stop)
-
-	    if ps -C snort> /dev/null; then
-	    sudo rm /var/run/snort_<monitor interface>.pid
-	    sudo rm /var/run/snort_<monitor interface>.pid.lck
-
-	    echo "Stopping SNORT"
-	    sudo pkill snort
-
-	else
-
-	    echo "SNORT is already OFF"
-
-	    fi
-	    ;;
-	  *)
-		echo "Usage: /etc/init.d/snortautorun {start|stop}"
-		exit 1
-		;;
-	esac
-
-	exit 0
-# then changemod the script so it can execute
-sudo chmod +x /etc/init.d/snortautorun
-sudo update-rc.d snortautorun defaults
+# add pulledpork to crontab
+04 05 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
+# install other useful stuff
+apt-get install -y htop
+apt-get install -y iftop
 ###############################################
-#3. upgrade to current snort version
-###
-# backup your configs
-mkdir /home/*/snort_conf_backup
-cd /etc/snort/
-cp -R ./* /home/*/snort_conf_backup
-# for peace of mind, check that your configs are backed up
-ls /home/*/snort_conf_backup
-# download tarballs
-wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
-wget https://www.snort.org/downloads/snort/snort-2.9.14.1.tar.gz
-# pack them
-tar xvzf daq-2.0.6.tar.gz
-tar xvzf snort-2.9.14.1.tar.gz
-# install daq
-cd daq-2.0.6
-./configure && make && sudo make install
-####### NOTE if you receive errors then follow the below steps #######
-# need to uninstall libdnet, reinstall with ./configure fPIC option
-sudo apt-get remove libdnet
-wget http://prdownloads.sourceforge.net/libdnet-1.11.tar.gz
-cd libdnet*
-tar zxvf libdnet-1.11.tar.gz
-./configure "CFLAGS=-fPIC -g -O2"  # note that is an uppercase o, not the number zero, in -O2
-make && sudo make install
-ln -s libdnet.1.1 libdnet.so.1.1
-ldconfig -Rv /usr/local/lib 2>&1 | grep dnet  # you should see Adding /usr/local/lib/libdnet.so.1.1
-# alternately, 
-libtoolize --copy --force
-aclocal -I config
-autoheader
-autoconf
-automake --foreign
-##################### continuing installation #######################
-# now remove old snort and install new snort
-# apt-get remove snort
-cd ../snort-2.9.14.1
-./configure --enable-sourcefire && make && sudo make install
-###### NOTE if you receive errors then follow the below steps #######
-cd /home/*/snort
-wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz
-tar zxvf LuaJIT-2.0.5.tar.gz
-cd LuaJIT*
-make && install
-# now try again
-cd ../snort*
-./configure --enable-sourcefire && make && sudo make install
-##################### continuing installation #######################
-# check install and version for verification
-/usr/local/bin/snort -V
-# finally clear out any skeleton packages
-sudo apt-get autoremove && sudo apt-get autoclean
-# diff your new vs old snort config files now.  they likely did not change because you have the old config
-# I ran snort to confirm that it's running
-# geeze I'm not getting another luajit error for not having another version of luajit installed
-# in meantime, suricata is up and running splendidly
-#################### postponing snort for now ########################
+# go into the following and configure according to your use case
+/etc/smoothsec.cfg # check all options, ensure paths are correct, correct monitor interface and domain
+/etc/arpalert.conf # check file paths
+/etc/snort/snort.conf # pay attention to paths, disable/enable options, and rule path in section 7
+/etc/suricata/suricata.yaml # pay attention to paths and disable/enable options
+/etc/pulledpork/snort/* # enable rulesets one at a time and verify resource usage with htop
+/etc/pulledpork/suricata/* # enable rulesets one at a time and verify resource usage with htop
+###############################################
+### Install is complete.  
+###############################################	
+### at this point, running htop while monitoring via Snorby shows that 
+### snort deployment pulls about 0.8GB ram usage and 4-10% CPU.  
+### suricata deployment pulls about 0.9GB ram usage and 5-12% CPU.  
+### dual deployment pulls just over 2GB ram usage and 10-20% CPU.
+### NOTE: looks like more can be done with suricata as far as tuning and alerting
 ############## moving to suricata performance tuning #################
 ############################ resources ###############################
 # 1. https://suricata.readthedocs.io/en/suricata-4.1.2/performance/tuning-considerations.html
 # 2. https://suricon.net/wp-content/uploads/2016/11/SuriCon2016_MichalPurzynski_PeterManev.pdf
 
-#######################################
-#### below are the failed installs ####
-#### leading up to the above steps ####
-#######################################
+
+
+
+####################################################
+################ fine-tuning rules #################
+####################################################
+### Fine tuning the IDS is kind of a pain at first, since there are multiple input/outputs to modify.  
+### Just remember to configure the base conf's, then the pulledpork.conf's, then perform all rule tuning in the rule files
+### Fine tuning the engine itself will take you back to configuring the IDS' conf's
+### there are white papers available for IDS engine tuning that I will provide here later.
+Top False Positive generators, this list will grow: 
+1:200920[5-7]
+1:2027768
+
+
+
+
+
+
+#####################################################################################################################
+#### below are the failed installs ##################################################################################
+#### leading up to the above steps ##################################################################################
+#####################################################################################################################
 
 #installed from instructions found at http://sublimerobots.com/2017/01/snort-2-9-9-x-ubuntu-systemd-scripts/
 #remember to edit those *.conf files in /etc/snort/!!
@@ -402,6 +271,168 @@ apt-get install -y iftop
 ###################################################################################################
 general idea
 <curl from ip blacklist to> /var/db/snort/iprep/emerging-compromised-ips.txt
+
+###############################################################################################################
+### Update: Failing to update snort.org's registered rules due to the snort version installed with smoothsec.  
+### I took the time to type out my oinkcode so I am set on using it.  
+### Smoothsec is built on Wheezy, which is retired/archived.  
+### Guess it's time to upgrade so that we can keep up with new package dependencies. 
+### Updating to Jessie.  
+# total steps for this section will be
+# 1. upgrade dist to jessie
+# 2. your snorby worker will stop running.  fix it
+# 3. verify startup scripts
+# x. upgrade snort to 2.9.9.x
+# x. go through snort and pulledpork configs to catch new differences
+# x. verify new snort configs
+# x. verify suricata configs
+
+#####################################################
+######## Updating Smoothsec build to Jessie #########
+#####################################################
+###############################################
+#1. 
+###############################################
+#2. fix snorby worker not running
+###
+sudo nano /var/www/snorby/config/config/snorby_config.yml
+# reflect these changes
+production:
+  domain: demo.snorby.org
+  wkhtmltopdf: /usr/local/bin/wkhtmltopdf
+  ssl: false
+  mailer_sender: snorby@snorby.org
+  geoip_uri: http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+  authentication_mode: database
+  time_zone: 'America/Chicago'
+development:
+  domain: localhost:3000
+  wkhtmltopdf: /Users/mephux/.rvm/gems/ruby-1.9.2-p0/bin/wkhtmltopdf
+  ssl: false
+  mailer_sender: snorby@snorby.org
+  geoip_uri: http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+  time_zone: 'Africa/Freetown'
+# init.d is still working so restart snorby
+sudo /etc/init.d/snorby restart
+# ping test yields alerts, snort and snorby are working.  
+###############################################
+#3. verify startup scripts
+###
+# reboot the machine
+sudo reboot -h
+ps aux | grep snort  
+ps aux | grep pigsty 
+# if both processes are running then you are good to go
+# if they are not then complete the following: 
+sudo nano /etc/init.d/snortautorun
+	#!/bin/bash
+	### BEGIN INIT INFO
+	# Provides:          scriptname
+	# Required-Start:    $remote_fs $syslog
+	# Required-Stop:     $remote_fs $syslog
+	# Default-Start:     2 3 4 5
+	# Default-Stop:      0 1 6
+	# Short-Description: Start daemon at boot time
+	# Description:       Enable service provided by daemon.
+	### END INIT INFO
+
+
+	case "$1" in
+	  start)
+	    if ps -C snort> /dev/null; then
+	    echo "SNORT is already running"
+
+	    else
+
+	    sudo snort -D -u snort -g snort -c /etc/snort/snort.conf -i <monitor interface>
+
+	    echo "SNORT is ON"
+	    fi
+	    ;;
+	  stop)
+
+	    if ps -C snort> /dev/null; then
+	    sudo rm /var/run/snort_<monitor interface>.pid
+	    sudo rm /var/run/snort_<monitor interface>.pid.lck
+
+	    echo "Stopping SNORT"
+	    sudo pkill snort
+
+	else
+
+	    echo "SNORT is already OFF"
+
+	    fi
+	    ;;
+	  *)
+		echo "Usage: /etc/init.d/snortautorun {start|stop}"
+		exit 1
+		;;
+	esac
+
+	exit 0
+# then changemod the script so it can execute
+sudo chmod +x /etc/init.d/snortautorun
+sudo update-rc.d snortautorun defaults
+###############################################
+#3. upgrade to current snort version
+###
+# backup your configs
+mkdir /home/*/snort_conf_backup
+cd /etc/snort/
+cp -R ./* /home/*/snort_conf_backup
+# for peace of mind, check that your configs are backed up
+ls /home/*/snort_conf_backup
+# download tarballs
+wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
+wget https://www.snort.org/downloads/snort/snort-2.9.14.1.tar.gz
+# pack them
+tar xvzf daq-2.0.6.tar.gz
+tar xvzf snort-2.9.14.1.tar.gz
+# install daq
+cd daq-2.0.6
+./configure && make && sudo make install
+####### NOTE if you receive errors then follow the below steps #######
+# need to uninstall libdnet, reinstall with ./configure fPIC option
+sudo apt-get remove libdnet
+wget http://prdownloads.sourceforge.net/libdnet-1.11.tar.gz
+cd libdnet*
+tar zxvf libdnet-1.11.tar.gz
+./configure "CFLAGS=-fPIC -g -O2"  # note that is an uppercase o, not the number zero, in -O2
+make && sudo make install
+ln -s libdnet.1.1 libdnet.so.1.1
+ldconfig -Rv /usr/local/lib 2>&1 | grep dnet  # you should see Adding /usr/local/lib/libdnet.so.1.1
+# alternately, 
+libtoolize --copy --force
+aclocal -I config
+autoheader
+autoconf
+automake --foreign
+##################### continuing installation #######################
+# now remove old snort and install new snort
+# apt-get remove snort
+cd ../snort-2.9.14.1
+./configure --enable-sourcefire && make && sudo make install
+###### NOTE if you receive errors then follow the below steps #######
+cd /home/*/snort
+wget http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+tar zxvf LuaJIT-2.0.5.tar.gz
+cd LuaJIT*
+make && install
+# now try again
+cd ../snort*
+./configure --enable-sourcefire && make && sudo make install
+##################### continuing installation #######################
+# check install and version for verification
+/usr/local/bin/snort -V
+# finally clear out any skeleton packages
+sudo apt-get autoremove && sudo apt-get autoclean
+# diff your new vs old snort config files now.  they likely did not change because you have the old config
+# I ran snort to confirm that it's running
+# geeze I'm not getting another luajit error for not having another version of luajit installed
+# in meantime, suricata is up and running splendidly
+# focus on tuning suricata for now to see how well it can do on this machine
+# return to snort afterward
 
 
 
