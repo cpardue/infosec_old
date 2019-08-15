@@ -78,7 +78,7 @@ development:
   time_zone: 'Africa/Freetown'
 ###############################################
 # add pulledpork to crontab
-04 05 * * * /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
+04 05 * * * /usr/local/bin/pulledpork.pl -c /etc/pulledpork/snort/pulledpork.conf -l
 # install other useful stuff
 apt-get install -y htop
 apt-get install -y iftop
@@ -98,24 +98,46 @@ apt-get install -y iftop
 ### suricata deployment pulls about 0.9GB ram usage and 5-12% CPU.  
 ### dual deployment pulls just over 2GB ram usage and 10-20% CPU.
 ### NOTE: looks like more can be done with suricata as far as tuning and alerting
-############## moving to suricata performance tuning #################
-############################ resources ###############################
+########################################################################
+################ moving to suricata performance tuning #################
+### initial false positives and performance tuning
+### always investigate and verify beyond shadow of doubt that it is a false positive
+### always verify that performance tuning has not negatively impacted performance
+############################## rules ###################################
+Top False Positive generatoring rules: 
+1:200920[5-7]
+1:2027768
+############################ performance ###############################
 # 1. https://suricata.readthedocs.io/en/suricata-4.1.2/performance/tuning-considerations.html
+# always allow some time for the machine to settle into it's new baseline
+########################################################################
+#### baseline before: 6.6%_CPU 1479MB_Mem 0MB_Swp ######################
+########################################################################
+sudo nano /etc/suricata/suricata.yaml
+# uncomment max-pending-packets, set to 2048
+# install tcmalloc, an optimized thread-caching malloc for C++ binaries
+apt-get install libtcmalloc-minimal4
+# load tcmalloc before and instead of malloc
+sudo nano /etc/init.d/suricata
+# under start and restart, change this
+/usr/local/bin/suricata --user suricata -c /etc/suricata/suricata.yaml -i $INTERFACE_DEF -D
+# to this
+LD_PRELOAD=”/usr/lib/libtcmalloc_minimal.so.0" /usr/local/bin/suricata --user suricata -c /etc/suricata/suricata.yaml -i $INTERFACE_DEF -D
+# now run the restart script and verify that suricata is still working
+ps ax | grep suricata  # should show the original path under instance
+htop  # should be less Mem usage
+########################################################################
+#### baseline changed: 7.1%_CPU 1159MB_Mem 0MB_Swp #####################
+########################################################################
+
+
 # 2. https://suricon.net/wp-content/uploads/2016/11/SuriCon2016_MichalPurzynski_PeterManev.pdf
 
 
 
 
-####################################################
-################ fine-tuning rules #################
-####################################################
-### Fine tuning the IDS is kind of a pain at first, since there are multiple input/outputs to modify.  
-### Just remember to configure the base conf's, then the pulledpork.conf's, then perform all rule tuning in the rule files
-### Fine tuning the engine itself will take you back to configuring the IDS' conf's
-### there are white papers available for IDS engine tuning that I will provide here later.
-Top False Positive generators, this list will grow: 
-1:200920[5-7]
-1:2027768
+
+
 
 
 
