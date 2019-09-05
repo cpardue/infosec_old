@@ -1,0 +1,20 @@
+bypass admin password by blanking it out, only works with hands on access
+I do this all the time at work, it works well but is not sneaky
+
+note: use kali live usb, stick it in that machine already
+1. shift+restart to enter recovery mode
+2. advanced>boot to UEFI>do it
+pc now boots to bios
+3. remove secureboot and fastboot, change boot priority to USB first
+4. save/exit
+now boots to kali live
+5. select live forensic mode
+6. file manager>windows>windows>system32>config, open terminal here
+now terminal is open
+7. chntpw -l SAM
+lists users and type on machine
+8. chntpw -u <username> SAM
+9. press 1, press y
+password has been cleared, you can now log in with blank password
+10. reboot -h now
+remove thumb drive and log in
