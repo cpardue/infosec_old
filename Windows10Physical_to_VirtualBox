@@ -1,0 +1,47 @@
+### how to convert a physical Windows 10 machine into an Oracle VirtualBox Guest
+### 5 steps total
+### prereqs: logged into phys win10 machine, windows 10 installation iso, powershell enabled, virtualbox installed
+
+
+### step 1: create a vhdx/vhd
+download disk2vhd https://download.sysinternals.com/files/Disk2vhd.zip
+manpage https://docs.microsoft.com/en-us/sysinternals/downloads/disk2vhd
+  unzip, extract, run (as administrator), accept license agreement, select all volumes, create
+    move the resultant vhdx file to VirtualBox install directory
+
+### step 2: convert vhdx to vdi
+open powershell (as administrator) 
+  dir <pathToVirtualBoxInstall>
+    ./VBoxManage clonehd <filename>.vhdx <filename>.vdi --format VDI
+
+### step 3: to create the virtualbox vm
+create a new vm
+  use an existing virtual disk file-><filename>.vdi
+  open the vm
+    settings>system>motherboard
+      make sure only Hard Disk and Optical are selected
+      make sure boot order is Optical, then Hard Disk
+      enable "Enable EFI (special OSes only)"
+    settings>system>storage
+      point optical drive to windows 10 installation iso
+
+### step 4: in vm, install win10 onto VDI's filesystem
+boot into vm
+  at "Language to install" press shift+f10
+    >_
+      diskpart
+        list vol  # this will list volumes, volume 3 as RAW FS. it needs to be changed to EFI.  
+          sel vol 3
+            format quick fs=fat32 label="System"
+              list vol  # lists volumes again, verify that changes were made
+                exit
+      bdcboot C:\Windows  # adds the original phys win10 boot record
+  close installation media
+    remove win10 installation iso from optical disk
+      start vm
+
+### done
+for reference, I pulled this from spiceworks thread https://community.spiceworks.com/how_to/148559-windows-10-physical-to-virtualbox
+sept 2019
+  
+  
