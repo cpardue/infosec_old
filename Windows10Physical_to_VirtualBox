@@ -11,8 +11,8 @@ manpage https://docs.microsoft.com/en-us/sysinternals/downloads/disk2vhd
 
 ### step 2: convert vhdx to vdi
 open powershell (as administrator) 
-  dir <pathToVirtualBoxInstall>
-    ./VBoxManage clonehd <filename>.vhdx <filename>.vdi --format VDI
+  cd <pathToVirtualBoxInstall>
+    ./VBoxManage clonehd <filename>.VHDX <filename>.vdi --format VDI
 
 ### step 3: to create the virtualbox vm
 create a new vm
