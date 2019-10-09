@@ -1,0 +1,77 @@
+### metanote: this is mostly just basic IOS commands for setting up specific functions
+#
+#
+#
+#
+# note: some declarations for following functions
+<type> = interface type (ethernet/fastethernet/gigabitethernet)
+<number> = a number
+<card/slot> = interface number #/#/#
+S# = Switch(number)
+R# = Router(number)
+[enter] = press specific key (key)
+<description> = string of char or int as described
+#
+#
+#
+#
+# most basic shit ever required
+enable
+configure terminal
+hostname <name>
+enable secret <password>
+no ip domain-lookup
+#
+#
+#
+#
+# configure loopback interface
+enable
+configure terminal
+interface loopback <number>
+ip address <ip address> <mask>
+#
+#
+#
+#
+# configure command-line access
+enable
+configure terminal
+line console <number-number>
+password <password>
+login
+exec-timeout <number> <number>
+#
+#
+#
+#
+# configure static routes
+enable
+configure terminal
+ip route <target network> <mask> <connected interface's ip> # do for each route
+#
+#
+#
+#
+# configure rip
+enable
+configure terminal
+router rip
+version <version number>
+network <target network> # do for each target network
+no auto-summary
+#
+#
+#
+#
+# configure eigrp
+enable
+configure terminal
+router eigrp <as-number>
+network <target network> # do for each target network
+#
+#
+#
+#
+# 
+
