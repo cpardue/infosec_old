@@ -1,0 +1,16 @@
+### metanote: so this is a pain for headless, locked down machines...
+### ...but you should log into splunk's site and download via browser
+### from https://hackertarget.com/install-splunk-ubuntu-in-5-mins/
+# note: there are 32bit and 64bit versions of splunk for *nux
+uname -a # to get which tgt machine has
+# download splunk for ubuntu http://www.splunk.com/download?r=header
+# note: splunk free is enterprise which == app support, splunk light free is light which !== app support
+sudo dpkg -i Downloads/splunk-*
+&& sudo /opt/splunk/bin/splunk start
+# note: after initial setup is complete, you'll see 'The Splunk web interface is at http://x-wing1:8000'
+# note: log in and change your password
+#
+#
+#
+#
+#
