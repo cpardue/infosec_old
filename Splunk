@@ -35,3 +35,21 @@ cd ~/Downloads
 #
 #
 # installing splunk universal forwarder on Linux box
+uname -a # will tell you whether this box is 64 or 32 bit
+wget -O splunkforwarder-7.3.2-c60db69f8e32-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=universalforwarder&filename=splunkforwarder-7.3.2-c60db69f8e32-linux-2.6-amd64.deb&wget=true'
+&& sudo dpkg -i ~/Downloads/splunkforw*
+&& ls /opt | grep splunkforwarder # so make sure the path is indeed /opt/splunkforwarder
+&& sudo /opt/splunkforwarder/bin/splunk start
+# accept agreement
+# create splunkuser and pass
+sudo /opt/splunkforwarder/bin/splunk enable boot-start # creates /etc/init.d/splunk and enables
+#
+#
+#
+#
+# configuring splnk universal forwarder on Linux box
+sudo /opt/splunkforwarder/bin/splunk add forward-server <host>:9997 # sets up forwarding to splunk server
+# sign in with splunkuser and pass
+sudo /opt/splunkforwarder/bin/splunk list forward-server # to check active/inactive splunk servers forwarded to
+sudo /opt/splunkforwarder/bin/splunk add monitor <pathToLogs> -index main -sourcetype <associatedName> # this creates the inputs.conf
+# inputs.conf location is /opt/splunkforwarder/etc/apps/SplunkUniversalForwarder/default
