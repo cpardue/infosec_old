@@ -1,0 +1,19 @@
+### built for linux mint 19, taken from https://computingforgeeks.com/install-docker-and-docker-compose-on-linux-mint-19/
+sudo apt-get update
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release; echo "$UBUNTU_CODENAME") stable"
+cat /etc/apt/sources.list.d/additional-repositories.list 
+# response should be # deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+sudo apt-get update
+sudo apt-get -y  install docker-ce docker-compose
+sudo usermod -aG docker $USER
+docker run --rm -it  --name test alpine:latest /bin/sh
+# reponse should be # 
+# Unable to find image 'alpine:latest' locally #
+# latest: Pulling from library/alpine #
+# cd784148e348: Pull complete #
+# Digest: sha256:46e71df1e5191ab8b8034c5189e325258ec44ea739bba1e5645cff83c9048ff1 #
+# Status: Downloaded newer image for alpine:latest #
+#
+#
+# done #
