@@ -17,7 +17,7 @@ wget -O splunkforwarder-7.3.2-c60db69f8e32-x64-release.msi 'https://www.splunk.c
 # download splunk for linux
 cd ~/Downloads
 && wget -O splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=splunk&filename=splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb&wget=true'
-&& sudo dpkg -i Downloads/splunk-*
+&& sudo dpkg -i ./splunk-*
 && sudo /opt/splunk/bin/splunk start
 # type y to accept agreement
 # enter new splunk user username (splunkuser)
