@@ -1,0 +1,28 @@
+Process so far
+
+Double check network firewall rules before plugging an un-hardened microsoft server into the network
+DHCP should be allocated for the server before install
+
+Install from disk
+enter product key
+blah blah blah, until you are at the desktop.  
+
+enter Business Name, Server (box) Name, internal Domain (add "-DC" if is a DC).  
+create admin name and pass (better not name it admin) and user name and pass (better name it admin)
+activate product key NOW
+disable windows firewall for now (you checked the network firewall rules...RIGHT???)
+set up automatic backup
+add roles and features: RDP package
+check for updates/install updates
+
+TODO:
+install AV
+install zonealarm
+install tripwire
+add roles and features: AD DS
+promote to Domain Controller
+through AD DS Config Wizard add a new forest
+add roles and features: hyper-v, bitlocker
+install MBSA
+go through all three server hardening lists, post steps here for future conformity 
+set up GPOs
