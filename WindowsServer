@@ -2,6 +2,10 @@ Process so far
 
 Double check network firewall rules before plugging an un-hardened microsoft server into the network
 DHCP should be allocated for the server before install
+This server should be behind the main network's firewall, and behind its own dedicated network firewall.
+Again, server should be behind its own dedicated network firewall.
+WAN<>FW1<>LAN1<>FW2<>LAN2
+Server goes in LAN2
 
 Install from disk
 enter product key
@@ -14,15 +18,36 @@ disable windows firewall for now (you checked the network firewall rules...RIGHT
 set up automatic backup
 add roles and features: RDP package
 check for updates/install updates
+Recheck updates, install & restart.  Do this a few times until you catch all update rollouts.  
+WinSvr is now installed and updated.
+Allow RDP from admin machine on firewall and turn firewall back on. 
+
+add roles and features: bitlocker, ps ISE
+scan server with nmap
+  my god look at all those open services.  
+run Security Configuration Wizard according to server's PRIMARY role
+scan server again with nmap
+  research each unopen port to see if it can be closed w/out messing with AD services, close what you can.
+
+add roles and features: AD DS
+Promote to DC
+Add new OU's for workstations: 
+  OU Name:"DomainComputers"
+    OU Name:<City>
+      OU Name:<Department>
+        OU Name:<DepartmentSubSection>
+Add new OU's for user roles: 
+  OU Name:"DomainUsers"
+    OU Name:<City>
+      OU Name:<Department>
+        OU Name:<PositionTitle>
+
 
 TODO:
 install AV
 install zonealarm
 install tripwire
-add roles and features: AD DS
-promote to Domain Controller
-through AD DS Config Wizard add a new forest
-add roles and features: hyper-v, bitlocker
-install MBSA
+re-run security configuration wizard
+install MBSA and SCCM
 go through all three server hardening lists, post steps here for future conformity 
-set up GPOs
+set up granular GPOs
