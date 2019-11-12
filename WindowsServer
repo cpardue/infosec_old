@@ -28,6 +28,7 @@ scan server with nmap
 run Security Configuration Wizard according to server's PRIMARY role
 scan server again with nmap
   research each unopen port to see if it can be closed w/out messing with AD services, close what you can.
+  at this point, it should be blocking all ping probes completely, forcing you to use -Pn
 
 add roles and features: AD DS
 Promote to DC
@@ -42,6 +43,8 @@ Add new OU's for user roles:
       OU Name:<Department>
         OU Name:<PositionTitle>
 
+Go through all the GPO settings found at GPO.md
+  note: this step is really horrible, but some of these settings are very client-specific
 
 TODO:
 install AV
@@ -50,4 +53,4 @@ install tripwire
 re-run security configuration wizard
 install MBSA and SCCM
 go through all three server hardening lists, post steps here for future conformity 
-set up granular GPOs
+set up granular GPOs & business objects
