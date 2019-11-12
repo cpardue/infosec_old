@@ -18,8 +18,8 @@ disable windows firewall for now (you checked the network firewall rules...RIGHT
 set up automatic backup
 add roles and features: RDP package
 check for updates/install updates
-Recheck updates, install & restart.  Do this a few times until you catch all update rollouts.  
-WinSvr is now installed and updated.
+Recheck updates, install & restart.  Do this a few times until you catch all update rollouts.  Takes a while.
+Windows Server is now installed and updated.
 Allow RDP from admin machine on firewall and turn firewall back on. 
 
 add roles and features: bitlocker, ps ISE
@@ -29,28 +29,24 @@ run Security Configuration Wizard according to server's PRIMARY role
 scan server again with nmap
   research each unopen port to see if it can be closed w/out messing with AD services, close what you can.
   at this point, it should be blocking all ping probes completely, forcing you to use -Pn
-
 add roles and features: AD DS
 Promote to DC
-Add new OU's for workstations: 
-  OU Name:"DomainComputers"
-    OU Name:<City>
-      OU Name:<Department>
-        OU Name:<DepartmentSubSection>
-Add new OU's for user roles: 
-  OU Name:"DomainUsers"
-    OU Name:<City>
-      OU Name:<Department>
-        OU Name:<PositionTitle>
+Disable default Administrator account and change description to look like guest
+Change fake Admin account description to look like admin
+Change actual Admin account description to look like guest
 
-Go through all the GPO settings found at GPO.md
-  note: this step is really horrible, but some of these settings are very client-specific
+Create OU's per Domain, Site, and Department
+Create a Group in each Department
+Create a Computer in each Department for each existing computer
+Note: GPO's are applied in a computer-then-user order, use this for troubleshooting.  
+Create a GPO for Domain with baseline security and hand-holding settings
+Create a GPO for each Department with role-based security and hand-holding settings
 
+-----------------------------------
 TODO:
+audit and change Domain Controller GPO for security and silence
 install AV
 install zonealarm
 install tripwire
 re-run security configuration wizard
 install MBSA and SCCM
-go through all three server hardening lists, post steps here for future conformity 
-set up granular GPOs & business objects
