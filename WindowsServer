@@ -34,6 +34,7 @@ Promote to DC
 Disable default Administrator account and change description to look like guest
 Change fake Admin account description to look like admin
 Change actual Admin account description to look like guest
+Initially harden Domain Controller GPO according to https://security.uconn.edu/server-hardening-standard-windows/#
 
 Create OU's per Domain, Site, and Department
 Create a Group in each Department
@@ -41,9 +42,12 @@ Create a Computer in each Department for each existing computer
 Note: GPO's are applied in a computer-then-user order, use this for troubleshooting.  
 Create a GPO for Domain with baseline security and hand-holding settings
 Create a GPO for each Department with role-based security and hand-holding settings
+Add each Computer to Group
+Add each child Group to Parent Group all the way up to forest root.
 
 -----------------------------------
 TODO:
+Set up DNS, this will be split-horizon with the ISP DNS, then disable LLMNR and NBT through regedit GPO's
 audit and change Domain Controller GPO for security and silence
 install AV
 install zonealarm
