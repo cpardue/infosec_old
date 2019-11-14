@@ -1,0 +1,15 @@
+this is just notes for now
+
+found at https://support.kaspersky.com/15161
+  To integrate Kaspersky Threat Data Feeds using Kaspersky CyberTrace with AlienVault USM / OSSIM:
+    Download and install Kaspersky CyberTrace for LogScanner. https://support.kaspersky.com/13858
+    Configure Kaspersky CyberTrace for integration with AlienVault USM / OSSIM.
+    Configure AlienVault USM / OSSIM to forward events to Kaspersky CyberTrace.
+    Add Kaspersky CyberTrace event source to AlienVault USM / OSSIM.
+    guide for details on integration at https://media.kaspersky.com/downloads/business/How%20to%20integrate%20Kaspersky%20Threat%20Data%20Feeds%20with%20AlienVault.pdf?_ga=2.187699752.1256841923.1573749562-434600511.1573749562
+
+this suggests integrating Splunk with free AlienVault OTX feed
+  https://www.alienvault.com/blogs/security-essentials/everything-you-wanted-to-know-about-siem-and-log-management-but-were-afraid
+
+there's an OSSIM app for Splunk at 
+  https://splunkbase.splunk.com/app/1719/
