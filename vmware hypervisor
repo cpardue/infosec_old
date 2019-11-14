@@ -1,0 +1,39 @@
+Note: r310 requires esxi <v6.7
+
+Installing esxi to physical server
+  write ISO to USB as live
+  boot server into USB
+  follow prompts through install
+  ESXi server gains newIP from DHCP server
+  visit ESXi at <newIP>:80 from Chrome browser on management PC
+  click link to download file vsphere client install
+  install vsphere client management PC from download file
+  access ESXi server from vsphere client software
+
+Upload ISOs to Vmware vCenter Web Client Datastore
+  Open vCenter Web Client
+  https://<ipaddress or hostname>:9443/vsphere-client/#
+  Download and Install the Web Browser Plugin
+  Bottom left of page has a link
+  Login to vCenter Web Client
+  https://<ipaddress or hostname>:9443/vsphere-client/#
+  username = administrator@vsphere.local or Active Directory Account if Setup
+  Select Home | vCenter
+  Select Storage
+  Drill down to the Datastore used to store ISO images.
+  Right-Click and Select Browse Files
+  Select folder with ISO images
+  Select the little cylinder looking icon in upper right Upload a file to Datastore
+  Browse to the ISO file you created
+  Select Open
+  
+Creating new VM
+  go to Virtual Machines
+  Click "Create..."
+  enter details while clicking Next until complete
+  go to Virtual Machines
+  select the VM
+  click Power On
+  install OS from within VM
+
+  
