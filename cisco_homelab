@@ -26,3 +26,5 @@ configure terminal
 	exit
 show ip ssh
 
+this method of keeping notes is awful compared to actually poking around and configuring in homelab.  
+consider either deleting this file completely, or a later painstaking transfer of copy/paste to it.  
