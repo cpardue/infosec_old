@@ -1,0 +1,80 @@
+Literal Characters
+  Letters and digits match exactly                 a x B 7 0
+  Some special characters match exactly            @ - = %
+  Escape other specials with a backslash           \. \\ \$ \[
+
+Character Groups
+  Almost any character (usually not newline)       .
+  Lists and ranges of characters                   [x]
+  Any character except those listed                [^x]
+
+Counts (add ? for non-greedy)
+  0 or more ("perhaps some")                       x*
+  0 or 1 ("perhaps a")                             x?
+  1 or more ("some")                               x+
+  Between "n" and "m" of                           x{n,m}
+  Exactly "n", "n" or more                         x{n},x{n,}
+
+Alternation
+  Either/or                                        x|x
+
+Lookahead or Lookbehind
+  Followed by                                      x(?=x)
+  NOT followed by                                  x(?!x)
+  Following                                        (?<=x)x
+  NOT following                                    (?<!x)x
+
+Grouping
+  For capture and counts                           (x)
+  Non-capturing                                    (?:x)
+  Named captures                                   (?<name>x)
+
+Back references
+  Numbered                                         \x \gx \g{x}
+  Relative                                         \g{-x}
+  Named                                            \k<name>
+  
+Character group contents
+  individual chars            x
+  character range             x-y
+  posix char class            [:class:]
+  negated class               [^:class:]
+                  examples    [a-zA-Z0-9]
+                              [[:alnum:]_]
+
+POSIX character classes
+  letters and digits          alnum
+  letters                     alpha
+  character codes 0-127       ascii
+  space and tab only          blank
+  control characters          cntrl
+  decimal digits              digit
+  printing chars -space       graph
+  lower case letters          lower
+  printing chars +space       print
+  printing chars -alnum       punct
+  white space                 space
+  upper case letters          upper
+  "word" characters           word
+  hexadecimal digits          xdigit
+
+Generic character types
+  decimal digit               \d
+  not a decimal digit         \D
+  whitespace character        \s
+  not a whitespace character  \S
+  "word" character            \w
+  non-word character          \W
+  
+Non-printing characters
+  alarm (BEL, hex 07)         \a
+  "control-x"                 \cx
+  escape (hex 1B)             \e
+  formfeed (hex 0C)           \f
+  newline (hex 0A)            \n
+  carriage return (hex 0D)    \r
+  tab (hex 09)                \t
+  octal code ddd              \ddd
+  hex code hh                 \xhh
+  hex code hhh..              \x{hhh..}
+  
