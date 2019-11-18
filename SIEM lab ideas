@@ -1,0 +1,30 @@
+general idea is to set up OSSIM and Splunk on spare machine in homelab.  
+ship all logs to OSSIM then to Splunk instance.  
+then create an AWS instance honeypot to ship even more logs to Splunk.  
+AWS instance must route logs through dedicated firewall at DMZ.  
+then pair down Splunk dashboard until it's more or less a good SIEM.  
+
+[AWS_Honeypot]<---extranet--->[OSSIM[Splunk]]<---intranet--->[LAN_Devices]
+[---syslog---]----extranet-->[OSSIM->[Splunk]]<--intranet----[--syslog---]
+
+AWS honeypot general guide
+https://linuxsecurityblog.com/2017/11/08/set-up-a-honeypot-on-aws/
+
+OSSIM install guide
+don't need a guide
+
+Splunk install
+don't need a guide
+
+Splunk integrate with OSSIM
+google it, use the plugin
+
+
+
+in the real world, here's what I need to do.  
+#1 set up firewall my own firewall at demarc edge.  have to decide on what to use for this.  
+then...
+add that ram module to the laptop.
+add eth1 nic to laptop.
+cable manage laptop, start up, install OSSIM, set up on controlled subnet.  
+figure out what OSSIM needs to catch logs, set it up.  
