@@ -1,5 +1,6 @@
 facts
-1. can use aws resources for 1yr.
+1. can use aws resources for 1yr. maybe. looks more like "30 days for the good stuff, then we charge you".  
+1(ammended). can create private cloud with VPN protocols.  ask ------- about s3 bucket compute prices before ruling AWS out.
 2. can tunnel syslog over internet using stunnel for tls/ssl.  
 3. want experience with AWS, SIEM, Splunk, and an excuse to practice regex.
 
@@ -43,12 +44,3 @@ don't need a guide
 Splunk integrate with OSSIM
 google it, use the plugin
 
-
-
-in the real world, here's what I need to do.  
-#1 set up firewall my own firewall at demarc edge.  have to decide on what to use for this.  
-then...
-add that ram module to the laptop.
-add eth1 nic to laptop.
-cable manage laptop, start up, install OSSIM, set up on controlled subnet.  
-figure out what OSSIM needs to catch logs, set it up.  
