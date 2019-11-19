@@ -1,11 +1,35 @@
-general idea is to set up OSSIM and Splunk on spare machine in homelab.  
-ship all logs to OSSIM then to Splunk instance.  
-then create an AWS instance honeypot to ship even more logs to Splunk.  
-AWS instance must route logs through dedicated firewall at DMZ.  
-then pair down Splunk dashboard until it's more or less a good SIEM.  
+facts
+1. can use aws resources for 1yr.
+2. can tunnel syslog over internet using stunnel for tls/ssl.  
+3. want experience with AWS, SIEM, Splunk, and an excuse to practice regex.
 
-[AWS_Honeypot]<---extranet--->[OSSIM[Splunk]]<---intranet--->[LAN_Devices]
-[---syslog---]----extranet-->[OSSIM->[Splunk]]<--intranet----[--syslog---]
+so I can set up OSSIM anywhere, but need to feed it data.  
+so I can set up Splunk anywhere, but need to feed it data.  
+so I can integrate Splunk and OSSIM together, but only if on the same (SplOSSIM) Box.  
+so I can generate data from machines at home.  
+so I can generate data from an AWS honeypot.  
+so I can use AWS to host SplOSSIM, but would need to tunnel logs to AWS from home.  
+so I can use AWS to host AWS honeypot, but would need to tunnel logs from AWS to home.
+
+assets/liabilities
+assets
+ AWS to host SplOSSIM
+  would ship syslog OUT of home LAN, and block all incoming
+  opportunity to refine and use to build a CAN
+ AWS to host AWS honeypot
+  would generate real world threat hunting data
+liabilities
+  AWS to host SplOSSIM
+    might be some threat vectors I haven't thought about (think PRTG netmon CVE)
+  AWS to host AWS honeypot
+    would ship encrypted syslog INTO the home LAN, is a threat vector
+    
+so if AWS honeypot syslog --> home LAN == threat
+and AWS SplOSSIM <-- home LAN syslog == !threat
+perhaps AWS honeypot and AWS SplOSSIM can coexist through virtual routing & switching.
+this would look like: 
+  [AWS[OSSIM[Splunk]][honeypot]]<===stunnel===[home LAN]
+
 
 AWS honeypot general guide
 https://linuxsecurityblog.com/2017/11/08/set-up-a-honeypot-on-aws/
