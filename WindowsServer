@@ -1,4 +1,4 @@
-Process so far
+Original Process Before Tear-Down/Rebuild
 
 Double check network firewall rules before plugging an un-hardened microsoft server into the network
 DHCP should be allocated for the server before install
@@ -70,3 +70,19 @@ install zonealarm
 install tripwire
 re-run security configuration wizard
 install MBSA and SCCM
+
+
+
+
+Process after Tear-Down/Rebuild
+
+1. phase one Initial Setup
+  a. install on hardware
+  b. install updates
+  c. replace safety features
+    c1. disable firewall, IE ESC
+    c2. install AV, anti-ransomware, and Firewall
+  d. download win10 GPO template
+  e. rename all local user accounts for trickery
+  f. nmap it, run Security Configuration Wizard, nmap it again
+2. 
