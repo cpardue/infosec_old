@@ -1,3 +1,22 @@
+Basic Security Settings for all computers, regardless of OU
+  enable Prohibit access to Control Panel and PC settings
+  enable Network security: Do not store LAN Manager hash value on next password change
+  enable Prevent access to the command prompt
+  enable Prevent access to registry editing tools
+  enable No auto-restart with logged on users for scheduled automatic updates installations
+  enable Prohibit User Install
+  disable Accounts: Guest Account Status
+  enable 10 Minimum password length
+  enable 30 Maximum password age
+  enable Network Access: Do not allow anonymous enumeration of SAM accounts and shares
+  enable Prevent the usage of OneDrive for file storage
+  enable xyz Defer Upgrades and Updates
+  enable Turn off Microsoft consumer experiences
+  enable Turn off all balloon notifications
+  enable Turn off toast notifications
+  enable success failure Audit logon events
+
+
 Baseline Security Settings
 Account Policies
 1.1	Account Policies	Setting
