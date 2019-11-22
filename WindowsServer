@@ -77,12 +77,23 @@ install MBSA and SCCM
 Process after Tear-Down/Rebuild
 
 1. phase one Initial Setup
-  a. install on hardware
+  a. install on hardware within a protected subnet
   b. install updates
   c. replace safety features
     c1. disable firewall, IE ESC
-    c2. install AV, anti-ransomware, and Firewall
-  d. download win10 GPO template
+    c2. install third party av, anti-ransomware, and firewall
+    c3. configure av, ar, and fw rules/schedules/zones
+  d. download win10 GPO template (admx file)
   e. rename all local user accounts for trickery
   f. nmap it, run Security Configuration Wizard, nmap it again
-2. 
+  
+2. phase two Prep The Domain
+  a. create simple forest & OU's tree
+  b. create Computers and Users GPOs
+    b1. create baseline GPOs
+    b2. create restrictive GPOs
+    b3. create kiosk GPOs
+  c. create DNS entries for intranet resources
+  d. set up intranet App repositories
+    d1. create a distribution point for the msi's
+    d2. create a distribution GPO for Computers
