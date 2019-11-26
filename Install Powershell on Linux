@@ -1,0 +1,10 @@
+NOTE: I'm note sure what to do about missing Cmdlets, yet.  Still need a Windows VM to remotely interact via PSRemoting cmdlet.
+
+install powershell on linux
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - &&
+sudo curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list &&
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main" 
+sudo apt-get update 
+sudo apt-get install libicu55 -y 
+sudo apt-get update 
+sudo apt-get install powershell -y
