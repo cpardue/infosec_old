@@ -1,14 +1,18 @@
 
 Enable PSRemoting on remote pc
 Winkey, type "powersh", Rclick "Run as Administrator"
-enter>Enable-PSRemoting -Force
+enter>Enable-PSRemoting -SkipNetworkProfileCheck -Force
 
 set current network connection to "private network"
+join the workgroup
 
 then run either
 enter>Set-Item wsman:\localhost\client\trustedhosts *
 enter>Set-Item wsman:\localhost\client\trustedhosts <ipaddress>
 
+NOTE PSRemoting uses 
+TCP/5985 = HTTP
+TCP/5986 = HTTPS
 
 then on mgmt pc
 run either
@@ -19,7 +23,7 @@ enter>Restart-Service WinRM
 then 
 enter>Test-WsMan <tgt pc>
 
-to run cmds on tgt pc
+to invoke cmds on tgt pc
 >Invoke-Command -ComputerName <tgt pc> -ScriptBlock { COMMAND } -credential <username>
 
 to run remote pssession
