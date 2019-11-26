@@ -1,0 +1,66 @@
+from admin PS prompt
+>Set-ExecutionPolicy Bypass -Scope Process
+>Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+install done
+
+chocolatey package search (from public repo)
+choco list <package>
+choco search <package>
+
+chocolatey package list all (from public repo)
+choco list
+
+chocolatey package list all (on localhost)
+choco list -l
+
+chocolatey package install format (for pulling from public repo)
+choco install firefox googlechrome otherpackage yetanotherpackage -y
+
+chocolatey package install from list with error handling
+$Computers = Get-Content -Path C:\pathto\Computers.txt
+Invoke-Command -ComputerName $Computers -ScriptBlock {
+
+    choco install firefox googlechrome otherpackage yetanotherpackage -y | Out-File -FilePath C:\Windows\Temp\choco-googlechrome.txt
+
+    if ($?) {
+
+        Write-Output "$Env:COMPUTERNAME Successful"
+
+    }
+
+    else {
+
+        Write-Output "$Env:COMPUTERNAME Failed"
+
+    }
+
+}
+
+chocolatey multi-package update from list with error handling
+$Computers = Get-Content -Path C:\pathto\Computers.txt
+Invoke-Command -ComputerName $Computers -ScriptBlock {
+
+    $Packages = choco list -lo -r  | % {($_.split("|"))[0]}
+
+    foreach ($Package in $Packages) {
+
+        choco upgrade $Package -y | Out-File -FilePath "c:\Windows\Temp\choco-$Package.txt"
+
+        if ($LASTEXITCODE -ne '0') {
+
+           $Results = [PSCustomObject]@{
+
+                ComputerName = $Env:COMPUTERNAME
+
+                Package = $Package
+
+            }
+
+            $Results
+
+        }
+
+    }
+
+}  | Select-Object ComputerName,Package | Sort-Object -Property ComputerName
+
