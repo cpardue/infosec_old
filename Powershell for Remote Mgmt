@@ -1,6 +1,7 @@
 solid resource for ideas and scripting methods, including GPO mgmt
 https://devblogs.microsoft.com/scripting/
 
+BELOW IS A VERIFIED METHOD OF REMOTE PS SESSION ON NON-DOMAIN WORKSTATIONS
 
 Enable PSRemoting on remote pc
 Winkey, type "powersh", Rclick "Run as Administrator"
