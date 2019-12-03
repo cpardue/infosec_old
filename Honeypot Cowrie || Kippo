@@ -15,7 +15,27 @@ source cowrie-env/bin/activate  # activate virtual env and install pip packages 
 pip install --upgrade pip
 pip install --upgrade -r requirements.txt  ### HALT: running into a permission denied here, line 8 needs password for sudoer.
 
+todo:
+cp cowrie.cfg.dist cowrie.cfg  # creates cowrie.cfg, which takes precedence if both exist
+sudo nano cowrie.cfg
+  [telnet]
+  enabled = true  # this just enables telnet pot
+  [hostname]
+  WebSvr  # hostname the attacker sees
+  [Port to listen to]
+  listen_port=22  # this is a prep step for the iptables prerouting rules that follow
+sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222  # redirect all ssh to 2222
+sudo iptables -t nat -A PREROUTING -p tcp --dport 23 -j REDIRECT --to-port 2223  # redirect all telnet to 2223
+cd /cowrie/utils
+./createfs.py > fs.pickle
+nano userdb.txt  # create your fake !deny and *accept passwords
+
+sudo bin/cowrie start  # to start cowrie
+cat cowrie.pid  # verify that it does have a pid
+netstat -ant | grep 22  # verify that cowrie pid is tcp:22 pid
 
 
-
-post install - https://cowrie.readthedocs.io/en/latest/kippo-graph/README.html
+post install setup
+  https://cowrie.readthedocs.io/en/latest/kippo-graph/README.html
+  output logfiles to kippo-graph
+  output logfiles to splunk instance
