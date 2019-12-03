@@ -1,0 +1,16 @@
+vi /etc/ssh/sshd_config  # to open up and edit sshd port number
+  # What ports, IPs and protocols we listen for
+  Port 12345  # replace with whatever non 22||2222 combo you want
+sudo service ssh restart  # refresh tcp connections to verify that change occured
+netstat -ant  # make sure there's an ssh running on port 12345
+sudo apt-get update  # last minute update before install and config
+sudo apt-get install git python-virtualenv libssl-dev libffi-dev build-essential libpython3-dev python3-minimal authbind virtualenv
+adduser --disabled-password cowrie  # create cowrie user, no password
+sudo su - cowrie  # change to cowrie user (line 16 fails if you don't)
+cd /home/cowrie  # move to the user cowrie's home dir
+sudo git clone http://github.com/micheloosterhof/cowrie  # clone the repo onto your disk
+cd cowrie  # go to cloned dir
+sudo virtualenv --python=python3 cowrie-env  # set up virtual environment
+source cowrie-env/bin/activate  # activate virtual env and install pip packages within it
+pip install --upgrade pip
+pip install --upgrade -r requirements.txt  ### HALT: running into a permission denied here, line 8 needs password for sudoer.
