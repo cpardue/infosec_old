@@ -14,3 +14,8 @@ sudo virtualenv --python=python3 cowrie-env  # set up virtual environment
 source cowrie-env/bin/activate  # activate virtual env and install pip packages within it
 pip install --upgrade pip
 pip install --upgrade -r requirements.txt  ### HALT: running into a permission denied here, line 8 needs password for sudoer.
+
+
+
+
+post install - https://cowrie.readthedocs.io/en/latest/kippo-graph/README.html
