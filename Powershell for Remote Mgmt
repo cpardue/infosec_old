@@ -1,39 +1,70 @@
-solid resource for ideas and scripting methods, including GPO mgmt
-https://devblogs.microsoft.com/scripting/
+#solid resource for ideas and scripting methods, including GPO mgmt
+#https://devblogs.microsoft.com/scripting/
+#Setup Begin###########################################################
+#BELOW IS A VERIFIED METHOD OF REMOTE PS SESSION ON NON-DOMAIN WORKSTATIONS
+#Commands to run on remote PC
+#Winkey, type "powersh", Rclick "Run as Administrator"
+Enable-PSRemoting -SkipNetworkProfileCheck -Force
 
-BELOW IS A VERIFIED METHOD OF REMOTE PS SESSION ON NON-DOMAIN WORKSTATIONS
+#set current network connection to "private network" if not already
+#join the workgroup if not already
 
-Enable PSRemoting on remote pc
-Winkey, type "powersh", Rclick "Run as Administrator"
-enter>Enable-PSRemoting -SkipNetworkProfileCheck -Force
+#then run either
+Set-Item wsman:\localhost\client\trustedhosts *
+Set-Item wsman:\localhost\client\trustedhosts <ipaddress>
 
-set current network connection to "private network"
-join the workgroup
+#NOTE PSRemoting uses 
+#TCP/5985 = HTTP
+#TCP/5986 = HTTPS
 
-then run either
-enter>Set-Item wsman:\localhost\client\trustedhosts *
-enter>Set-Item wsman:\localhost\client\trustedhosts <ipaddress>
-
-NOTE PSRemoting uses 
-TCP/5985 = HTTP
-TCP/5986 = HTTPS
-
-then on mgmt pc
-run either
+#Commands to run on mgmt pc
+#run either
 enter>Set-Item wsman:\localhost\client\trustedhosts *
 enter>Set-Item wsman:\localhost\client\trustedhosts <tgt pc ip list>
-then
-enter>Restart-Service WinRM
-then 
-enter>Test-WsMan <tgt pc>
+#then
+Restart-Service WinRM
+#then 
+Test-WsMan <tgt pc>
+#Setup End#############################################################
 
-to invoke cmds on tgt pc
->Invoke-Command -ComputerName <tgt pc> -ScriptBlock { COMMAND } -credential <username>
+#Remote Admin Begin####################################################
+#Section 1 - Connect####################
+#to test connection to a pc
+Test-WsMan <computername>
 
-to run remote pssession
->Enter-PSSession -ComputerName <tgt pc> -Credential <username>
+#to invoke cmds on tgt pc
+Invoke-Command -ComputerName <tgt pc> -ScriptBlock { COMMAND } -credential <username>
+
+#to run remote pssession
+Enter-PSSession -ComputerName <tgt pc> -Credential <username>
+
+#Section 2 - Commands###################
+#Rename ComputerName
+Rename-Computer -NewName <newname> -Restart
+
+#List LocalUsers
+Get-LocalUser
+
+#Change Password
+$Password = Read-Host -AsSecureString
+$UserAccount = Get-LocalUser -Name <username>
+$UserAccount | Set-LocalUser -Password $Password
+
+#Change Username
+Rename-LocalUser -Name <currentname> -NewName <newname>
+
+#Change User Description
+#Set-LocalUser -Name <username> -Description <newdescription>
 
 
+
+#Section 3 - Scripts####################
+#placeholder
+
+#Cheat Sheet###########################################################
+#record session transcript
+Start-Transcript -Path "C:\path\to\filename.txt" -NoClobber
+(Ctrl-R searches command history)
 Command name	    Alias	                Description
 Get-Help                                Prints helpful information about value given after command
 Export-CSV                              Used with pipes, exports the stdout of preceeding command into stated path
