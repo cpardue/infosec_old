@@ -1,7 +1,13 @@
-#solid resource for ideas and scripting methods, including GPO mgmt
-#https://devblogs.microsoft.com/scripting/
+# Step 1. Get PS-Remoting up and running
+# Step 2. Install chocolatey
+# Step 3. Manage local policy via PSRemoting && Manage packages via chocolatey
+# solid resource for ideas and scripting methods, including GPO mgmt
+# https://devblogs.microsoft.com/scripting/
+# see ~/infosec/wiki/powershell for repos of powershell scripts
+
 #Setup Begin###########################################################
 #BELOW IS A VERIFIED METHOD OF REMOTE PS SESSION ON NON-DOMAIN WORKSTATIONS
+
 #Commands to run on remote PC
 #Winkey, type "powersh", Rclick "Run as Administrator"
 Enable-PSRemoting -SkipNetworkProfileCheck -Force
@@ -25,9 +31,11 @@ enter>Set-Item wsman:\localhost\client\trustedhosts <tgt pc ip list>
 Restart-Service WinRM
 #then 
 Test-WsMan <tgt pc>
+
 #Setup End#############################################################
 
 #Remote Admin Begin####################################################
+
 #Section 1 - Connect####################
 #to test connection to a pc
 Test-WsMan <computername>
@@ -56,6 +64,7 @@ Rename-LocalUser -Name <currentname> -NewName <newname>
 #Change User Description
 #Set-LocalUser -Name <username> -Description <newdescription>
 
+#Remote Admin End######################################################
 
 #Cheat Sheet###########################################################
 #record session transcript
