@@ -17,7 +17,7 @@ Enable-PSRemoting -SkipNetworkProfileCheck -Force
 
 #then run either
 Set-Item wsman:\localhost\client\trustedhosts *
-Set-Item wsman:\localhost\client\trustedhosts <ipaddress>
+Set-Item wsman:\localhost\client\trustedhosts -Value '<ipaddress>,<ipaddress>'
 
 #NOTE PSRemoting uses 
 #TCP/5985 = HTTP
