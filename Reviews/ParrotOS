@@ -1,0 +1,9 @@
+What: 
+linux distro pentesting oriented
+Impressions: 
+debian based, lightweight, has anonsurf already included, along with some other stuff that's not inherent in kali.  
+it's pretty slick, i like it.  32-bit is no longer supported, so the pitch that it's lightweight enough to be used 
+on lower power machines is kind of moot.  won't install on my netbook, for instance, where kali will in 32-bit 
+supported form.  but overall this is just another debian distro, nothing special.  
+Result: 
+suitable for personal daily driver where kali is not
