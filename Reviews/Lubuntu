@@ -1,0 +1,12 @@
+What:
+Lightweight Ubuntu OS
+Impressions:
+Purpose of testing was to contrast against CentOS Minimal as possible host for various *nux server builds.
+Was hoping that it would be light enough to provide a friendlier admin experience for future non-Linux 
+IT Admins, and also be light enough to host production services when installed on retired machines.  
+It is lighter than Ubuntu vanilla, but not near as light as minimal installs of other Linux distros.  
+Is about on par with any xfce4 equipped distro.  I don't think that the stock desktop environment is 
+"enough like windows" to really replace stripped down win10 machines for future admins who don't know 
+anything about linux.  
+Result:
+Abandoned, just stick with minimal installs, or use a regular distro with xfce4 DE.  
