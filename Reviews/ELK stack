@@ -1,3 +1,16 @@
 What:
+Elastic Stack = ElasticSearch indexer, Logstash log forwarder, Kibana graphing dashboard.
 Impression:
+I had set this up to parse and view snort logs on a test machine.  
+Test machine was low resource machine, elasticsearch in particular absolutely thrashed the CPU's cyclic rate.  
+Was difficult to get the hang of pointing all three pieces of stack toward another, initially.  
+The trick is to have E output to L output to K.  Just find the config or yaml for each and set the paths.  
+Heard that LAMP is similar, just more specifically for webserver.  
+I was able to get feed in multiple log sources, all the way up to the kibana dashboard.  
+However, I was trying to use a template for the kibana dashboard and only got 60% of the dashboard linking properly.  
+At that point I ate up my testing time and had to move on to another method for the whole NIDS, given Elasticsearch's 
+resource intensiveness.
+So overall, it looks like the ELK stack should be on a modern machine and from what I was able to feed into 
+it, ELK stack is very very very useful for funneling various types of logs into one format and dash.  
 Result:
+Abandoned and moved on to try smoothsec build.  
