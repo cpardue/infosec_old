@@ -1,0 +1,11 @@
+On Windows PC
+goto https://www.microsoft.com/en-us/download/details.aspx?id=34811  # this is the kinect runtime env v1.6
+download and install as admin
+goto https://www.microsoft.com/en-us/download/confirmation.aspx?id=44561  # this is the kinect SDK v2
+download and install as admin
+
+goto e2esoft.cn>Products>KinectCam>Download ZIP
+Click the "Start" button and select the "Computer" option. Double-click on the "C:" drive icon to open it. Open the "KinectCam" folder and drag the "KinectCam.ax" file into the computer's "C:" drive.
+Click the "Start" button and type "command prompt" in the search box. Right-click the "Command Prompt" option in the search results and select the "Run as Administrator" option to launch the command prompt.
+Type "cd "C:\"" in the command prompt window and press the "Enter" key. Type "c:\windows\system32\regsvr32.exe KinectCam.ax" in the command prompt window and press the "Enter" key.
+Connect the Kinect sensor to the computer via the device's USB connection cable. Now, whenever you launch a program that requires the use of a webcam, the Kinect sensor will show up as a compatible webcam device.
