@@ -26,21 +26,7 @@ needs, and run the default.cmd as administrator on the endpoint.
 
 ***
 ## Remote Administration
-
-### [Free Endpoint Administration](https://www.microsoft.com/en-us/cloud-platform/windows-admin-center)
-Windows Admin Center will allow you to perform most basic admin functions on windows boxes remotely.  
-Will also allow you to enter a remote powershell session for much more advanced stuff.  
-1. Install it on mgmt endpoint.  
-2a. Gather the following info on endpoints:
-      ComputerName
-      Admin Account Name
-      Admin Account Password
-2b. Enable the following on endpoints: 
-      Set connection type Private
-      enable PSRemoting via powershell (Admin:PS>Enable-PSRemoting -SkipNetworkProfileCheck -Force)
-      set localhost to mgmt endpoint (Admin:PS>Set-Item wsman:\localhost\client\trustedhosts <mgmtIP>)
-3. Open WAC on mgmt endpoint, add connections from 2a.  
-
+ 
 ### [Free SNMP Network Monitor](https://www.paessler.com/download/prtg-download)
 PRTG Network Monitor allows you to set up 100 free SNMP or ping sensors in your network.  
 It's a very legitimate solution for monitoring any layer3 stuff in the network, allows 
