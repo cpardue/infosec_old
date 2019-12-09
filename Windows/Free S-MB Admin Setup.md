@@ -1,6 +1,6 @@
 # Small Business Free Admin Setup
 Free IT Admin set up for small businesses who don't actually have an IT budget.  
-These are all apps that run on the Windows platform and can be run on a laptop with 4GB memory.
+These are all confirmed as working on Windows 10, and confirmed to work with each other simultaneously.
 
 [title](url)
 ***
@@ -54,3 +54,8 @@ Chocolatey is an app that can be installed and leveraged with powershell or powe
 of packages and apps out to multiple endpoints at once.  It's super easy to use, and can also push Chrome Extension 
 installs out to endpoints.  The chocolatey public repo has a ton of open source productivity software available as well.  
 
+### [Free RDP that is not port 3389](https://remotedesktop.google.com/access/)
+Chrome Remote Desktop allows you to RDP into a machine through the Chrome Browser.  
+You can install a bunch of Remote Access clients on endpoints and access them from the above url, 
+or you can install the Remote Support clients, which allows users to request RDP, and give you an 
+access code to connect with.  
