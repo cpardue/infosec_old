@@ -1,0 +1,19 @@
+create a self signed certificate
+PS D:\> New-SelfSignedCertificate  -DnsName "$ENV:COMPUTERNAME" -KeyAlgorithm RSA -KeyLength 2048 -NotAfter ((Get-Date).AddYears(10)) -CertStoreLocation "cert:\LocalMachine\My" 
+PS D:\> dir CERT:\LocalMachine\My\
+Thumbprint
+----------
+F3880C95203CA33770BFC314FC5923EF74C47000
+
+enable https
+PS D:\> New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbPrint "F3880C95203CA33770BFC314FC5923EF74C47000" -Hostname "yourHostname" –Force
+
+disable http
+PS D:\> Get-ChildItem WSMan:\localhost\Listener | ?{$_.Keys -contains "Transport=HTTP"}|remove-item -recurse -Confirm:$false
+
+check listener
+Winrm enumerate winrm/config/listener
+
+start session with self signed certificate
+PS D:\> Enter-PSSession -ComputerName theRemoteComputer -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck) -Credential (Get-Credential)
+[theRemoteComputer ]: PS C:\Users\myUser\Documents>
