@@ -1,0 +1,13 @@
+What:
+Localized Domain or Workgroup Administration w/Azure integration
+Impression: 
+Slick, this gives me everything that I had just set up through powershell WinRm, but in gui form.  
+Can perform a lot of basic remote mgmt such as add/remove, Enter-PSSession, control processes, 
+rename computer, view system info, etc.  Just install Windows Admin Center, it's free, run it on 
+your workstation, enroll clients computers.  
+Client computers must be on a private network, their conenction type must be set to private.  
+Client computers must be in the same workgroup.  Client computers must connect by computer name.  
+I think client computers must have WinRM enabled first before they can be enrolled, but I'm not sure.  
+I had just already enrolled them and added the trustedhost before trying WAC.  
+Result:
+In production.
