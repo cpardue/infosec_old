@@ -1,3 +1,6 @@
+This is an edited script from [Disassembler0's repo](https://github.com/Disassembler0/Win10-Initial-Setup-Script) in which 
+I have added a chocolatey install function and set of chocolatey packages for personal use.  
+
 ## Contents
  - [Description](#description)
  - [Usage](#usage)
