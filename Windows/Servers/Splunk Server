@@ -1,0 +1,8 @@
+# installing
+install splunk for windows
+goto splunk>apps>pickanapp
+log in w/splunk.com user creds to download/install app
+install whatever apps from splunk
+
+# setting up
+tbd
