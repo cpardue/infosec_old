@@ -1,0 +1,29 @@
+Mobile SIEM platform
+
+windows pro on laptop
+goto fork1(#1,#2)
+
+fork1 #1
+install cybertrace for windows
+install splunk for windows
+install splunk app cybertrace
+tbd
+
+fork1 #2 (ignore for now)
+install feature hyper-v
+hyper-v manager, create virtual switch external
+hyper-v manager, create virtual machine
+goto fork2(#1,#2)
+
+fork2 #1 (ignore for now)
+install Alpine OS
+install splunk
+install splunk app cybertrace
+
+fork2 #2 (ignore for now)
+install OSSIM OS
+install splunk
+install splunk app OSSIM
+install splunk app cybertrace
+
+
