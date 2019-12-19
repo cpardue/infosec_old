@@ -1,23 +1,37 @@
-***
 # DIRECTORY
 ### [CertStudy General](https://github.com/cpardue/infosec/tree/master/CertStudy)
-  CEH  # placeholder for future link
-  OSCP  # placeholder for future link
-  CCNA  # placeholder for future link
+  [CEH study notes](https://github.com/cpardue/infosec/tree/master/CertStudy)
+  
+  [OSCP study notes](https://github.com/cpardue/infosec/blob/master/CertStudy/OSCP.md)
+  
+  [CCNA study notes](https://github.com/cpardue/infosec/blob/master/CertStudy/CISCO.md)
+  
 ### [Configs General](https://github.com/cpardue/infosec/tree/master/Configs)
-  CISCO  # placeholder for future link
-  Free SMB Admin Setup  # placeholder for future link
-  Firewall Checklist  # placeholder for future link
+  [CISCO Generic configs](https://github.com/cpardue/infosec/blob/master/Configs/Cisco)
+  
+  [Prototype SMB Freeware Office setup](https://github.com/cpardue/infosec/blob/master/Configs/IT%20Administration%20Setup%20for%20Poor%20Small-Medium%20Businesses.md)
+  
+  [Firewall Checklist](https://github.com/cpardue/infosec/blob/master/Configs/firewall_checklist)
+  
+  [Splunk Configs](https://github.com/cpardue/infosec/blob/master/Configs/Splunk%20configs.md)
+  
 ### [Linux General](https://github.com/cpardue/infosec/tree/master/Linux)
-  BASh  # placeholder for future link
-  Servers  # placeholder for future link
+  [BASh notes](https://github.com/cpardue/infosec/tree/master/Linux/Bash)
+  
+  [Server setups](https://github.com/cpardue/infosec/tree/master/Linux/Servers)
+  
 ### [Offensive General](https://github.com/cpardue/infosec/tree/master/Offensive)
-  CTF  # placeholder for future link
-  Wordlists  # placeholder for future link
-  Wireshark Filters  # placeholder for future link
+  [CTF notes](https://github.com/cpardue/infosec/tree/master/Offensive/CTF)
+  
+  [Wordlists](https://github.com/cpardue/infosec/tree/master/Offensive/wordlists)
+  
+  [Wireshark Filters](https://github.com/cpardue/infosec/blob/master/Offensive/wireshark_filters)
+  
 ### [Reviews General](https://github.com/cpardue/infosec/tree/master/Reviews)
-  placeholder  # placeholder for future link
+  [Generic Reviews](https://github.com/cpardue/infosec/tree/master/Reviews)
+  
 ### [Windows General](https://github.com/cpardue/infosec/tree/master/Windows)
-  Powershell  # placeholder for future link
-  Servers  # placeholder for future link
+  [Powershell basics](https://github.com/cpardue/infosec/tree/master/Windows/Powershell)
+  
+  [Server setups](https://github.com/cpardue/infosec/tree/master/Windows/Servers)
 
