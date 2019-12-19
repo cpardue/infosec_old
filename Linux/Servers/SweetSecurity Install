@@ -1,6 +1,6 @@
 # k so first you'll have to install bro, or you will run into an error during the sweetsecurity script at line 96.  
 # i'm installing on kali as root
-# use your brain, and sudo where i've forgotten to include it
+# use sudo where i've forgotten to include it
 
 # to install bro ids
 apt-get install cmake make gcc g++ flex bison libpcap-dev libssl1.0-dev python-dev swig zlib1g-dev sendmail sendmail-bin  # replaced libssl-dev with libssl1.0-dev as workaround
@@ -12,6 +12,7 @@ cd bro-2.5.2
 ./configure --prefix=/nsm/bro
 make
 sudo make install
+cp -r /nsm/bro /opt/nsm/bro
 export PATH=/nsm/bro/bin:$PATH  
 # the above has generated the cfg that the sweetsecurity script err's @
 # you may now skip down to line 24
