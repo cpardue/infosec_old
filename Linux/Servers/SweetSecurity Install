@@ -1,0 +1,28 @@
+# k so first you'll have to install bro, or you will run into an error during the sweetsecurity script at line 96.  
+# i'm installing on kali as root
+# use your brain, and sudo where i've forgotten to include it
+
+# to install bro ids
+apt-get install cmake make gcc g++ flex bison libpcap-dev libssl1.0-dev python-dev swig zlib1g-dev sendmail sendmail-bin  # replaced libssl-dev with libssl1.0-dev as workaround
+sudo mkdir -p /nsm/bro
+cd ~
+wget https://www.bro.org/downloads/bro-2.5.2.tar.gz
+tar -xvzf bro-2.5.2.tar.gz
+cd bro-2.5.2
+./configure --prefix=/nsm/bro
+make
+sudo make install
+export PATH=/nsm/bro/bin:$PATH  
+# the above has generated the cfg that the sweetsecurity script err's @
+# you may now skip down to line 24
+# the logical conclusion of this install are commented out below
+# nano /nsm/bro/etc
+# interface=<monitorinterface>
+# nano /nsm/bro/etc/broctl.cfg
+# MailTo = <email@email.com>
+
+# at this point we can proceed to travis' script
+cd ~/Downloads
+git clone --depth=1 https://github.com/travisfsmith/sweetsecurity
+cd sweet*
+python 
