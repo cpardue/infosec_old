@@ -1,7 +1,31 @@
-# k so first you'll have to install bro, or you will run into an error during the sweetsecurity script at line 96.  
-# i'm installing on kali as root
+# install of sweet security on a kav60 netbook for home lab use.  
+# OS build is most recent, updated kali version
+# hardware is intel n270 atom cpu, 2gb memory, and an SSD
+#
+#
+#
+#
+#
+# prep has involved setting up ssh server
+mkdir /etc/ssh/default_keys
+mv /etc/ssh/ssh_host_* /etc/ssh/default_keys/
+dpkg-reconfigure openssh-server
+nano /etc/ssh/sshd_config  # edit in your settings
+systemctl enable ssh.service
+systemctl start ssh.service
+# i then installed xrdp for later use, although ssh works just fine
+apt-get install xrdp
+service xrdp start
+service xrdp-sesman start
+systemctl enable xrdp
+#
+#
+#
+#
+#
+# k so first you'll have to install bro, or you will run into an error @ line 96 of sweet security script.  
 # use sudo where i've forgotten to include it
-
+#
 # to install bro ids
 apt-get install cmake make gcc g++ flex bison libpcap-dev libssl1.0-dev python-dev swig zlib1g-dev sendmail sendmail-bin  # replaced libssl-dev with libssl1.0-dev as workaround
 sudo mkdir -p /nsm/bro
@@ -21,9 +45,14 @@ export PATH=/nsm/bro/bin:$PATH
 # interface=<monitorinterface>
 # nano /nsm/bro/etc/broctl.cfg
 # MailTo = <email@email.com>
-
+#
+#
+#
+#
+#
 # at this point we can proceed to travis' script
 cd ~/Downloads
 git clone --depth=1 https://github.com/travisfsmith/sweetsecurity
 cd sweet*
-python 
+python setup.py
+#
