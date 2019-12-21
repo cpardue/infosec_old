@@ -1,0 +1,165 @@
+# Build Info
+# Hardware: kav60 netbook; eth0; wlan0
+# Software: Ubuntu 32-bit; Snort3; Pulled Pork; ELK stack; Splunk Unniversal Forwarder
+# Topology: netbook hosts snort and elk, forwards logs to separate splunk receiver
+#
+#
+#
+#
+#
+# snort install prereq's as outlined in https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/211/original/Snort3.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20191221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191221T191232Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=655b12263db5b7a5ed7a3b1ec1ae0a4a31c632f85df17ef5716a6e37e33a12a5
+sudo apt-get update && sudo apt-get dist-upgrade -y
+sudo dpkg-reconfigure tzdata
+mkdir ~/snort_src
+cd ~/snort_src
+sudo apt-get install -y build-essential autotools-dev libdumbnet-dev libluajit-5.1-dev libpcap-dev zlib1g-dev pkg-config libhwloc-dev cmake
+sudo apt-get install -y liblzma-dev openssl libssl-dev cpputest libsqlite3-dev uuid-dev
+sudo apt-get install -y asciidoc dblatex source-highlight w3m
+sudo apt-get install -y libtool git autoconf  # not necessary in ubuntu 19
+sudo apt-get install -y bison flex
+sudo apt-get install -y libnetfilter-queue-dev libmnl-dev  # this is only necessary if inline
+cd ~/snort_src
+wget https://github.com/rurban/safeclib/releases/download/v04062019/libsafec-04062019.0-ga99a05.tar.gz
+tar -xzvf libsafec-04062019.0-ga99a05.tar.gz
+cd libsafec-04062019.0-ga99a05/
+./configure
+make
+sudo make install
+cd ~/snort_src/
+wget https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
+tar -xzvf pcre-8.43.tar.gz
+cd pcre-8.43
+./configure
+make
+sudo make install
+cd ~/snort_src
+wget https://github.com/gperftools/gperftools/releases/download/gperftools-2.7/gperftools-2.7.tar.gz
+tar xzvf gperftools-2.7.tar.gz
+cd gperftools-2.7
+./configure
+make
+sudo make install
+cd ~/snort_src
+wget http://www.colm.net/files/ragel/ragel-6.10.tar.gz
+tar -xzvf ragel-6.10.tar.gz
+cd ragel-6.10
+./configure
+make
+sudo make install
+cd ~/snort_src
+wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+tar -xvzf boost_1_71_0.tar.gz  # do not install
+cd ~/snort_src
+wget https://github.com/intel/hyperscan/archive/v5.2.0.tar.gz
+tar -xvzf v5.2.0.tar.gz
+mkdir ~/snort_src/hyperscan-5.2.0-build
+cd hyperscan-5.2.0-build/
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DBOOST_ROOT=~/snort_src/boost_1_71_0/ ../hyperscan-5.2.0
+make
+sudo make install
+cd ~/snort_src
+wget https://github.com/google/flatbuffers/archive/v1.11.0.tar.gz \
+-O flatbuffers-v1.11.0.tar.gz
+tar -xzvf flatbuffers-v1.11.0.tar.gz
+mkdir flatbuffers-build
+cd flatbuffers-build
+cmake ../flatbuffers-1.11.0
+make
+sudo make install
+cd ~/snort_src
+git clone https://github.com/snort3/libdaq.git
+cd libdaq
+./bootstrap
+./configure
+make
+sudo make install
+sudo ldconfig
+#
+#
+#
+#
+#
+# snort 3 install
+cd ~/snort_src
+git clone git://github.com/snortadmin/snort3.git
+cd snort3
+./configure_cmake.sh --prefix=/usr/local --enable-tcmalloc
+cd build
+make
+sudo make install
+/usr/local/bin/snort -V  # to verify
+export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;
+export SNORT_LUA_PATH=/usr/local/etc/snort
+sh -c "echo 'export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;' >> ~/.bashrc"
+sh -c "echo 'export SNORT_LUA_PATH=/usr/local/etc/snort' >> ~/.bashrc"
+sudo visudo -f /etc/sudoers.d/snort-lua
+sudo echo 'Defaults env_keep += "LUA_PATH SNORT_LUA_PATH"' >> /etc/sudoers.d/snort-lua  # just add that to the end if echo !work
+snort -c /usr/local/etc/snort/snort.lua  # to validate config
+# configure network cards
+sudo ethtool -k <yournic> | grep receive-offload  # verify output as below
+# generic-receive-offload: on
+# large-receive-offload: off [fixed]
+sudo vi /lib/systemd/system/ethtool.service  # enter the below
+#[Unit]
+#Description=Ethtool Configration for Network Interface
+#[Service]
+#Requires=network.target
+#Type=oneshot
+#ExecStart=/sbin/ethtool -K <yournic> gro off
+#ExecStart=/sbin/ethtool -K <yournic> lro off
+#[Install]
+#WantedBy=multi-user.target
+sudo systemctl enable ethtool
+sudo service ethtool start
+sudo ethtool -k ens3 | grep receive-offload  # verify output as below
+# generic-receive-offload: off
+# large-receive-offload: off [fixed]
+#
+#
+#
+#
+#
+# install openappID
+cd ~/snort_src/
+wget https://snort.org/downloads/openappid/<number> -O OpenAppId-<number>
+tar -xzvf OpenAppId-<number>
+sudo cp -R odp /usr/local/lib/
+sudo vi /usr/local/etc/snort/snort.lua  # enter the below [NOTE you must have 4 spaces as indent, not a tab]
+# appid =
+#{
+#    −− appid requires this to use appids in rules
+#    app_detector_dir = '/usr/local/lib',
+#}
+snort -c /usr/local/etc/snort/snort.lua --warn-all  # verify as "Snort successfully"
+sudo mkdir /usr/local/etc/snort/rules
+sudo touch /usr/local/etc/snort/rules/local.rules
+sudo vi /usr/local/etc/snort/rules/local.rules  # enter below or similar as test alerts
+#alert tcp any any -> any any ( msg:"Facebook Detected"; appids:"Facebook";sid:10000001; )
+#2 alert icmp any any -> any any (msg:"ICMP Traffic Detected";sid:10000002;)
+snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules  # verify with output "Snort successfully"
+sudo snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules -i <yournic> -A alert_fast -s 65535 -k none  # test run
+wget facebook.com  # verify test alert
+ctrl_c
+sudo mkdir /var/log/snort
+sudo vi /usr/local/etc/snort/snort.lua  $ enter below
+#appid =
+#{
+#    app_detector_dir = '/usr/local/lib',
+#    log_stats = true,
+#}
+sudo snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules -i eth0 -A alert_fast -s 65535 -k none -l /var/log/snort
+wget facebook.com
+wget facebook.com
+ping facebook.com
+ping google.com
+ctrl_c
+ls -l /var/log/snort | grep appid_stats.log
+sudo chmod a+r /var/log/snort/appid_stats.log
+~/snort_src$ cat /var/log/snort/appid_stats.log
+#
+#
+#
+#
+#
+# install snort community rules
+# pick up at http://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/211/original/Snort3.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20191221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191221T191232Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=655b12263db5b7a5ed7a3b1ec1ae0a4a31c632f85df17ef5716a6e37e33a12a5 page15
