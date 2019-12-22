@@ -1,7 +1,8 @@
 # Build Info
-# Hardware: kav60 netbook; eth0; wlan0
-# Software: Ubuntu 32-bit; Snort3; Pulled Pork; ELK stack; Splunk Unniversal Forwarder
+# Hardware: kav60 netbook, L3 switch, management pc
+# Software: kali rolling 32-bit; Snort 3; Pulled Pork; ELK stack; Splunk Universal Forwarder
 # Topology: netbook hosts snort and elk, forwards logs to separate splunk receiver
+# Purpose: get snort 3 beta talking to splunk, i want to see what my smart tv is doing
 #
 #
 #
@@ -11,7 +12,6 @@
 sudo apt-get update && sudo apt-get dist-upgrade -y
 sudo dpkg-reconfigure tzdata
 mkdir ~/snort_src
-cd ~/snort_src
 sudo apt-get install -y build-essential autotools-dev libdumbnet-dev libluajit-5.1-dev libpcap-dev zlib1g-dev pkg-config libhwloc-dev cmake
 sudo apt-get install -y liblzma-dev openssl libssl-dev cpputest libsqlite3-dev uuid-dev
 sudo apt-get install -y asciidoc dblatex source-highlight w3m
@@ -58,8 +58,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DBOOST_ROOT=~/snort_src/boost_1_71_0/ .
 make
 sudo make install
 cd ~/snort_src
-wget https://github.com/google/flatbuffers/archive/v1.11.0.tar.gz \
--O flatbuffers-v1.11.0.tar.gz
+wget https://github.com/google/flatbuffers/archive/v1.11.0.tar.gz -O flatbuffers-v1.11.0.tar.gz
 tar -xzvf flatbuffers-v1.11.0.tar.gz
 mkdir flatbuffers-build
 cd flatbuffers-build
@@ -76,7 +75,7 @@ sudo make install
 sudo ldconfig
 #
 #
-#
+# (all of the above has been verified as working in kali rolling 32-bit)
 #
 #
 # snort 3 install
