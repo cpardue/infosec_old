@@ -75,7 +75,7 @@ sudo make install
 sudo ldconfig
 #
 #
-# (all of the above has been verified as working in kali rolling 32-bit)
+# 
 #
 #
 # snort 3 install
@@ -87,6 +87,7 @@ cd build
 make
 sudo make install
 /usr/local/bin/snort -V  # to verify
+###(all of the above has been verified as working without error, dec2019, on kali rolling updated)###
 export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;
 export SNORT_LUA_PATH=/usr/local/etc/snort
 sh -c "echo 'export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;' >> ~/.bashrc"
@@ -161,4 +162,29 @@ sudo chmod a+r /var/log/snort/appid_stats.log
 #
 #
 # install snort community rules
-# pick up at http://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/211/original/Snort3.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXACIED2SPMSC7GA%2F20191221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20191221T191232Z&X-Amz-Expires=172800&X-Amz-SignedHeaders=host&X-Amz-Signature=655b12263db5b7a5ed7a3b1ec1ae0a4a31c632f85df17ef5716a6e37e33a12a5 page15
+cd ~/snort_src/
+wget https://www.snort.org/downloads/community/snort3-community-rules.tar.gz
+tar -xvzf snort3-community-rules.tar.gz
+cd snort3-community-rules
+sudo mkdir /usr/local/etc/snort/rules
+sudo mkdir /usr/local/etc/snort/builtin_rules
+sudo mkdir /usr/local/etc/snort/so_rules
+sudo mkdir /usr/local/etc/snort/lists
+sudo cp snort3-community.rules /usr/local/etc/snort/rules/
+sudo cp sid-msg.map /usr/local/etc/snort/rules/
+snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/snort3-community.rules  # to verify
+# enable built-in rules
+sudo vi /usr/local/etc/snort/snort.lua  # edit in as below
+#ips = 
+#{
+#    -- use this to enable decoded and instpector alerts
+#    enable_builtin_rules = true;
+#
+#    -- use include for rules files; be sure to set your path
+#    -- note that rules files can include other rules files
+#    --incldue = 'snort3-community.rules',
+#}
+snort -c /usr/local/etc/snort/snort.lua  # to reverify as no errors
+snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/snort3-community.rules  # to reverify as more rules than above
+# snort configuration files pick back up at pdf pg18
+
