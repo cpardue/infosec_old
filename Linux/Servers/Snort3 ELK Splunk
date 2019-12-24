@@ -158,9 +158,6 @@ cat /var/log/snort/appid_stats.log
 #
 #
 #
-#########################################################################################
-#####################(tested and verified all down to this line)#########################
-#########################################################################################
 #
 #
 # install snort community rules
@@ -218,7 +215,81 @@ snort -c /usr/local/etc/snort/snort.lua  # verify as "successfully"
 #
 #
 #
+#########################################################################################
+#####################(tested and verified all down to this line)#########################
+#########################################################################################
 #
 #
 # passing pcap into snort, output alerts as csv
-# pick up at pdf page21
+cd ~
+mkdir pcaps
+cd pcaps
+wget https://download.netresec.com/pcap/maccdc-2012/maccdc2012_00000.pcap.gz
+gunzip maccdc2012_00000.pcap.gz
+wget https://download.netresec.com/pcap/maccdc-2012/maccdc2012_00001.pcap.gz
+gunzip maccdc2012_00001.pcap.gz
+snort -c /usr/local/etc/snort/snort.lua -r ~/pcaps/maccdc2012_00000.pcap -A alert_fast -s 65535 -k none  # verify as below
+# 137538 alerts
+# Statistics: Detection: total alerts
+# 0hrs2min30sec
+# Summary
+# Statistics: timing: seconds
+#
+#
+#
+#
+#
+# JSON alerts output plugin
+sudo vi /usr/local/etc/snort/snort.lua  # modify as below
+262 --alert_csv =
+263 --{
+264 --file = true,
+265 --}
+266
+267 alert_json =
+268 {
+269 file = true,
+270 limit = 10,
+271 fields = 'seconds action class b64_data dir dst_addr \
+272 dst_ap dst_port eth_dst eth_len eth_src eth_type gid icmp_code \
+273 icmp_id icmp_seq icmp_type iface ip_id ip_len msg mpls pkt_gen \
+274 pkt_len pkt_num priority proto rev rule service sid src_addr \
+275 src_ap src_port target tcp_ack tcp_flags tcp_len tcp_seq \
+276 tcp_win tos ttl udp_len vlan timestamp',
+277 }
+sudo snort -c /usr/local/etc/snort/snort.lua --pcap-filter \*.pcap --pcap-dir ~/pcaps -l /var/log/snort -s 65535 -k none -m 0x1b
+ls -lh /var/log/snort  # to verify alerts output
+#
+#
+#
+#
+#
+# snort startup scripts
+sudo groupadd snort
+sudo useradd snort -r -s /sbin/nologin -c SNORT_IDS -g snort
+sudo rm /var/log/snort/*  # this removes old logs, mv if want to retain
+sudo chmod -R 5775 /var/log/snort
+sudo chown -R snort:snort /var/log/snort
+sudo vi /lib/systemd/system/snort3.service  # create systemd script as below
+#[Unit]
+#Description=Snort3 NIDS Daemon
+#After=syslog.target network.target
+#[Service]
+#Type=simple
+#ExecStart=/usr/local/bin/snort -c /usr/local/etc/snort/snort.lua -s 65535 -k none -l /var/log/snort -D -u snort -g snort -i <yournic> -m 0x1b
+#[Install]
+#WantedBy=multi-user.target
+sudo systemctl enable snort3
+sudo service snort3 start
+service snort3 status  # verify as active/running
+sudo journalctl -u snort3.service
+#
+#
+#
+#
+#
+# SPLUNK!
+pick up at pdf page30
+
+
+
