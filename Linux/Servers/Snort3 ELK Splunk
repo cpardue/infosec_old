@@ -87,19 +87,18 @@ cd build
 make
 sudo make install
 /usr/local/bin/snort -V  # to verify
-###(all of the above has been verified as working without error, dec2019, on kali rolling updated)###
 export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;
 export SNORT_LUA_PATH=/usr/local/etc/snort
 sh -c "echo 'export LUA_PATH=/usr/local/include/snort/lua/\?.lua\;\;' >> ~/.bashrc"
 sh -c "echo 'export SNORT_LUA_PATH=/usr/local/etc/snort' >> ~/.bashrc"
-sudo visudo -f /etc/sudoers.d/snort-lua
+sudo visudo -f /etc/sudoers.d/snort-lua  # create this file
 sudo echo 'Defaults env_keep += "LUA_PATH SNORT_LUA_PATH"' >> /etc/sudoers.d/snort-lua  # just add that to the end if echo !work
 snort -c /usr/local/etc/snort/snort.lua  # to validate config
 # configure network cards
 sudo ethtool -k <yournic> | grep receive-offload  # verify output as below
 # generic-receive-offload: on
 # large-receive-offload: off [fixed]
-sudo vi /lib/systemd/system/ethtool.service  # enter the below
+sudo vi /lib/systemd/system/ethtool.service  # create && enter the below
 #[Unit]
 #Description=Ethtool Configration for Network Interface
 #[Service]
@@ -111,7 +110,7 @@ sudo vi /lib/systemd/system/ethtool.service  # enter the below
 #WantedBy=multi-user.target
 sudo systemctl enable ethtool
 sudo service ethtool start
-sudo ethtool -k ens3 | grep receive-offload  # verify output as below
+sudo ethtool -k <yournic> | grep receive-offload  # verify output as below
 # generic-receive-offload: off
 # large-receive-offload: off [fixed]
 #
@@ -121,10 +120,10 @@ sudo ethtool -k ens3 | grep receive-offload  # verify output as below
 #
 # install openappID
 cd ~/snort_src/
-wget https://snort.org/downloads/openappid/<number> -O OpenAppId-<number>
+wget https://snort.org/downloads/openappid/<number> -O OpenAppId-<number>  # where <number> is currently 12159
 tar -xzvf OpenAppId-<number>
 sudo cp -R odp /usr/local/lib/
-sudo vi /usr/local/etc/snort/snort.lua  # enter the below [NOTE you must have 4 spaces as indent, not a tab]
+sudo vi /usr/local/etc/snort/snort.lua  # enter the below at ~line89 [NOTE you must have 4 spaces as indent, not a tab]
 # appid =
 #{
 #    −− appid requires this to use appids in rules
@@ -134,20 +133,20 @@ snort -c /usr/local/etc/snort/snort.lua --warn-all  # verify as "Snort successfu
 sudo mkdir /usr/local/etc/snort/rules
 sudo touch /usr/local/etc/snort/rules/local.rules
 sudo vi /usr/local/etc/snort/rules/local.rules  # enter below or similar as test alerts
-#alert tcp any any -> any any ( msg:"Facebook Detected"; appids:"Facebook";sid:10000001; )
-#2 alert icmp any any -> any any (msg:"ICMP Traffic Detected";sid:10000002;)
+#alert tcp any any -> any any ( msg:"Facebook Detected"; appids:"Facebook"; sid:10000001; )
+#alert icmp any any -> any any ( msg:"ICMP Traffic Detected"; sid:10000002; )
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules  # verify with output "Snort successfully"
 sudo snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules -i <yournic> -A alert_fast -s 65535 -k none  # test run
 wget facebook.com  # verify test alert
 ctrl_c
 sudo mkdir /var/log/snort
-sudo vi /usr/local/etc/snort/snort.lua  $ enter below
+sudo vi /usr/local/etc/snort/snort.lua  $ enter below ~line89
 #appid =
 #{
 #    app_detector_dir = '/usr/local/lib',
 #    log_stats = true,
 #}
-sudo snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules -i eth0 -A alert_fast -s 65535 -k none -l /var/log/snort
+sudo snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/local.rules -i <yournic> -A alert_fast -s 65535 -k none -l /var/log/snort
 wget facebook.com
 wget facebook.com
 ping facebook.com
@@ -155,10 +154,13 @@ ping google.com
 ctrl_c
 ls -l /var/log/snort | grep appid_stats.log
 sudo chmod a+r /var/log/snort/appid_stats.log
-~/snort_src$ cat /var/log/snort/appid_stats.log
+cat /var/log/snort/appid_stats.log
 #
 #
 #
+#########################################################################################
+#####################(tested and verified all down to this line)#########################
+#########################################################################################
 #
 #
 # install snort community rules
@@ -174,7 +176,7 @@ sudo cp snort3-community.rules /usr/local/etc/snort/rules/
 sudo cp sid-msg.map /usr/local/etc/snort/rules/
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/snort3-community.rules  # to verify
 # enable built-in rules
-sudo vi /usr/local/etc/snort/snort.lua  # edit in as below
+sudo vi /usr/local/etc/snort/snort.lua  # edit in as below at ~line169
 #ips = 
 #{
 #    -- use this to enable decoded and instpector alerts
@@ -182,7 +184,7 @@ sudo vi /usr/local/etc/snort/snort.lua  # edit in as below
 #
 #    -- use include for rules files; be sure to set your path
 #    -- note that rules files can include other rules files
-#    --incldue = 'snort3-community.rules',
+#    --include = 'snort3-community.rules',
 #}
 snort -c /usr/local/etc/snort/snort.lua  # to reverify as no errors
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/snort3-community.rules  # to reverify as more rules than above
@@ -209,9 +211,8 @@ sudo vi /usr/local/etc/snort/rules/sid-msg.map  # enter the below
 #10000002 || Facebook Traffic Seen || url,facebook.com
 sudo vi /usr/local/etc/snort/snort.lua  # enter the below at line24
 #HOME_NET = '<yoursubnet>/<cider>'
-sudo nano /usr/local/etc/snort/rules/ips.include  # verify as below starting at line169
 #    enable_builtin_rules = true,  # at line172
-#    --include = 'snort3_community.rules'  # at line174
+#    --include = 'snort3_community.rules'  # at line176
 #    include = RULE_PATH .. '/ips.include',  # at line177
 snort -c /usr/local/etc/snort/snort.lua  # verify as "successfully"
 #
