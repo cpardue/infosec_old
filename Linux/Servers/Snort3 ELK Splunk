@@ -215,9 +215,6 @@ snort -c /usr/local/etc/snort/snort.lua  # verify as "successfully"
 #
 #
 #
-#########################################################################################
-#####################(tested and verified all down to this line)#########################
-#########################################################################################
 #
 #
 # passing pcap into snort, output alerts as csv
@@ -231,9 +228,9 @@ gunzip maccdc2012_00001.pcap.gz
 snort -c /usr/local/etc/snort/snort.lua -r ~/pcaps/maccdc2012_00000.pcap -A alert_fast -s 65535 -k none  # verify as below
 # 137538 alerts
 # Statistics: Detection: total alerts
-# 0hrs2min30sec
 # Summary
 # Statistics: timing: seconds
+# 00:17:00  # netbook was at 00:16:57 which is terribly slow
 #
 #
 #
@@ -243,19 +240,14 @@ snort -c /usr/local/etc/snort/snort.lua -r ~/pcaps/maccdc2012_00000.pcap -A aler
 sudo vi /usr/local/etc/snort/snort.lua  # modify as below
 262 --alert_csv =
 263 --{
-264 --file = true,
+264     --file = true,
 265 --}
 266
 267 alert_json =
 268 {
-269 file = true,
-270 limit = 10,
-271 fields = 'seconds action class b64_data dir dst_addr \
-272 dst_ap dst_port eth_dst eth_len eth_src eth_type gid icmp_code \
-273 icmp_id icmp_seq icmp_type iface ip_id ip_len msg mpls pkt_gen \
-274 pkt_len pkt_num priority proto rev rule service sid src_addr \
-275 src_ap src_port target tcp_ack tcp_flags tcp_len tcp_seq \
-276 tcp_win tos ttl udp_len vlan timestamp',
+269     file = true,
+270     limit = 10,
+271     fields = 'seconds action class b64_data dir dst_addr dst_ap dst_port eth_dst eth_len eth_src eth_type gid icmp_code icmp_id icmp_seq icmp_type iface ip_id ip_len msg mpls pkt_gen pkt_len pkt_num priority proto rev rule service sid src_addr src_ap src_port target tcp_ack tcp_flags tcp_len tcp_seq tcp_win tos ttl udp_len vlan timestamp',
 277 }
 sudo snort -c /usr/local/etc/snort/snort.lua --pcap-filter \*.pcap --pcap-dir ~/pcaps -l /var/log/snort -s 65535 -k none -m 0x1b
 ls -lh /var/log/snort  # to verify alerts output
@@ -286,6 +278,9 @@ sudo journalctl -u snort3.service
 #
 #
 #
+#########################################################################################
+#####################(tested and verified all down to this line)#########################
+#########################################################################################
 #
 #
 # SPLUNK!
