@@ -186,5 +186,38 @@ sudo vi /usr/local/etc/snort/snort.lua  # edit in as below
 #}
 snort -c /usr/local/etc/snort/snort.lua  # to reverify as no errors
 snort -c /usr/local/etc/snort/snort.lua -R /usr/local/etc/snort/rules/snort3-community.rules  # to reverify as more rules than above
-# snort configuration files pick back up at pdf pg18
-
+#
+#
+#
+#
+#
+# snort configuration files
+sudo vi /usr/local/etc/snort/snort_defaults.lua  # enter the below at line25
+#RULE_PATH = '/usr/local/etc/snort/rules'
+#BUILTIN_RULE_PATH = '/usr/local/etc/snort/builtin_rules'
+#PLUGIN_RULE_PATH = '/usr/local/etc/snort/so_rules'
+#-- If you are using reputation preprocessor set these
+#WHITE_LIST_PATH = '/usr/local/etc/snort/lists'
+#BLACK_LIST_PATH = '/usr/local/etc/snort/lists'
+sudo touch /usr/local/etc/snort/rules/ips.include  # if not already existing
+sudo touch /usr/local/etc/snort/rules/local.rules  # if not already existing
+sudo vi /usr/local/etc/snort/rules/ips.include  # enter the below
+#include rules/snort3-community.rules
+#include rules/local.rules
+sudo vi /usr/local/etc/snort/rules/sid-msg.map  # enter the below
+#10000001 || ICMP Test detected || url,tools.ietf.org/html/rfc792
+#10000002 || Facebook Traffic Seen || url,facebook.com
+sudo vi /usr/local/etc/snort/snort.lua  # enter the below at line24
+#HOME_NET = '<yoursubnet>/<cider>'
+sudo nano /usr/local/etc/snort/rules/ips.include  # verify as below starting at line169
+#    enable_builtin_rules = true,  # at line172
+#    --include = 'snort3_community.rules'  # at line174
+#    include = RULE_PATH .. '/ips.include',  # at line177
+snort -c /usr/local/etc/snort/snort.lua  # verify as "successfully"
+#
+#
+#
+#
+#
+# passing pcap into snort, output alerts as csv
+# pick up at pdf page21
