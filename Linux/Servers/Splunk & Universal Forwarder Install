@@ -16,9 +16,9 @@ wget -O splunkforwarder-7.3.2-c60db69f8e32-x64-release.msi 'https://www.splunk.c
 ### below is from https://hackertarget.com/install-splunk-ubuntu-in-5-mins/
 # download splunk for linux
 cd ~/Downloads
-&& wget -O splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=splunk&filename=splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb&wget=true'
-&& sudo dpkg -i ./splunk-*
-&& sudo /opt/splunk/bin/splunk start
+wget -O splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=splunk&filename=splunk-7.3.2-c60db69f8e32-linux-2.6-amd64.deb&wget=true'
+sudo dpkg -i ./splunk-*
+sudo /opt/splunk/bin/splunk start
 # type y to accept agreement
 # enter new splunk user username (splunkuser)
 # enter new plunk user password (B*...*k)
@@ -36,6 +36,8 @@ cd ~/Downloads
 #
 # installing splunk universal forwarder on Linux box
 uname -a # will tell you whether this box is 64 or 32 bit
+# 32-bit url is 
+# wget -O splunkforwarder-6.6.12.1-21b2b228fa50-linux-2.6-intel.deb 'https://www.splunk.com/page/download_track?file=6.6.12.1/linux/splunkforwarder-6.6.12.1-21b2b228fa50-linux-2.6-intel.deb&platform=Linux&architecture=x86&version=6.6.12.1&product=universalforwarder&typed=release&name=linux_installer'
 wget -O splunkforwarder-7.3.2-c60db69f8e32-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.2&product=universalforwarder&filename=splunkforwarder-7.3.2-c60db69f8e32-linux-2.6-amd64.deb&wget=true'
 && sudo dpkg -i ~/Downloads/splunkforw*
 && ls /opt | grep splunkforwarder # so make sure the path is indeed /opt/splunkforwarder
