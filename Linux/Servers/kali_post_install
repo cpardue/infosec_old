@@ -1,0 +1,45 @@
+# just occured to me that I should just keep these steps here instead of re-googling them each time i do an install
+#
+#
+#
+#
+#
+# ssh
+apt install openssh-server  # if ! installed, which it always has been so far
+mkdir /etc/ssh/default_keys  # to move default keys into
+mv /etc/ssh/ssh_host_* /etc/ssh/default_keys/  # move default keys away
+dpkg-reconfigure openssh-server  # to regenerate keys
+nano /etc/ssh/sshd_config  # to edit settings/harden
+systemctl enable ssh.service
+systemctl status ssh.service
+#
+#
+#
+#
+#
+# git
+apt-get install git
+#
+#
+#
+#
+#
+# install atom
+apt-get install gvfs gvfs-common gvfs-daemons gvfs-libs gconf-service gconf2 gconf2-common gvfs-bin psmisc
+then download deb installer at atom.io/download/
+dpkg -i ~/Downloads/atom-amd64.deb
+#
+#
+#
+#
+#
+# get rdp working
+apt-get install xrdp
+service xrdp start
+service xrdp-sesman start
+update-rc.d xrdp enable
+apt-get remove gnome-core
+apt-get install lxde-core lxde kali-defaults kali-root-login desktop-base
+update-alternatives --config x-session-manager
+choose /usr/bin/startlxde
+reboot -h now
