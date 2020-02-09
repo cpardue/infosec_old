@@ -1,0 +1,25 @@
+topology: 
+Home LAN <> FW <> VMHOST(VM-sploitable2,VM-WinSvr2019,Win10)
+
+FW provisioning
+Factory reset
+Factory defaults
+Done
+
+VM-metasploitable2 provisioning
+Done
+
+VM-Windows 10
+Installed
+Renamed
+still requires domain-join, and feature adds
+
+VM-Windows Server 2019
+Installed
+Renamed
+ADDS added
+Promoted to DC
+still requires OU config, Win10 add, and feature add
+
+
+
