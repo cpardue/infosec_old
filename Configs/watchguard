@@ -1,0 +1,16 @@
+defaults are admin:readwrite && status:read
+when configuring, follow this path:
+register into watchguard portal
+setup interfaces
+setup SNATs
+setup firewall rules
+
+for VPN
+go into authentication > servers > firebox
+either create users then create group, assign users to group in bulk
+or create group then create users, assigning to group individually
+enable SSL VPN with firebox as auth
+
+for pinholes
+create SNAT by ip and protocol
+create rule, select snat dropdown, select snat
