@@ -1,0 +1,26 @@
+don't accidentally provision a new server over your vulnerable ubuntu vm
+if you do, learn how to seed a build
+
+-pn scans through a web proxy will always show port open.  always add --reason to the end
+
+default 'port scan detected' threshold is like 30ms.  add --scan-delay <number>s to go below threshold
+
+consider ping scan, then single port scan, then creating a smal list of likely IP addresses and doing a scan-delay fast scan
+
+look through seclists for small passwordlists, add to it, then create permutations
+
+keep scans and information gathering nicely structured within folders and easily named files.  
+
+three rounds of shikatanagai is not enough obfuscation to bypass.  try 15-20???
+experiment with known-good executables as trojans.  if that doesn't simplify then try obfuscate prior to trojan re-packaging
+
+no *.exe will get through any normal email filter, but zip files will.  
+chrome may still block upon download and burn your file share account.  
+if zip file is large enough, then chrome will not scan download.  what is the threshold???
+
+need a better way to get into network.  jump over firewall completely, then tunnel outward.  
+
+need a wan-accessible gateway for receiving shells.  
+
+might be possible to crack cobalt strike then use teamserver.
+pupy is something to try as well.  
