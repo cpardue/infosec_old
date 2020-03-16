@@ -9,8 +9,28 @@ consider ping scan, then single port scan, then creating a smal list of likely I
 
 look through seclists for small passwordlists, add to it, then create permutations
 
-keep scans and information gathering nicely structured within folders and easily named files.  
-
+keep scans and information gathering nicely structured within folders and easily named files. 
+  parent
+    networkName
+      scans
+        network.scan
+        hostA.scan
+        hostB.scan
+      lists
+        hosts.list
+        users.list
+        passwords.list
+      payloads
+        python
+          A.py
+          B.py
+        binaries
+          A.exe
+          B.exe
+        scripts
+          A.sh
+          B.sh
+        
 three rounds of shikatanagai is not enough obfuscation to bypass.  try 15-20???
 experiment with known-good executables as trojans.  if that doesn't simplify then try obfuscate prior to trojan re-packaging
 
