@@ -1,0 +1,89 @@
+# building on an iso of ubuntu server 18.04.04 live amd64
+# in hyper-v with external virtual switch
+# pre-requisites:
+# -base install with openssh
+# -no other optional packages selected
+# -install with updates
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# post-install instructions for buildA are from:
+# https://kifarunix.com/install-snipe-it-on-debian-10-ubuntu-18-04/
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# install LAMP stack (with mariadb)
+sudo nano /etc/ssh/sshd_conf
+  uncomment 'port 22'
+  uncomment 'passwordauthentication yes'
+# ssh in from elsewhere if necessary
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo apt install mariadb-server -y
+mysql_secure_installation
+n
+y
+n
+y
+y
+sudo apt install php libapache2-mod-php php-mysql -y
+sudo apt install php-gd -y
+# validate that things are going well
+php -v
+# output: PHP 7.2.24-0ubuntu0.18.04.3
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# install and initial config snipeit
+sudo apt install php-{bcmath,cli,xml,mbstring,tokenizer,curl,zip,ldap,gd} openssl curl git wget zip -y
+sudo mysql -u root -p
+create database snipeitdb;
+grant all on snipeitdb.* to snipeadmin@localhost identified by '<password>';
+flush privileges;
+quit
+sudo git clone https://github.com/snipe/snipe-it.git /var/www/html/snipeit
+sudo cp /var/www/html/snipeit/.env.example /var/www/html/snipeit/.env
+sudo nano /var/www/html/snipeit/.env
+  APP_URL='http://<IP>'
+  APP_TIMEZONE='CST'
+  ...
+  DB_DATABASE=snipeitdb
+  DB_USERNAME=snipeadmin
+  DB_PASSWORD=<password>
+cd /var/www/html/snipeit
+sudo chmod -R 777 /var/www/html/
+sudo curl -sS https://getcomposer.org/installer | php
+php composer.phar install --no-dev --prefer-source
+sudo chown -R www-data:www-data /var/www/html/snipeit
+php artisan key:generate
+yes
+sudo nano /etc/apache2/sites-available/snipeit.conf
+# edit in the following
+<VirtualHost 192.168.56.105:80>
+	DocumentRoot /var/www/html/snipeit/public
+	ServerName http://10.0.1.4
+
+	<Directory /var/www/html/snipeit/public>
+		Allow From All
+		AllowOverride None
+		Options None
+	</Directory>
+
+	RewriteEngine On
+	RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} (.+)/$
+	RewriteRule ^ %1 [L,R=301]
+	RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+	RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+	RewriteRule ^ /index.php [L]
+
+	ErrorLog ${APACHE_LOG_DIR}/snipeit-error.log
+	CustomLog ${APACHE_LOG_DIR}/snipeit-access.log combined
+</VirtualHost>
+# validate that things are going well
+apachectl configtest
+# output: Could not reliably blahblahblah this message...Syntax OK
+sudo a2ensite snipeit.conf
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# pre-flight and setup
+# go to http://<IP>
+# gets the snipeit directory which then leads to:
+# D'oh. If you're seeing this, your DocumentRoot is set incorrectly. 
+# It should be set to the public directory.
