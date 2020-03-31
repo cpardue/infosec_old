@@ -1,0 +1,55 @@
+#stealing instructions from https://www.dell.com/support/article/en-us/sln303956/server-side-setup-and-client-setup-for-clonezilla?lang=en
+#
+# install ubuntu server
+#
+# sudo -s
+# passwd root // change the root pw
+# wget -q http://drbl.org/GPG-KEY-DRBL -O- | sudo apt-key add –
+# nano /etc/apt/sources.list // uncomment everything, and append 'deb http://free.nchc.org.tw/drbl-core drbl stable'
+# apt-get update -y && apt-get dist-upgrade -y
+# apt-get install drbl
+# nano /etc/resolve.conf
+# // add "nameserver 8.8.8.8"
+# // add "nameserver 4.4.4.4"
+# // remove "nameserver 127.0.0.1"
+# drblsrv -i // might be an l or I
+# y
+# n
+# y
+# 2
+# //confirm that no errors presented
+#
+#
+# drblpush -i
+# // enter your domain.local
+# // enter your hostname? (NIS)
+# // enter your desired hostname prefix
+# // select WAN facing interface
+# // n
+# // n
+# // 20
+# // 20
+# // y
+# // press enter
+# // 1
+# // 1
+# // /path/to/datastore
+# // y
+# / 128
+# // 1
+# // 0
+# // n
+# // n
+# // y
+# // 70
+# // y
+# // y
+# // n
+# // y
+# // y
+# // press enter
+# // y
+# // reboot
+#
+#
+# 
