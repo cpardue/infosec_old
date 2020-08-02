@@ -1,0 +1,26 @@
+enter server manager
+manage > add roles and features
+select feature based installation
+select this server
+select AD Domain Services
+select no additional features aside from defaults
+connect to azure ad or not
+install
+promote to domain controller
+select new forest (or existing domain)
+set directory services restore mode password
+next past dns server if not yet initialized
+set netbios name
+view warnings
+install
+open AD users/computers
+create new OU (protect container from accidental deletion)
+create additional OUs
+create first users
+create OUs for security groups
+check sites, configure as needed
+check dns
+check forward lookup zones, configure
+create reverse lookup zones manually
+check AD Administrative Center, fill in any missing configurations
+done
