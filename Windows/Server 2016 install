@@ -1,0 +1,15 @@
+Minimal system requirements:
+>=1.4ghz 64-bit cpu
+2GB RAM (ha)
+32GB storage (absolute minimum, no roles)
+--------------------------------
+boot into installation media
+select language (laguages are not cross compatible)
+select version (standard [core], standard w/desktop, datacenter [core], datacenter w/desktop)
+accept uela
+upgrade vs custom install
+select target disk
+install...
+set password (warning this is the only password that needs to later be remembered for recovery)
+log in as admin for first time
+done
