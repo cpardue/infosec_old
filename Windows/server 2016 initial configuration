@@ -1,0 +1,13 @@
+enter server manager
+local server
+change computername, restart later
+check firewall, verify public vs private network connection, disable
+check rdp, check allow rdp
+check dhcp ip address, set to static
+check updates, configure options
+check defender, configure options
+check feedback and diagnostics, configure options (disable me)
+check network time, configure for local zone
+check product id, enter/activate key
+restart
+done
