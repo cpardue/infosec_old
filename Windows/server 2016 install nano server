@@ -1,0 +1,34 @@
+prerequisites
+a windows server
+a domain controller
+a hyper-v manager
+windows server 2016 installation media
+----------------------------
+copy nano server folder (image/image generator), paste to local disk
+open powershell admin
+cd \
+Set-ExecutionPolicy RemoteSigned
+Import-Module c:\nano\NanoServerImageGenerator.psm1 -verbose
+C:\Nano\Convert-WindowsImage.ps1
+New-NanoServerImage -Edition Standard -DeploymentType Guest -MediaPath D:\ -BasePath .\Base -TargetPath c:\NanoServer\NanoServer-01.vhd -ComputerName NANO-01 -compute –GuestDrivers
+specify admin password
+install
+at this point if you look in the target basepath, you'll see it start populating
+copy vhdx file, paste into final path
+create virtual switch if necessary
+create virtual machine for vhdx
+select vhdx path as existing virtual disk
+create
+start and connect
+perform initial configuration
+go back to DC
+open powershell
+djoin.exe /provision /domain TEST /machine NANOSERVER5 /savefile .\filename
+copy the output blob file to nano server share
+set up psremoting in DC powershell
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value 192.168.100.20 -Concatenate
+Enter-PSSession -ComputerName 192.168.100.20 -Credential Administrator
+run djoin
+djoin /requestodj /loadfile c:\nanoserver05 /windowspath c:\windows /localos
+reboot
+done
