@@ -1,0 +1,26 @@
+prerequisites:
+be cheap and not want to spend cash on external solutions
+file server pre-configured
+domain controller
+some storage disks
+-----------------------
+enter server manager
+go to file and storage services
+create new storage pool
+specify name for pool
+select disks
+leave the disks on 'automatic' and configure later if you want
+create
+right click the storage space, create storage pool virtual disk
+first pool is always primordial
+name new virtual disk
+assign storage tiers among the disks if disks are disparate
+select raid model
+create
+create a volume from new storage pool virtual disk
+allocate entire size
+assign drive letter
+select filesystem
+assign volume label
+create
+done
