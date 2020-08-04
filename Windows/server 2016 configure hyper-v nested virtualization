@@ -1,0 +1,43 @@
+prerequisites:
+well server must support virtualiztion
+non-dc server host is preferable
+----------------------
+enter server manager
+manage
+add roles and features
+select hyper-v role
+yes add additional tools
+install
+reboot
+access hyper-v manager (via server manager if you want, it's there)
+create virtual switch
+assign external, internal, private subnet profile
+name the virtual switch
+assign vlan if necessary
+create new virtual machine for your virtual machine for your virtual machine
+assign a name
+leave defaults, select gen 2
+assign memory
+assign virtual switch
+create new vhdx disk and assign storage size
+install OS later
+create
+connect and start virtual machine
+in vm, install server 2016
+in vm, shutdown
+open admin powershell
+download microsoft's nested virtualiztion script
+execute script
+specify vm name
+yes
+yes
+power on host vm
+on phys host, connect to host vm
+enable and install windows feature hyper v via powershell
+parameters: include all features, include management tools, restart
+reboot
+login to host vm
+open hyper-v manager
+create vm inside the host vm
+do not run the script on the vm inside the vm to make a vm in the vm in the vm
+done
