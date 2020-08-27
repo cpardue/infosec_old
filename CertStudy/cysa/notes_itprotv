@@ -1,0 +1,31 @@
+DAY ZERO
+theharvester -d <domain> -b <bing,google,linkedin>
+shodan search: org:<domain>
+shodan: google dorking terms
+STIX structured threats information expression
+STIX is json method of sharing CTI
+CTI cyber threat intelligence
+TAXII trusted automated exchange of intelligence information
+TAXII is a rest API to transfer http STIX CTI
+oasis-open.github.io
+SDO STIX Domain Objects are general domains of CTI
+SRO TIX Relational Objects relate events and correlation between SROs
+openIoC
+openIoC is xml formatted
+openIoC editor
+MISP malware information sharing project
+misp-project.org/features
+intelligence management: STAXX, IBM X-Force Exchange
+confidence levels
+admiralty code
+FM 2-22.3 HUMINT manual contains admiralty code table
+CIA estimative language
+known vs unknown vs known knowns vs unknown unknowns vs known unknowns vs unknown knowns
+it's a 0-day until patch day n+1
+portswigger has a 0day blog
+APT
+fireeye.com/apt-group.html
+intelligence cycle phases
+IR's intelligence requirements
+cd /var/log && sudo grep -i "fail" *.log | grep "password"
+DAY ONE
