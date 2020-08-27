@@ -1,3 +1,4 @@
+# purpose: notes to expand with individual research immediately following completion of video set from notes_itprotv to notes_expanded_itprotv
 DAY ZERO
 theharvester -d <domain> -b <bing,google,linkedin>
 shodan search: org:<domain>
@@ -29,3 +30,12 @@ intelligence cycle phases
 IR's intelligence requirements
 cd /var/log && sudo grep -i "fail" *.log | grep "password"
 DAY ONE
+commodity malware vs more advanced targetted malware
+ISACs information sharing analysis centers
+h-isac.org
+fs-isac.com
+a-isac.com
+cisecurity.org/ms-isac
+cisecurity.org/ei-isac
+cisa.gov/critical-infrastructure-sectors
+PSTN-based networks
