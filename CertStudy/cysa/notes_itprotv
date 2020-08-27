@@ -39,3 +39,25 @@ cisecurity.org/ms-isac
 cisecurity.org/ei-isac
 cisa.gov/critical-infrastructure-sectors
 PSTN-based networks
+attack frameworks
+cyber kill chain lockheed martin
+lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html
+mitre att&ck matrix for enterprise
+attack.mitre.org
+mitre att&ck matrix navigator
+diamond model of intrusion analysis
+https://apps/dtic.mil/dtic/tr/fulltext/u2/a586960.pdf
+####advers######
+#infra<->capab##
+#####vict#######
+talos intelligence reputation center
+talosintelligence.com/reputation_center
+IoC
+ioc + behavioral ttp + reputational ttp
+modeling per the following
+model adversary capability
+mitre adversary capabilities
+model total attack surface
+model attack vectors of cyber, human, physical
+model impact
+model likelihood
