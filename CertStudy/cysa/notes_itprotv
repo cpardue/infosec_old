@@ -61,3 +61,21 @@ model total attack surface
 model attack vectors of cyber, human, physical
 model impact
 model likelihood
+WAF vs IDS,IPS
+attribution
+vulnerability management
+emerging threats
+asset criticality prioritization
+nessus essentials version
+openvas virtual appliance
+qualys
+baseline gathering
+fluke networks, solarwinds, nagios
+big 4 baselines, cpu | networking | memory | storage
+mod security 3.0
+webknight
+setting up vulnerability feeds on vuln scanners
+scoping the vuln scanner
+scan types
+credentialed vs non-credentialed
+DAY TWO
