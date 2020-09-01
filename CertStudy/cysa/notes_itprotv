@@ -79,3 +79,42 @@ scoping the vuln scanner
 scan types
 credentialed vs non-credentialed
 DAY TWO
+remediation inhibitors on legacy vs proprietary vs degraded functionality etc
+owasp zed attack proxy free
+burpsuite > extender tab > bapp store tab > tons of extensions!
+nikto -h <url> -o outfile.htm
+arachni (windows app)
+nessus 
+enum4linux -a <ip>
+hydra -L ./userlist.txt -p <testpassword> -f ssh://<ip>
+openvas
+qualis
+static analysis (code review)
+https://samate.nist.gov/index.php/source_code_security_analyzers.html
+above has GIANT list of binary scanners!!!
+dynamic analysis 
+immunity debugger
+stress testing
+reverse engineering
+disassemblers 
+ghidra
+ida pro if you can hack it
+fuzzing types
+app ui
+protocol 
+file format
+dumb and smart fuzzers
+burp method: enter AAAA in field, locate request in burp, send to intruder, select field, select payload file (sql injection file), attack, view results
+nmap
+nmap -sn (host scan)
+nmap -T4 (faster than default t3)
+nmap -n (no dns)
+nmap -sS is a default
+nmap -sC (script scanning)
+hping3
+hping3 -1 (icmp mode)
+hping3 -8 (--scan) known -S <host>
+responder
+llmnr poisoning
+responder -I eth0 -v (now it's listening for events)
+DAY THREE
