@@ -118,3 +118,26 @@ responder
 llmnr poisoning
 responder -I eth0 -v (now it's listening for events)
 DAY THREE
+reaver for WPS attacks
+aircrack-ng suite
+airmon-ng to mon
+airodump-ng to cap wpa handshake
+aireplay-ng to deauth/speed above
+pass the resultant .cap through cap2hccapx
+pass the resultant .hccapx into hashcat
+cloud assessment stuff
+scoutsuite (github)
+prowler (github)
+pacu (github)
+mobile stuff
+byod tribbles
+lack of encryption controls and remote wipe
+legal issues if byod is the compromised device, can't forensics it
+typical android thirdparty sideloaded attacks
+same thing on ios
+mdm hardware device features
+emm more granular software control
+uem unified more granular still
+vmware airwatch
+mobileiron
+DAY FOUR
