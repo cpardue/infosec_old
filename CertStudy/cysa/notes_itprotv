@@ -141,3 +141,63 @@ uem unified more granular still
 vmware airwatch
 mobileiron
 DAY FOUR
+PLC's
+buffer overflows in hardcoded systems
+hard codes creds in hardcoded systems
+these are often just web interfaces for control
+https://www.forescout.com/company/blog/vulnerabilities-in-building-automation-systems/
+CANBUS controller area network bus
+CANBUS is like an old ethernet hub
+gain access to the CAN, you have access to the system
+controller systems
+ICS industrial control systems
+DCS distributed control systems
+SCADA supervisory controls and data aquisitions
+HMI human machine interface
+a lot of these are embedded proprietary interfaces, even though they use standards
+MODBUS
+these are often just web interfaces for control
+http://dione.lib.unipi.gr/xmlui/bitstream/handle/unipi/11394/Evangeliou_1508.pdf?sequence=1&isAllowed=y
+iot
+embedded os vulnerabilities
+system-on-a-chip
+little embedded windows 7 devices are open to eternalblue, etc
+https://www.vdoo.com/blog/vdoo+has-found-major-vulnerabilities-in-foscam-cameras
+field-programmable gate arrays!
+starbleed bug
+CVSS 3.1 metrics
+CVSS common vuln scoring system
+0 = none
+0.1+ = low
+4.0+ = medium
+5.0+ = medium
+6.0+ = medium
+7.0+ = high
+8.0+ = high
+9.0+ = critical
+still have to look at likelihoods
+CVSS base metrics
+AV access vector
+(P)hysical
+(L)ocal (shell)
+(A)djacent (same broadcast domain)
+(N)etwork (routed)
+AC access complexity
+(H)igh (A HTB player)
+(L)ow (A nullbyte.com reader)
+PR priviledges required
+(H)igh (privesc required)
+(L)ow (non priv users)
+(N)one (unauthenticated)
+UI user interaction
+(N)one
+(R)equired
+Scope
+(U)nchanged (cannot spread)
+(C)hanged (can spread)
+CIA triad
+(L)ow
+(M)edium
+(H)igh
+https://www.first.org/cvss/specification-document
+DAY FIVE
