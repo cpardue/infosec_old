@@ -201,3 +201,63 @@ CIA triad
 (H)igh
 https://www.first.org/cvss/specification-document
 DAY FIVE
+public cloud threats
+multi-tenancy resource share issues, vm popping
+unencrypted data crossing multiple networks within the datacenter
+private cloud threats
+expensive enough that they will necessarilly jimp on something
+aaaaaalllll support/monitoring goes to owner
+private clouds turning into community clouds ie side-channel attacks due to lack of oversight
+way less oversight
+hybrid cloud threats
+aggregation of threats of both public and private cloud infra
+IAAA identity authorization authentication accounting
+SaaS threats
+easy to phish via fake login pages
+PaaS containers
+container popping
+see owasp top 10 webapp for this
+fast spin-up equals forgetting to change/harden defaults
+permission issues via overlooking
+IaaS full servers in datacenter
+all infastructure threats via public IP
+FaaS function as a service threats
+Infrastructure as a Code threats 
+terraform etc
+API threats
+API error/debugging enumeration
+API key management threat
+API key master keys | lack of rotation
+API security and threats
+unprotected cloud storage
+xml attacks and mitigation
+soap attacks <1.2
+sql injection input sanitization
+buffer overflow stack, heap, integer based
+aslr
+stack canary
+dep
+rce
+directory traversal
+privesc
+password attacks
+password spraying
+credential stuffing
+impersonation attacks vs phishing
+mitm
+session hijacking/replay
+cross site scripting
+rootkit
+weak error handling or disclosing too much information
+soap vulnerabilities
+insecure direct object reference (modifying get request before it's received)
+race conditions
+https://lightningsecurity.io/blog/race+conditions/
+https://cheatsheetseries.owasp.org/cheatsheets/AuthenticationCheatSheet.html
+broken authentication
+sensitive data exposure
+insecure components
+insufficient logging monitoring
+weak/default configs
+insecure functions
+DAY SIX
