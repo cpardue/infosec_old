@@ -261,3 +261,92 @@ insufficient logging monitoring
 weak/default configs
 insecure functions
 DAY SIX
+asset management
+https://www.seton.com/asset+management/asset-tags.html
+https://www.reftab.com
+network architecture and segmentation
+SDN
+control plane
+data plane
+management plane
+northbound
+southbound
+mininets
+virtual private clouds within public cloud
+VPN
+serverless function-as-a-service
+vlans for segmentation
+jump-box to access admin consoles
+IAM identity and access management
+privilege mangement
+DAC discretionary access control
+DAC petty file perms/privs
+MAC mandatory access controls
+MAC role/group-based access
+RBAC role based access control
+ABAC attribute based access control
+ABAC context/attribute based if/then rules
+MFA
+SSO
+Federation (multi-organizational trusts)
+VDI virtual desktop infrastructure
+VDI non-persistence, reboot fresh from image each time
+containerization
+docker
+docker pulling and running images
+docker dockerfiles for orchestration
+honeypots and active defense
+active defense == trolling
+intricately designed aggravations and annoyances to attackers
+honeypots
+opencanary
+CASB cloud access security broker
+CASB modes forward proxy
+CASB modes reverse proxy
+CASB is for huge infra and userbase
+certificate management
+always remove untrusted certs
+don't use self-signed certs, users can't judge whether to trust a server or not
+certs encrypt get/posts to prevent mitm
+windows server role certificate management authority
+windows cmd certutil
+linux openssl
+extrapolate public key from private key
+ssh-keygen
+ssh-keygen -t rsa -b 4096 -C user@domain
+/etc/ssh/sshd_conf edits
+ssh -i /path/to/key user@ip
+hardware assurance
+TPM
+HSM hardware security modules
+https://www.ncipher.com/products
+antitamper 
+FPGA
+PUF physically uncloneable function
+eFuse
+trusted firmware updates
+measured boot & attestation
+checks hashes to ensure validity of configs
+MEK media encryption key
+KEK key encryption key (user's passwd)
+AMD SME secure memory encryption
+AMD SEV secure encrypted virtualization
+Intel TXT trusted execution technology
+Intel SGX software guard extension
+secure enclave
+secure area to store encryption information like crytpo keys
+kernel and secure kernel store each other's pub/priv keys in secure enclaves to decrypt each other's comms before passing to kernel function
+atomic executions
+bus encryption
+HDCP high definition content protection
+software assurance and secure coding
+SDLC
+https://cheatsheetseries.owasp.org/cheatsheets/InputValidationCheat_Sheet.html
+https://www.php.net/manual/en/function.htmlspecialchars.php
+agile method vs waterfall method
+input validation
+output encoding
+session management
+parameterized queries
+formalized methods to hunt edge case bugs
+DAY SEVEN
