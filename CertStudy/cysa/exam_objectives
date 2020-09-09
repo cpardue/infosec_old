@@ -1,0 +1,862 @@
+https://comptiacdn.azureedge.net/webcontent/docs/default-source/exam-objectives/comptia-cysa-cs0-002-exam-objectives.pdf
+CompTIA Cybersecurity
+Analyst (CySA+)
+Certification Exam
+Objectives
+EXAM NUMBER: CS0-002
+About the Exam
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+Candidates are encouraged to use this document to help prepare for the CompTIA Cybersecurity Analyst (CySA+)
+CS0-002 certification exam. With the end goal of proactively defending and continuously improving the security
+of an organization, CySA+ will verify the successful candidate has the knowledge and skills required to:
+• Leverage intelligence and threat detection techniques
+• Analyze and interpret data
+• Identify and address vulnerabilities
+• Suggest preventative measures
+• Effectively respond to and recover from incidents
+This is equivalent to 4 years of hands-on experience in a technical cybersecurity job role.
+These content examples are meant to clarify the test objectives and should not be
+construed as a comprehensive listing of all the content of this examination.
+EXAM DEVELOPMENT
+CompTIA exams result from subject matter expert workshops and industry-wide survey
+results regarding the skills and knowledge required of an IT professional.
+CompTIA AUTHORIZED MATERIALS USE POLICY
+CompTIA Certifications, LLC is not affiliated with and does not authorize, endorse or condone utilizing any
+content provided by unauthorized third-party training sites (aka “brain dumps”). Individuals who utilize
+such materials in preparation for any CompTIA examination will have their certifications revoked and be
+suspended from future testing in accordance with the CompTIA Candidate Agreement. In an effort to more
+clearly communicate CompTIA’s exam policies on use of unauthorized study materials, CompTIA directs
+all certification candidates to the CompTIA Certification Exam Policies. Please review all CompTIA policies
+before beginning the study process for any CompTIA exam. Candidates will be required to abide by the
+CompTIA Candidate Agreement. If a candidate has a question as to whether study materials are considered
+unauthorized (aka “brain dumps”), he/she should contact CompTIA at examsecurity@comptia.org to confirm.
+PLEASE NOTE
+The lists of examples provided in bulleted format are not exhaustive lists. Other examples of
+technologies, processes, or tasks pertaining to each objective may also be included on the exam
+although not listed or covered in this objectives document. CompTIA is constantly reviewing the
+content of our exams and updating test questions to be sure our exams are current and the security
+of the questions is protected. When necessary, we will publish updated exams based on testing
+exam objectives. Please know that all related exam preparation materials will still be valid.
+TEST DETAILS
+Required exam CS0-002
+Number of questions Minimum of 85
+Type of questions Multiple choice and performance-based
+Length of test 165 minutes
+Recommended experience • 4 years of hands-on experience in a technical cybersecurity job role
+• Security+ and Network+, or equivalent knowledge and experience
+Passing score 750
+EXAM OBJECTIVES (DOMAINS)
+The table below lists the domains measured by this examination
+and the extent to which they are represented.
+
+
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+DOMAIN PERCENTAGE OF EXAMINATION
+1.0 Threat and Vulnerability Management 22%
+2.0 Software and Systems Security 18%
+3.0 Security Operations and Monitoring 25%
+4.0 Incident Response 22%
+5.0 Compliance and Assessment 13%
+Total 100%
+• Intelligence sources
+- Open-source intelligence
+- Proprietary/closed-source intelligence
+- Timeliness
+- Relevancy
+- Accuracy
+• Confidence levels
+• Indicator management
+- Structured Threat Information
+ eXpression (STIX)
+- Trusted Automated eXchange
+ of Indicator Information (TAXII)
+- OpenIoC
+• Threat classification
+- Known threat vs. unknown threat
+- Zero-day
+- Advanced persistent threat
+• Threat actors
+- Nation-state
+- Hacktivist
+- Organized crime
+- Insider threat
+ - Intentional
+ - Unintentional
+• Intelligence cycle
+- Requirements
+- Collection
+- Analysis
+- Dissemination
+- Feedback
+• Commodity malware
+• Information sharing and
+ analysis communities
+- Healthcare
+- Financial
+- Aviation
+- Government
+- Critical infrastructure
+• Attack frameworks
+- MITRE ATT&CK
+- The Diamond Model
+ of Intrusion Analysis
+- Kill chain
+• Threat research
+- Reputational
+- Behavioral
+- Indicator of compromise (IoC)
+- Common vulnerability
+ scoring system (CVSS)
+• Threat modeling methodologies
+- Adversary capability
+- Total attack surface
+- Attack vector
+- Impact
+- Likelihood
+• Threat intelligence sharing
+ with supported functions
+- Incident response
+- Vulnerability management
+- Risk management
+- Security engineering
+- Detection and monitoring
+1.0 Threat and Vulnerability Management
+Explain the importance of threat data and intelligence.
+Given a scenario, utilize threat intelligence
+to support organizational security.
+1.1
+1.2
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+1.0 Threat and Vulnerability Management
+Given a scenario, perform vulnerability management activities. 1.3
+• Vulnerability identification
+- Asset criticality
+- Active vs. passive scanning
+- Mapping/enumeration
+• Validation
+- True positive
+- False positive
+- True negative
+- False negative
+• Remediation/mitigation
+- Configuration baseline
+- Patching
+- Hardening
+- Compensating controls
+- Risk acceptance
+- Verification of mitigation
+• Scanning parameters and criteria
+- Risks associated with
+ scanning activities
+- Vulnerability feed
+- Scope
+- Credentialed vs. non-credentialed
+- Server-based vs. agent-based
+- Internal vs. external
+- Special considerations
+ - Types of data
+ - Technical constraints
+ - Workflow
+ - Sensitivity levels
+ - Regulatory requirements
+ - Segmentation
+ - Intrusion prevention system
+ (IPS), intrusion detection
+ system (IDS), and firewall settings
+• Inhibitors to remediation
+- Memorandum of understanding (MOU)
+- Service-level agreement (SLA)
+- Organizational governance
+- Business process interruption
+- Degrading functionality
+- Legacy systems
+- Proprietary systems
+• Web application scanner
+- OWASP Zed Attack Proxy (ZAP)
+- Burp suite
+- Nikto
+- Arachni
+• Infrastructure vulnerability scanner
+- Nessus
+- OpenVAS
+- Qualys
+• Software assessment tools and techniques
+- Static analysis
+- Dynamic analysis
+- Reverse engineering
+- Fuzzing
+• Enumeration
+- Nmap
+- hping
+- Active vs. passive
+- Responder
+• Wireless assessment tools
+- Aircrack-ng
+- Reaver
+- oclHashcat
+• Cloud infrastructure assessment tools
+- ScoutSuite
+- Prowler
+- Pacu
+• Mobile
+• Internet of Things (IoT)
+• Embedded
+• Real-time operating system (RTOS)
+• System-on-Chip (SoC)
+• Field programmable gate array (FPGA)
+• Physical access control
+• Building automation systems
+• Vehicles and drones
+- CAN bus
+• Workflow and process automation systems
+• Industrial control system
+• Supervisory control and data
+ acquisition (SCADA)
+- Modbus
+Given a scenario, analyze the output from
+common vulnerability assessment tools.
+Explain the threats and vulnerabilities associated
+with specialized technology.
+1.4
+1.5
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+Explain the threats and vulnerabilities
+associated with operating in the cloud.
+1.6
+• Cloud service models
+- Software as a Service (SaaS)
+- Platform as a Service (PaaS)
+- Infrastructure as a Service (IaaS)
+• Cloud deployment models
+- Public
+- Private
+- Community
+- Hybrid
+• Function as a Service (FaaS)/
+ serverless architecture
+• Infrastructure as code (IaC)
+• Insecure application
+ programming interface (API)
+• Improper key management
+• Unprotected storage
+• Logging and monitoring
+- Insufficient logging and monitoring
+- Inability to access
+• Attack types
+- Extensible markup
+ language (XML) attack
+- Structured query
+ language (SQL) injection
+- Overflow attack
+ - Buffer
+ - Integer
+ - Heap
+- Remote code execution
+- Directory traversal
+- Privilege escalation
+- Password spraying
+- Credential stuffing
+- Impersonation
+- Man-in-the-middle attack
+- Session hijacking
+- Rootkit
+- Cross-site scripting
+ - Reflected
+ - Persistent
+ - Document object model (DOM)
+• Vulnerabilities
+- Improper error handling
+- Dereferencing
+- Insecure object reference
+- Race condition
+- Broken authentication
+- Sensitive data exposure
+- Insecure components
+- Insufficient logging and monitoring
+- Weak or default configurations
+- Use of insecure functions
+ - strcpy
+Given a scenario, implement controls to mitigate
+attacks and software vulnerabilities.
+1.7
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+1.0 Threat and Vulnerability Management
+2.0 Software and Systems Security
+• Cloud vs. on-premises
+• Asset management
+- Asset tagging
+• Segmentation
+- Physical
+- Virtual
+- Jumpbox
+- System isolation
+ - Air gap
+• Network architecture
+- Physical
+- Software-defined
+- Virtual private cloud (VPC)
+- Virtual private network (VPN)
+- Serverless
+• Change management
+• Virtualization
+- Virtual desktop infrastructure (VDI)
+• Containerization
+• Identity and access management
+- Privilege management
+- Multifactor authentication (MFA)
+- Single sign-on (SSO)
+- Federation
+- Role-based
+- Attribute-based
+- Mandatory
+- Manual review
+• Cloud access security broker (CASB)
+• Honeypot
+• Monitoring and logging
+• Encryption
+• Certificate management
+• Active defense
+• Platforms
+- Mobile
+- Web application
+- Client/server
+- Embedded
+- System-on-chip (SoC)
+- Firmware
+• Software development life
+ cycle (SDLC) integration
+• DevSecOps
+• Software assessment methods
+- User acceptance testing
+- Stress test application
+- Security regression testing
+- Code review
+• Secure coding best practices
+- Input validation
+- Output encoding
+- Session management
+- Authentication
+- Data protection
+- Parameterized queries
+• Static analysis tools
+• Dynamic analysis tools
+• Formal methods for verification
+ of critical software
+• Service-oriented architecture
+- Security Assertions
+ Markup Language (SAML)
+- Simple Object Access Protocol (SOAP)
+- Representational State Transfer (REST)
+- Microservices
+• Hardware root of trust
+- Trusted platform module (TPM)
+- Hardware security module (HSM)
+• eFuse
+• Unified Extensible Firmware
+ Interface (UEFI)
+• Trusted foundry
+• Secure processing
+- Trusted execution
+- Secure enclave
+- Processor security extensions
+- Atomic execution
+• Anti-tamper
+• Self-encrypting drive
+• Trusted firmware updates
+• Measured boot and attestation
+• Bus encryption
+Given a scenario, apply security solutions
+for infrastructure management.
+Explain software assurance best practices.
+Explain hardware assurance best practices.
+2.1
+2.2
+2.3
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+3.0 Security Operations and Monitoring
+• Heuristics
+• Trend analysis
+• Endpoint
+- Malware
+ - Reverse engineering
+- Memory
+- System and application behavior
+ - Known-good behavior
+ - Anomalous behavior
+ - Exploit techniques
+- File system
+- User and entity behavior
+ analytics (UEBA)
+• Network
+- Uniform Resource Locator (URL) and
+ domain name system (DNS) analysis
+ - Domain generation algorithm
+- Flow analysis
+- Packet and protocol analysis
+ - Malware
+• Log review
+- Event logs
+- Syslog
+- Firewall logs
+- Web application firewall (WAF)
+- Proxy
+- Intrusion detection system (IDS)/
+ Intrusion prevention system (IPS)
+• Impact analysis
+- Organization impact
+ vs. localized impact
+- Immediate vs. total
+• Security information and event
+ management (SIEM) review
+- Rule writing
+- Known-bad Internet protocol (IP)
+- Dashboard
+• Query writing
+- String search
+- Script
+- Piping
+• E-mail analysis
+- Malicious payload
+- Domain Keys Identified Mail (DKIM)
+- Domain-based Message
+ Authentication, Reporting,
+ and Conformance (DMARC)
+- Sender Policy Framework (SPF)
+- Phishing
+- Forwarding
+- Digital signature
+- E-mail signature block
+- Embedded links
+- Impersonation
+- Header
+• Permissions
+• Whitelisting
+• Blacklisting
+• Firewall
+• Intrusion prevention system (IPS) rules
+• Data loss prevention (DLP)
+• Endpoint detection and response (EDR)
+• Network access control (NAC)
+• Sinkholing
+• Malware signatures
+- Development/rule writing
+• Sandboxing
+• Port security
+Given a scenario, analyze data as part of security monitoring activities.
+Given a scenario, implement configuration changes
+to existing controls to improve security.
+3.1
+3.2
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+3.0 Security Operations and Monitoring
+Explain the importance of proactive threat hunting. 3.3
+• Establishing a hypothesis
+• Profiling threat actors and activities
+• Threat hunting tactics
+- Executable process analysis
+• Reducing the attack surface area
+• Bundling critical assets
+• Attack vectors
+• Integrated intelligence
+• Improving detection capabilities
+• Workflow orchestration
+- Security Orchestration,
+ Automation, and Response (SOAR)
+• Scripting
+• Application programming
+ interface (API) integration
+• Automated malware signature creation
+• Data enrichment
+• Threat feed combination
+• Machine learning
+• Use of automation protocols and standards
+- Security Content Automation
+ Protocol (SCAP)
+• Continuous integration
+• Continuous deployment/delivery
+Compare and contrast automation concepts and technologies. 3.4
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+4.0 Incident Response
+• Communication plan
+- Limiting communication
+ to trusted parties
+- Disclosing based on regulatory/
+ legislative requirements
+- Preventing inadvertent
+ release of information
+- Using a secure method
+ of communication
+- Reporting requirements
+• Response coordination
+ with relevant entities
+- Legal
+- Human resources
+- Public relations
+- Internal and external
+- Law enforcement
+- Senior leadership
+- Regulatory bodies
+• Factors contributing to data criticality
+- Personally identifiable
+ information (PII)
+- Personal health information (PHI)
+- Sensitive personal information (SPI)
+- High value asset
+- Financial information
+- Intellectual property
+- Corporate information
+• Preparation
+- Training
+- Testing
+- Documentation of procedures
+• Detection and analysis
+- Characteristics contributing
+ to severity level classification
+- Downtime
+- Recovery time
+- Data integrity
+- Economic
+- System process criticality
+- Reverse engineering
+- Data correlation
+• Containment
+- Segmentation
+- Isolation
+• Eradication and recovery
+- Vulnerability mitigation
+- Sanitization
+- Reconstruction/reimaging
+- Secure disposal
+- Patching
+- Restoration of permissions
+- Reconstitution of resources
+- Restoration of capabilities
+ and services
+- Verification of logging/
+ communication to
+ security monitoring
+• Post-incident activities
+- Evidence retention
+- Lessons learned report
+- Change control process
+- Incident response plan update
+- Incident summary report
+- IoC generation
+- Monitoring
+Explain the importance of the incident response process.
+Given a scenario, apply the appropriate incident response procedure.
+4.1
+4.2
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+4.0 Incident Response
+Given an incident, analyze potential indicators of compromise. 4.3
+• Network-related
+- Bandwidth consumption
+- Beaconing
+- Irregular peer-to-peer communication
+- Rogue device on the network
+- Scan/sweep
+- Unusual traffic spike
+- Common protocol over
+ non-standard port
+• Host-related
+- Processor consumption
+- Memory consumption
+- Drive capacity consumption
+- Unauthorized software
+- Malicious process
+- Unauthorized change
+- Unauthorized privilege
+- Data exfiltration
+- Abnormal OS process behavior
+- File system change or anomaly
+- Registry change or anomaly
+- Unauthorized scheduled task
+• Application-related
+- Anomalous activity
+- Introduction of new accounts
+- Unexpected output
+- Unexpected outbound
+ communication
+- Service interruption
+- Application log
+• Network
+- Wireshark
+- tcpdump
+• Endpoint
+- Disk
+- Memory
+• Mobile
+• Cloud
+• Virtualization
+• Legal hold
+• Procedures
+• Hashing
+- Changes to binaries
+• Carving
+• Data acquisition
+Given a scenario, utilize basic digital forensics techniques. 4.4
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+5.0 Compliance and Assessment
+• Privacy vs. security
+• Non-technical controls
+- Classification
+- Ownership
+- Retention
+- Data types
+- Retention standards
+- Confidentiality
+- Legal requirements
+- Data sovereignty
+- Data minimization
+- Purpose limitation
+- Non-disclosure agreement (NDA)
+• Technical controls
+- Encryption
+- Data loss prevention (DLP)
+- Data masking
+- Deidentification
+- Tokenization
+- Digital rights management (DRM)
+ - Watermarking
+- Geographic access requirements
+- Access controls
+• Business impact analysis
+• Risk identification process
+• Risk calculation
+- Probability
+- Magnitude
+• Communication of risk factors
+• Risk prioritization
+- Security controls
+- Engineering tradeoffs
+• Systems assessment
+• Documented compensating controls
+• Training and exercises
+- Red team
+- Blue team
+- White team
+- Tabletop exercise
+• Supply chain assessment
+- Vendor due diligence
+- Hardware source authenticity
+Understand the importance of data privacy and protection.
+Given a scenario, apply security concepts in
+support of organizational risk mitigation.
+Explain the importance of frameworks,
+policies, procedures, and controls.
+5.1
+5.2
+5.3
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+• Frameworks
+- Risk-based
+- Prescriptive
+• Policies and procedures
+- Code of conduct/ethics
+- Acceptable use policy (AUP)
+- Password policy
+- Data ownership
+- Data retention
+- Account management
+- Continuous monitoring
+- Work product retention
+• Category
+- Managerial
+- Operational
+- Technical
+• Control type
+- Preventative
+- Detective
+- Corrective
+- Deterrent
+- Compensating
+- Physical
+• Audits and assessments
+- Regulatory
+- Compliance
+ACRONYM SPELLED OUT
+ACL Access Control List
+AES Advanced Encryption Standard
+API Application Programming Interface
+ARP Address Resolution Protocol
+APT Advanced Persistent Threat
+ATT&CK Adversarial Tactics, Techniques,
+and Common Knowledge
+AUP Acceptable Use Policy
+BEC Business Email Compromise
+BYOD Bring Your Own Device
+CA Certificate Authority
+CAN Controller Area Network
+CASB Cloud Access Security Broker
+CI/CD Continuous Integration/Continuous Delivery
+CIS Center for Internet Security
+COBIT Control Objectives for
+Information and Related Technology
+CPU Central Processing Unit
+CRM Customer Relations Management
+CVSS Common Vulnerability Scoring System
+DDoS Distributed Denial of Service
+DGA Domain Generation Algorithm
+DHCP Dynamic Host Configuration Protocol
+DKIM Domain Keys Identified Mail
+DLP Data Loss Prevention
+DMARC Domain-based Message
+Authentication, Reporting, and Conformance
+DMZ Demilitarized Zone
+DNS Domain Name System
+DOM Document Object Model
+DRM Digital Rights Management
+EDR Endpoint Detection and Response
+ELK Elasticsearch, Logstash, Kibana
+ERP Enterprise Resource Planning
+ACRONYM SPELLED OUT
+FaaS Function as a Service
+FPGA Field-programmable Gate Array
+FTK Forensic Toolkit
+FTP File Transfer Protocol
+HIDS Host Intrusion Detection System
+HIPS Host-based Intrusion Prevention System
+HSM Hardware Security Module
+IaaS Infrastructure as a Service
+IaC Infrastructure as Code
+IDS Intrusion Detection System
+IMAP Internet Message Access Protocol
+IoC Indicator of Compromise
+IoT Internet of Things
+IP Internet Protocol
+IPS Intrusion Prevention System
+ISAC Information Sharing and Analysis Center
+ISO International Organization for Standardization
+ITIL Information Technology Infrastructure Library
+LAN Local Area Network
+LDAP Lightweight Directory Access Protocol
+MaaS Monitoring as a Service
+MAC Mandatory Access Control
+MD5 Message Digest 5
+MDM Mobile Device Management
+MFA Multifactor Authentication
+MOA Memorandum of Agreement
+MOU Memorandum of Understanding
+MRTG Multi Router Traffic Grapher
+NAC Network Access Control
+NAT Network Address Translation
+NDA Non-disclosure Agreement
+NIC Network Interface Card
+NIDS Network Intrusion Detection Systems
+NIST National Institute of Standards and Technology
+The following is a list of acronyms that appear on the CompTIA
+CySA+ exam. Candidates are encouraged to review the complete
+list and attain a working knowledge of all listed acronyms as a
+part of a comprehensive exam preparation program.
+CompTIA Cybersecurity Analyst (CySA+) Acronym List
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+ACRONYM SPELLED OUT
+OEM Original Equipment Manufacturer
+OSSIM Open Source Security Information Management
+OWASP Open Web Application Security Project
+PaaS Platform as a Service
+PAM Pluggable Authentication Module
+PCAP Packet Capture
+PCI Payment Card Industry
+PHI Personal Health Information
+PID Process Identification Number
+PII Personally Identifiable Information
+PKI Public Key Infrastructure
+RADIUS Remote Authentication Dial-in User Service
+RDP Remote Desktop Protocol
+REST Representational State Transfer
+RTOS Real-time Operating System
+SaaS Software as a Service
+SAML Security Assertions Markup Language
+SCADA Supervisory Control and Data Acquisition
+SCAP Security Content Automation Protocol
+SDLC Software Development Life Cycle
+SFTP SSH File Transfer Protocol
+SHA Secure Hash Algorithm
+SIEM Security Information and Event Management
+SLA Service Level Agreement
+SMB Server Message Block
+SOAP Simple Object Access Protocol
+SOAR Security Orchestration, Automation, and Response
+SOC Security Operations Center
+SoC System on Chip
+SPF Sender Policy Framework
+SPI Sensitive Personal Information
+SQL Structured Query Language
+SSH Secure Shell
+SSHD Solid-state Hybrid Drive
+SSID Service Set Identifier
+SSL Secure Sockets Layer
+SSO Single Sign-on
+STIX Structured Threat Information eXpression
+TACACS+ Terminal Access Controller
+Access Control System Plus
+TAXII Trusted Automated eXchange of
+Intelligence Information
+TCP Transmission Control Protocol
+TFTP Trivial File Transfer Protocol
+TLS Transport Layer Security
+TPM Trusted Platform Module
+ACRONYM SPELLED OUT
+UDP User Datagram Protocol
+UEBA User and Entity Behavior Analytics
+UEFI Unified Extensible Firmware Interface
+UEM Unified Endpoint Management
+URL Uniform Resource Locator
+USB Universal Serial Bus
+UTM Unified Threat Management
+VDI Virtual Desktop Infrastructure
+VLAN Virtual Local Area Network
+VPC Virtual Private Cloud
+VPN Virtual Private Network
+WAF Web Application Firewall
+WAN Wide Area Network
+XML Extensible Markup Language
+XSS Cross-site Scripting
+ZAP Zed Attack Proxy
+CompTIA Cybersecurity Analyst (CySA+) Certification Exam Objectives 3.0 (Exam Number: CS0-002)
+© 2019 CompTIA Properties, LLC, used under license by CompTIA Certifications, LLC. All rights reserved. All certification programs and education related to such
+programs are operated exclusively by CompTIA Certifications, LLC. CompTIA is a registered trademark of CompTIA Properties, LLC in the U.S. and internationally.
+Other brands and company names mentioned herein may be trademarks or service marks of CompTIA Properties, LLC or of their respective owners. Reproduction
+or dissemination prohibited without written consent of CompTIA Properties, LLC. Printed in the U.S. 06692-Jun2019
+IT HARDWARE
+• Workstation (or laptop)
+ with ability to run VM
+• Managed switch
+• Firewall
+• Mobile phones
+• VoIP Phone
+• WAP
+• IDS/ IPS
+• IoT Devices
+• Servers
+SOFTWARE
+• VM images for attack targets
+• Windows Server
+• Windows Client
+- Commando VM
+• Linux
+- Kali
+- ParrotOS
+- Security Onion
+• Chrome OS
+• UTM Appliance
+• pfSense
+• Metasploitable
+• Access to cloud instances
+• Azure
+• AWS
+• GCP
+• SIEM
+• Graylog
+• ELK
+• Splunk
+• Vulnerability scanner
+• OpenVAS
+• Nessus
+CompTIA has included this sample list of hardware and software to assist
+candidates as they prepare for the CySA+ exam. This list may also be helpful
+for training companies that wish to create a lab component for their training
+offering. The bulleted lists below each topic are samples and are not exhaustive.
+CySA+ Proposed Hardware and Software List
