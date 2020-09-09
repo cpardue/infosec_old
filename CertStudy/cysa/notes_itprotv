@@ -350,3 +350,44 @@ session management
 parameterized queries
 formalized methods to hunt edge case bugs
 DAY SEVEN
+trend analysis
+frequency against time
+volume against time
+statistical deviation, mean and standard deviation
+baselining
+metrics
+alerts/detections vs alerts/response times
+network metrics and host metrics
+measuring user threat awareness
+url analysis
+[sub][hostname][resource/path][queryID]
+http methods
+GET resource request
+PUT pushes files onto server
+POST push resource data
+HEAD gives common server info
+? == start of query
+& == value pairs
+# == anchor tag
+status codes 
+200 GET/POST OK
+201 PUT OK
+300's redirect
+400's client-side request invalid
+500's server-side request invalid
+useful attacking info
+percent encoding after queryID
+if ' are filtered out, try percent encoding instead
+unreserved characters and reserved characters and unsafe characters
+asciitable.com
+can easily encode trings in burp, highlight>url encoding
+dns analysis
+https://www.ipvoid.com/dns+reputation/
+DGA domain generation algorithm
+bulletproof hosting
+fast flux
+https://github.com/baderj/domaingenerationalgorithms
+https://www.alexa.com/topsites
+dns analysis logging
+look for NX domain errors
+mitigation via blacklisting/whitelisting and recursive dns resolvers to fact-check other dns
