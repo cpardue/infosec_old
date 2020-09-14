@@ -391,3 +391,5 @@ https://www.alexa.com/topsites
 dns analysis logging
 look for NX domain errors
 mitigation via blacklisting/whitelisting and recursive dns resolvers to fact-check other dns
+DAY EIGHT
+basically just wireshark following tcp stream, viewing as raw when necessary
