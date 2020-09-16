@@ -435,4 +435,20 @@ WAF logs
 OSSEC log drilldown
 kibana
 sguil
-
+impact analysis
+components
+money/reputation loss
+event=<money&<rep
+classification frameworks
+taxonomy-based classification
+impact-based classification
+organizational vs localized events
+immediate vs total impact
+SIEM security incident and event management
+OSSIM
+Security Onion
+kibana
+rules and queries
+pipes and logical operators
+data enrichment, adding additional external info/threat feeds to alerts
+DAY NINE
