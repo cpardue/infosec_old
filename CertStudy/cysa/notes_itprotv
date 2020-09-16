@@ -392,4 +392,47 @@ dns analysis logging
 look for NX domain errors
 mitigation via blacklisting/whitelisting and recursive dns resolvers to fact-check other dns
 DAY EIGHT
+packet analysis
 basically just wireshark following tcp stream, viewing as raw when necessary
+components in flow analysis
+alerting for !baseline
+flow collector probes
+solarwinds
+nagios
+netflow format
+https://openargus.org/using-argus
+zeke/bro
+MRTG multi-router traffic grapher
+endpoint behavior analysis
+known-good ehavior vs anomolous behavior
+https://docs.microsoft.com/en-us/advanced-threat-analytics/what-is-ata
+https://www.splunk.com/en_us/software/user-behavior-analytics.html
+UEBA user entity behavior analysis
+microsoft ATA advanced threat analytics
+splunk user behavior analytics
+sysinternals tools
+sysinternals procmon
+OSSEC is now Wazuk???
+tripwire
+EPP endpoint protection platforms
+EDR endpoint protection response
+pupy
+malware analysis
+they just go on about categories of malware for a while and it's annoying
+dissecting malware
+ida free
+ghidra
+packer for obfuscating
+the reverse engineering is like, so effing basic in this video
+log review
+https://zecure.me/
+https://demo.shadowd.zecure.org/login
+always turn on auditing for failure and success
+syslog
+windows firewall does not log by default
+logs located in windows\system32\logfiles\firewall\pfirewall.log
+WAF logs
+OSSEC log drilldown
+kibana
+sguil
+
