@@ -452,3 +452,97 @@ rules and queries
 pipes and logical operators
 data enrichment, adding additional external info/threat feeds to alerts
 DAY NINE
+email analysis
+phishing, spearphishing, whaling, etc
+BEC business email compromise
+BEC legit compromised org email
+view message details to see headers
+body == payload
+possible RCE via email client's html interpretation
+SPF sender policy framework
+SPF checks DNS against the sender domain
+SPF <option>ALL options
+SPF -ALL == reject it
+SPF ~ALL == flag it
+SPF +ALL == accept it
+DKIM domain keys identified mail
+DKIM uses PKI as checks
+DKIM private key hashes
+DKIM posts public key via DNS
+DKIM then can go through PKI process to check mail against priv/pub and pub/priv key pair hashes for validity checks upon receiving the mail
+DMARC domain based authentication reporting and conformance
+file system permissions
+windows file permissions
+via admin cmd 
+icacls <file>
+icacls flags
+icacles --help
+linux file permissions
+ls -l
+drwxrwxrwx owner:group
+-421421421
+thus chmod 137 = ---x-wxrwx
+chmod u+s sticky bits
+blacklisting and whitelisting applications
+blacklisting, don't-allow-these lists
+whitelisting, only-allow-these lists
+execution control
+windows methods
+SRP software restriction policies
+SRP group policy controlled
+applocker
+applocker also via GPO
+WDAC windows defender app control
+WDAC code integrity policies
+linux methods
+apparmor
+selinux
+firewall configurations
+multi-homed firewall
+acl's
+top down
+left to right
+implicit rules vs explicit rules
+multicast/loopback traffic refered to as martians
+blocking martians
+reserved and r&r ranges refered to as bogons
+blocking bogons
+https://team+cymru.com/community-services/bogon-reference/
+baseline firewall rules, basically block the hell out of internal traffic that shouldn't be coming in from WAN, ever
+drop vs reject
+egress filtering to screw over reverse shells
+firewalking
+ttl to firewall +1
+firewalk tool
+nmap -SA scan
+data loss prevention
+DLP is a data classification system, generally
+office data loss prevention
+DLP components
+DLP policy server
+DLP network agents
+DLP endpoint agents
+content types
+structured data types
+unstructured data types
+remediations via alert vs block vs quarantine vs tombstone
+NAC network access control
+NAC filtering, physical port filtering
+NAC IEEE 802.1x
+PNAC port network access control
+supplicant vs authenticator vs auth server
+EPOL == EAPOL extensive authentication protocol over local area network
+supplicant is the client pc
+authenticator is some middleman
+auth server is the actual man in charge
+supplicant hooks to network
+authenticator requests some form of authentication
+authenticator passes that on to auth server
+comes back down chain
+NAC via health status policy checks
+Windows Server NAP network access policy under Network Policy Server role
+NAP is no longer current in windows server OS
+time based controls
+location based controls
+role based controls
+DAY TEN
