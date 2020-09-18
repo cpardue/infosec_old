@@ -546,3 +546,60 @@ time based controls
 location based controls
 role based controls
 DAY TEN
+blackholes vs sinkholes
+blackholes drop, simply do not process
+cisco devices have a null 0 for routing, like /dev/null
+sinkholes dump traffic into a drop box for analysis
+sinkholing with DNS redirect traffic to <here>
+<here> being 127.0.0.1 or an analyzing server
+add known c2 domains to sinkhole server route
+malware signatures
+submit binaries to vendors for malware sampling
+trend micro and virus total do this, there are others
+malware classification
+CARO computer antivirus research organization
+http://www.caro.org/articles/naming.html
+MAEK malware analysis enumeration and characterization
+MAEK is STIX compliant
+malware custom signatures
+https://yara.readthedocs.io/en/v4.0.1/gettingstarted.html
+------------------------------------------------------------>>>uh might be able to create yara rule to parse out php pages for bug hunting
+------------------------------------------------------------>>>curl <page> && yara bugrules <page>
+threat hunting components
+methodology
+establish a hypothesis
+threat modeling
+APTs that typically attack this industry
+what are their TTPs and how to they attack
+lean on SIEM
+process analysis
+analyze network traffic
+marry CTI with internal logs
+scripting concepts
+syntax: 
+declaration of binary (#!bin/bash)
+contents line by line
+$1 $2 $3 is a positional parameter
+powershell
+they just use the ise for a one liner :(
+python
+ruby
+goland
+wmic
+AI artificial intelligence
+can only do what it's programmed to do
+ML machine learning
+machine learning is a subset of AI
+can learn the differentiations it is programmed to learn
+can modify it's own decision making algorithms
+DL deep learning
+deep learning is a subset of machine learning
+uses neural networks
+continuous integration and continuous development
+prevents stupid high level plans for how to attack issues
+these methodologies have already been figured out
+agile
+development, test, staging, production
+continuous delivery
+continuous deployment
+DAY ELEVEN
