@@ -603,3 +603,82 @@ development, test, staging, production
 continuous delivery
 continuous deployment
 DAY ELEVEN
+incident response communication
+communication bands may be compromised
+have an out of bounds, unbreached line of communication
+only communicate with trusted parties
+mandatory legal communication
+GDPR
+IRP incident response plan
+IR Playbook
+response communication
+c levels
+IT management
+regulatory bodies
+law enforcement
+HR
+PR
+data criticality factors
+PII
+PHI
+SPI
+Financial Information
+IP
+Corporate Information
+High Value Asset
+https://gdpr+info.eu/art-33-gdpr/
+https://www.cisa.gov/sites/default/files/publications/CISAInsights+Cyber-SecureHighValueAssets_S508C.pdf
+incident response phases
+preparation
+identification
+containment
+eradication
+recovery
+lessons learned
+preparation:
+have training and testing
+preparation have a call escalation list
+rpeparation have an incident form 
+https://bok.ahima.org/PdfView?oid=76732
+indentification:
+event vs incident
+severity classification
+severity characteristics
+containment:
+containment is isolation
+eradication:
+mitigation
+patching
+compensating controls
+hardening defficiencies
+recovery:
+re-imaging and validation
+lessons learned:
+what did right
+what did wrong
+how to improve each
+after action report
+update IR plan
+summary report for c-levels
+evidence retention for legal purposes
+integrate the new IOC monitoring
+IOC indicators of compromise
+triaging incidents
+networks, hosts, applications
+network bandwidth
+network beaconing outbound
+network rogue devices
+network irregular p2p
+host resource consumption
+host processes
+host four horsemen
+host log sizes
+host linux pstree
+host registry entries obfuscated
+host scheduled tasks
+application new users
+application unexpected outputs
+application unexpected outbound communication
+application service interruption
+application gaps in logs
+DAY TWELVE
