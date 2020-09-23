@@ -682,3 +682,47 @@ application unexpected outbound communication
 application service interruption
 application gaps in logs
 DAY TWELVE
+digital forensics phases
+identification, collection, analysis, reporting
+identification
+prevent contamination of the scene
+ID the scope of the evidence
+collection
+use standard tools to collect evidence
+sleuthkit
+maintain chain of custody
+name/date/time/stable container to maintain integrity
+use repeatable methods and tools
+create a report
+things that become legal evidence will be siezed as evidence, be aware
+digital forensics networks
+save wireshark pcaps and tcpdumps
+digital forensics endpoints
+gather evidence from the endpoint
+memory
+https://www.magnetforensics.com/resources/magnet+ram-capture/
+crashdumps
+hibernation file
+pagefiles
+volitility tool
+live acquisition is powered on machine
+static acquisition is powered down machine
+static may introduce issues or changes in state for the malware
+https://tools.ietf.org/html/rfc3227
+order of volitility
+take images with a write blocker
+dd to get identical
+mobile forensics
+is it locked or encrypted?
+may have to use jtag
+may have to take video of extraction method
+vendor provided software
+call data extraction
+carrier provided logs
+virtualization forensics
+some caveats
+may be able to dump live memory via hypervisor
+save state files already imaged
+unsupported filesystems, may be heavily fragmented
+lost system logs
+DAY THIRTEEN
