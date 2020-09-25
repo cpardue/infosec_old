@@ -726,3 +726,34 @@ save state files already imaged
 unsupported filesystems, may be heavily fragmented
 lost system logs
 DAY THIRTEEN
+privacy vs security
+not synonyms, there is a distinction between the two
+privacy is a subsection of security
+data governance for guidance and language
+privacy element is outlined through data governance entities
+privacy is how we control and oversee PII
+governance is the mechanism of control via policy
+GDPR
+• The Sarbanes-Oxley Act (SOX)
+• The Gramm-Leach-Bliley Act (GLBA)
+• The Federal Information Security Management Act (FISMA)
+• The Committee of Sponsoring Organizations of the Treadway Commission (COSO)
+• The Health Insurance Portability and Accountability Act (HIPAA)
+if you provide services to clients under an above umbrella, you must align with their policies
+non-technical data controls
+data governance and lifecycle of data
+classification labels and signifies value of different types of created data
+classification is attached to data to dictate how securely the data should be treated from a security standpoint
+public data vs classified data
+interal, official use only, secret, etc
+confidentiality as preventing access to assets
+confidentiality is applied according to data classification
+of course integrity maintains the above
+data typing for application of controls
+encryption of data at each lifecycle phase
+purpose limitation specifies the intended use
+data minimization data should only be processed and stored to accomplish purposes A B and C
+data sovereignty aligns data to geographies used in
+DAY FOURTEEN
+
+
