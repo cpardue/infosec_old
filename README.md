@@ -21,7 +21,7 @@
   [--Server setups](https://github.com/cpardue/infosec/tree/master/Linux/Servers)
   
 ### [Offensive General](https://github.com/cpardue/infosec/tree/master/Offensive)
-  [--CTF notes](https://github.com/cpardue/infosec/tree/master/Offensive/CTF)
+  [--CTF notes](https://github.com/cpardue/infosec/tree/master/Offensive)
   
   [--Wordlists](https://github.com/cpardue/infosec/tree/master/Offensive/wordlists)
   
