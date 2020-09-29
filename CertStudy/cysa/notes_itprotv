@@ -755,5 +755,53 @@ purpose limitation specifies the intended use
 data minimization data should only be processed and stored to accomplish purposes A B and C
 data sovereignty aligns data to geographies used in
 DAY FOURTEEN
-
-
+data should have a shelf life
+retention and retention policies
+retention standards 
+eDiscovery
+storage limitation concerns hipa sox etc
+ownership roles as a security control mechanism
+roles of ownership
+data owner is ultimate authority with how data is protected/used within the org
+understand the logic of defining the role, not the individual
+senior leaders as typical owner of organizational data
+data stewards ensure data quality (labels, formats, compression)
+data custodians handle managing and enforcing data backups etc
+privacy officer has to do with purpose limitation, PII, PHI, SPI, disclosure, etc, can go to jail from legal standpoint
+technical control of legal requirements
+regulatory, statue, frameworks and protection levels
+determined by geographics and industry, aka data sovereignty
+always maintain legal counsel for data soveregnty
+non-disclosure agreements as a non-technical control
+NDA, SLA, OLA, MOU, ILA, RFP
+NDA driven by contractual requirement landscape
+there are secrecy acts dealing with gov types of data by the way
+SLA stipulate between customer and provider for service coverage, uptime you are buying
+ISA interconnection security agreement protects legally the protection of assets
+data sharing and usage agreements for hipa and gdpr binding use of data
+technical controls
+the systems we can put into play to secure environment
+mitigate and minimize risk
+access controls 
+more often than not software driven
+ACL access control list
+ACE access control entries
+can also be physical in nature, such as doors or rfid locks
+access control models
+apply model of least privilege, just enough to do their specific job
+ACL is a listing of all users
+ACE is the specific permissions based
+geographic access requirements
+if not in this location then no access to that
+subject requests access to object, what is location of subject and location of object determines access
+safe harbor now known as privacy shield
+encryption as applied to technical control
+system of providing confidentiality and integrity
+create integrity via hashing
+encryption has to be constantly assessed vs retention policy, cannot be crackable by end of retention (sha1 crackable 7 years later
+overlapping complementary controls as defense in depth
+data at rest and data in transit should both be encrypted
+data at rest, encrypted
+data in transit, tls and ssl
+encryption of session keys in memory
+DAY FIFTEEN
