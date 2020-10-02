@@ -805,3 +805,61 @@ data at rest, encrypted
 data in transit, tls and ssl
 encryption of session keys in memory
 DAY FIFTEEN
+de-identification is basically removing PII, PHI, redacting such information so that elements cannot be identified
+data masking is a possible application of de-identification such as asterisks in password fields or CC numbers
+data masking should be irreversible in application
+tokenization replaces data with a token, while the associated data is stored in a separate tokenization server
+token string replaces the data in production database, so hackers in a db see token, as tokenized data is in other db
+tokenization is just a sleight of hand where encryption can't be used from hardware or legal standpoint
+aggregation/banding replaces unique values with a value range, age 21yrs-30yrs instead of age 25yrs
+re-identification attack is reversal of shitty de-identification technique
+K value is a value that represents how many individuals, where k-5 means 5 individuals within
+DRM digital rights management
+IRM individual rights management
+ERM enterprise risk management
+NIST SP-800-39
+frame - high level context for kinds of risks being addressed and highest values acceptable, like a warning order
+assess - identify risks associated with this individual risk
+respond - mitigate each risk factor
+monitor - evaluate effectiveness 
+systems assessment process
+people
+tangible assets
+intangible assets
+procedures
+MEF mission essential function
+PBF primary business function
+calculating and analyzing risk
+• Probability is the chance of a threat being realized
+• Magnitude is the impact of a successful exploit or a risk event
+NOTE: Magnitude may be determined by factors such as the value of the asset or the cost of disruption if the asset is compromised.
+Probability * Magnitude = Risk
+therefore (decimal percentage * dollar value = risk)
+100% probability that Chastain's $500 server dies and costs $1200 t&m = (1*$1700=$1700risk)
+quantitative, qualitative, and semi-quantitative:
+Quantitative Risk Calculation -
+A quantitative assessment of risk attempts to assign concrete values to the elements of risk.
+Probability is expressed as a percentage and magnitude as a cost (monetary) value, as in the following formula:
+AV (Asset Value) x EF (Exposure Factor) = SLE (Single Loss Expectancy)
+EF is the percentage of the asset's value that would be lost. 
+The single loss expectancy (SLE) value is the financial loss that is expected from a specific adverse event. 
+For example, if the asset value is $50,000 and EF is 5%, the SLE calculation is as follows:
+$50,000 * .05 = $2,500
+If you know or can estimate how many times this loss is likely to occur in a year, you can calculate the risk cost on an annual basis:
+SLE (Single Loss Expectancy) x ARO (Annual Rate of Occurrence) = ALE (Annual Loss Expectancy)
+Chastain's dead server costs $1700 every 3mo ($1700*4=SLE of $6800)
+NOTE: The problem with quantitative risk assessment is that the process of determining and assigning these values can be complex and time consuming.
+Qualitative analysis is generally scenario-based.
+The qualitative approach seeks out people's opinions of which risk factors are significant.
+Qualitative analysis uses simple labels and categories to measure the likelihood and impact of risk.
+For example, impact ratings can be severe/high, moderate/medium, or low; and likelihood ratings can be likely, unlikely, or rare.
+Semi-Quantitative Risk Calculation -
+A semi-quantitative analysis method exists because it is impossible for a purely quantitative risk assessment to exist given that some issues defy numbers.
+A semi-quantitative analysis attempts to find a middle ground between the risk analysis types to create a hybrid method.
+analyzing risk
+BIA business impact analysis assesses potential losses for a threat scenario
+MDT maximum tolerable downtime longest that an outage can occure before irrecoverable business failure
+RTO recovery time objective is amount of time it takes for service restore
+WRT work recovery time is the time it takes to move from service restoration to completed validation testing and debrief
+RPO recovery point objective is the amount of data loss a system can sustain, measured in time
+DAY SIXTEEN
