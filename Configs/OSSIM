@@ -1,0 +1,20 @@
+///////////////////////////////
+////////Phase 1: Installation/
+/////////////////////////////
+Built in ESXi 7.0
+Provision the VM
+at least 1 logical core
+at least 4GB memory
+at least 25GB storage
+set up 4 network interfaces
+eth{0,1,2} interfaces on your regular vmnet
+eth4 interface on a promiscuous interface
+NOTE: you can use 2 interfaces, but will possibly have to rebuild from scratch to add more
+Boot into OSSIM iso
+Install
+Set up networking interface as eth0
+eth0 IP = mgmt interface
+You only get this initial shot to set up DHCP if you're stupid enough to do so
+/////////////////////////////
+/////Phase 2: Configuration/
+///////////////////////////
