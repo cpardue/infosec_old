@@ -1,2 +1,11 @@
 # what works
 # transfer to here from box notes
+nmap -A -p- -vv -oN <filename> <ip>
+nmap -vv --script vuln <ip>
+gobuster dir -w /usr/share/seclists/Discovery/Web-Content/big.txt -u <ip> -x php
+wget and review
+searchsploit <cve>
+searchsploit -m <#>
+from metasploit exploit, set payload
+from shell, python -c import pty;pty.spawn(''/bin/bash'')
+from user, sudo -l
