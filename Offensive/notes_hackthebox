@@ -3,6 +3,7 @@
 nmap -A -p- -vv -oN <filename> <ip>
 nmap -vv --script=vuln -oN <filename> <ip>
 gobuster dir -w /usr/share/seclists/Discovery/Web-Content/big.txt -u <domain> -x php
+wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u 'http://<domain>' -H "Host: FUZZ.<domain>"
 wget and review
 searchsploit <cve>
 searchsploit -m <#>
