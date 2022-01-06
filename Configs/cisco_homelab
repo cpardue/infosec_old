@@ -1,3 +1,19 @@
+# Basic Situational Awareness commands (abbrev in parenth)
+show interfaces (sh int)
+copy running-config startup-config (wr)
+show ip interface brief (sh ip int brie)
+show running-config (sh run)
+show ip route (sh ip ro)
+# Configure a Network Management IP address (or Management Interface)
+conf t
+interface vlan 1
+ip address 10.1.1.200 255.255.255.0
+exit
+# Assign a Default Gateway to the Switch
+conf t
+ip default-gateway 10.1.1.254
+exit
+#
 # ssh setup regardless of OS vers defaults
 # ssh pre-req's:
 #	management IP
@@ -25,6 +41,9 @@ configure terminal
 	ip ssh version <1-2>
 	exit
 show ip ssh
+# Save Config
+enable
+wr
 
 this method of keeping notes is awful compared to actually poking around and configuring in homelab.  
 consider either deleting this file completely, or a later painstaking transfer of copy/paste to it.  
