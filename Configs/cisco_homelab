@@ -1,3 +1,5 @@
+# always run it
+no ip domain-lookup
 # Basic Situational Awareness commands (abbrev in parenth)
 show interfaces (sh int)
 copy running-config startup-config (wr)
@@ -13,7 +15,10 @@ exit
 conf t
 ip default-gateway 10.1.1.254
 exit
-#
+# Assign a Hostname  
+conf t
+hostname <hostname>
+exit
 # ssh setup regardless of OS vers defaults
 # ssh pre-req's:
 #	management IP
