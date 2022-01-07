@@ -10,6 +10,7 @@ show ip route (sh ip ro)
 conf t
 interface vlan 1
 ip address 10.1.1.200 255.255.255.0
+no shut
 exit
 # Assign a Default Gateway to the Switch
 conf t
@@ -19,6 +20,8 @@ exit
 conf t
 hostname <hostname>
 exit
+# Assign a route to other networks
+ip route <dest network> <dest mask> <nxt hop ip> <hop count>
 # ssh setup regardless of OS vers defaults
 # ssh pre-req's:
 #	management IP
