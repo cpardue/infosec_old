@@ -1,9 +1,0 @@
-notes:
-shell is at 10.10.10.181/shell.php
-not daemonizing
-found via:
-gobuster dir -w /usr/share/seclists/Discovery/Web-Content/big.txt -u 10.10.10.181 -x php
-reset machine will try again
-10.10.10.181/smevk.php is the shell, admin:admin
----
-root flag is ---
