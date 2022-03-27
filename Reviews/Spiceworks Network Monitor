@@ -1,7 +1,0 @@
-What: 
-network monitor, free for a few sensors
-Impressions: 
-looks nice to CEO but not very useful on my side of things.  no customization of dashboard.  
-SNMPv3 support not working & device discovery is done with a totally disconnected module, must then import all by hand.
-Result:
-abandoned in search of better netmon.  spiceworks is still calling.  

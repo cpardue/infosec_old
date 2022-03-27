@@ -1,9 +1,0 @@
-What:
-Intrusion Detection/Prevention System
-Impression:
-Not any easier to set up than Snort.  In fact, it is a little harder due to the fact that 
-you can't just feed it all Snort rules and expect them all to work properly.  
-In Suricata vs Snort, Suricata can be configured to fork an alert into other processes 
-such as remedial actions via custom scripts, where Snort cannot.  
-Result:
-In production use
